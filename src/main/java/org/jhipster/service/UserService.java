@@ -1,6 +1,5 @@
 package org.jhipster.service;
 
-import org.jhipster.config.CacheConfiguration;
 import org.jhipster.domain.Authority;
 import org.jhipster.domain.User;
 import org.jhipster.repository.AuthorityRepository;
@@ -94,7 +93,7 @@ public class UserService {
     public User registerUser(UserDTO userDTO, String password) {
 
         User newUser = new User();
-        Authority authority = authorityRepository.findOne(AuthoritiesConstants.USER);
+        Authority authority = authorityRepository.findOne(AuthoritiesConstants.CLIENT);
         Set<Authority> authorities = new HashSet<>();
         String encryptedPassword = passwordEncoder.encode(password);
         newUser.setLogin(userDTO.getLogin());
