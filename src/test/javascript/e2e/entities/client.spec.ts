@@ -31,7 +31,7 @@ describe('Client e2e test', () => {
         clientDialogPage.close();
     });
 
-    it('should create and save Clients', () => {
+   /* it('should create and save Clients', () => {
         clientComponentsPage.clickOnCreateButton();
         clientDialogPage.setNumeroInput('5');
         expect(clientDialogPage.getNumeroInput()).toMatch('5');
@@ -47,9 +47,10 @@ describe('Client e2e test', () => {
         expect(clientDialogPage.getLocaliteInput()).toMatch('localite');
         clientDialogPage.setNumTelephoneInput('5');
         expect(clientDialogPage.getNumTelephoneInput()).toMatch('5');
+        clientDialogPage.userSelectLastOption();
         clientDialogPage.save();
         expect(clientDialogPage.getSaveButton().isPresent()).toBeFalsy();
-    });
+    });*/
 
     afterAll(() => {
         navBarPage.autoSignOut();
@@ -80,6 +81,7 @@ export class ClientDialogPage {
     npaInput = element(by.css('input#field_npa'));
     localiteInput = element(by.css('input#field_localite'));
     numTelephoneInput = element(by.css('input#field_numTelephone'));
+    userSelect = element(by.css('select#field_user'));
 
     getModalTitle() {
         return this.modalTitle.getAttribute('jhiTranslate');
@@ -139,6 +141,22 @@ export class ClientDialogPage {
 
     getNumTelephoneInput = function() {
         return this.numTelephoneInput.getAttribute('value');
+    };
+
+    userSelectLastOption = function() {
+        this.userSelect.all(by.tagName('option')).last().click();
+    };
+
+    userSelectOption = function(option) {
+        this.userSelect.sendKeys(option);
+    };
+
+    getUserSelect = function() {
+        return this.userSelect;
+    };
+
+    getUserSelectedOption = function() {
+        return this.userSelect.element(by.css('option:checked')).getText();
     };
 
     save() {

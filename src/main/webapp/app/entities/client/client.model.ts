@@ -1,4 +1,4 @@
-import { BaseEntity } from './../../shared';
+import { BaseEntity, User } from './../../shared';
 
 export class Client implements BaseEntity {
     constructor(
@@ -10,6 +10,7 @@ export class Client implements BaseEntity {
         public npa?: string,
         public localite?: string,
         public numTelephone?: number,
+        public user?: User,
     ) {
     }
 }

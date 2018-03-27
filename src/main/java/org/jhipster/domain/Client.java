@@ -52,6 +52,11 @@ public class Client implements Serializable {
     @Column(name = "num_telephone", nullable = false)
     private Integer numTelephone;
 
+    @OneToOne(optional = false)
+    @NotNull
+    @JoinColumn(unique = true)
+    private User user;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -150,6 +155,19 @@ public class Client implements Serializable {
 
     public void setNumTelephone(Integer numTelephone) {
         this.numTelephone = numTelephone;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Client user(User user) {
+        this.user = user;
+        return this;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

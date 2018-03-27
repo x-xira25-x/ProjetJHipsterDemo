@@ -24,6 +24,7 @@
             <th jhiSortBy="npa"><span jhiTranslate="projetJHipster2H2App.client.npa">Npa</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="localite"><span jhiTranslate="projetJHipster2H2App.client.localite">Localite</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="numTelephone"><span jhiTranslate="projetJHipster2H2App.client.numTelephone">Num Telephone</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="user.login"><span jhiTranslate="projetJHipster2H2App.client.user">User</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -37,6 +38,9 @@
                 <td>{{client.npa}}</td>
                 <td>{{client.localite}}</td>
                 <td>{{client.numTelephone}}</td>
+                <td>
+                    {{client.user?.login}}
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

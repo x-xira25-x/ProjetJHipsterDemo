@@ -2,6 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { ProjetJHipster2H2SharedModule } from '../../shared';
+import { ProjetJHipster2H2AdminModule } from '../../admin/admin.module';
 import {
     ClientService,
     ClientPopupService,
@@ -24,6 +25,7 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         ProjetJHipster2H2SharedModule,
+        ProjetJHipster2H2AdminModule,
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [

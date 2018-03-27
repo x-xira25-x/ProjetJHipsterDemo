@@ -3,6 +3,7 @@ package org.jhipster.web.rest;
 import org.jhipster.ProjetJHipster2H2App;
 
 import org.jhipster.domain.Client;
+import org.jhipster.domain.User;
 import org.jhipster.repository.ClientRepository;
 import org.jhipster.web.rest.errors.ExceptionTranslator;
 
@@ -104,6 +105,11 @@ public class ClientResourceIntTest {
             .npa(DEFAULT_NPA)
             .localite(DEFAULT_LOCALITE)
             .numTelephone(DEFAULT_NUM_TELEPHONE);
+        // Add required entity
+        User user = UserResourceIntTest.createEntity(em);
+        em.persist(user);
+        em.flush();
+        client.setUser(user);
         return client;
     }
 
