@@ -1,0 +1,105 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myVisiteLabel" jhiTranslate="projetJHipster2H2App.visite.home.createOrEditLabel">Create or edit a Visite</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!visite.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="visite.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="projetJHipster2H2App.visite.numero" for="field_numero">Numero</label>
+            <input type="number" class="form-control" name="numero" id="field_numero"
+                [(ngModel)]="visite.numero" required/>
+            <div [hidden]="!(editForm.controls.numero?.dirty && editForm.controls.numero?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.numero?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.numero?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="projetJHipster2H2App.visite.dateDebut" for="field_dateDebut">Date Debut</label>
+            <div class="input-group">
+                <input id="field_dateDebut" type="text" class="form-control" name="dateDebut" ngbDatepicker  #dateDebutDp="ngbDatepicker" [(ngModel)]="visite.dateDebut"
+                required/>
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dateDebutDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.dateDebut?.dirty && editForm.controls.dateDebut?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dateDebut?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="projetJHipster2H2App.visite.dateFin" for="field_dateFin">Date Fin</label>
+            <div class="input-group">
+                <input id="field_dateFin" type="text" class="form-control" name="dateFin" ngbDatepicker  #dateFinDp="ngbDatepicker" [(ngModel)]="visite.dateFin"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dateFinDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="projetJHipster2H2App.visite.vendeur" for="field_vendeur">Vendeur</label>
+            <select class="form-control" id="field_vendeur" name="vendeur" [(ngModel)]="visite.vendeur"  required>
+                <option *ngIf="!editForm.value.vendeur" [ngValue]="null" selected></option>
+                <option [ngValue]="vendeurOption.id === visite.vendeur?.id ? visite.vendeur : vendeurOption" *ngFor="let vendeurOption of vendeurs; trackBy: trackVendeurById">{{vendeurOption.id}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.vendeur?.dirty && editForm.controls.vendeur?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.vendeur?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="projetJHipster2H2App.visite.bien" for="field_bien">Bien</label>
+            <select class="form-control" id="field_bien" name="bien" [(ngModel)]="visite.bien"  required>
+                <option *ngIf="!editForm.value.bien" [ngValue]="null" selected></option>
+                <option [ngValue]="bienOption.id === visite.bien?.id ? visite.bien : bienOption" *ngFor="let bienOption of biens; trackBy: trackBienById">{{bienOption.id}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.bien?.dirty && editForm.controls.bien?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.bien?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="projetJHipster2H2App.visite.client" for="field_client">Client</label>
+            <select class="form-control" id="field_client" name="client" [(ngModel)]="visite.client"  required>
+                <option *ngIf="!editForm.value.client" [ngValue]="null" selected></option>
+                <option [ngValue]="clientOption.id === visite.client?.id ? visite.client : clientOption" *ngFor="let clientOption of clients; trackBy: trackClientById">{{clientOption.id}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.client?.dirty && editForm.controls.client?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.client?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
