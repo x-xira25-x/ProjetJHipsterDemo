@@ -1,0 +1,29 @@
+
+{
+    "projetJHipster2H2App": {
+        "vendeur" : {
+            "home": {
+                "title": "Vendeurs",
+                "createLabel": "Créer un nouveau Vendeur",
+                "createOrEditLabel": "Créer ou éditer un Vendeur"
+            },
+            "created": "Un nouveau Vendeur a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Vendeur avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Vendeur avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Vendeur {{ id }} ?"
+            },
+            "detail": {
+                "title": "Vendeur"
+            },
+            "numero": "Numero",
+            "nom": "Nom",
+            "prenom": "Prenom",
+            "adresse": "Adresse",
+            "npa": "Npa",
+            "localite": "Localite",
+            "numTelephone": "Num Telephone",
+            "user": "User"
+        }
+    }
+}
