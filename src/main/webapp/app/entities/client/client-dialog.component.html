@@ -110,7 +110,7 @@
         </div>
         <div class="form-group">
             <label jhiTranslate="projetJHipster2H2App.client.bien" for="field_bien">Bien</label>
-            <select class="form-control" id="field_bien" multiple name="bien" [(ngModel)]="client.biens" required>
+            <select class="form-control" id="field_bien" multiple name="bien" [(ngModel)]="client.biens" >
                 <option [ngValue]="getSelected(client.biens, bienOption)" *ngFor="let bienOption of biens; trackBy: trackBienById">{{bienOption.id}}</option>
             </select>
         </div>

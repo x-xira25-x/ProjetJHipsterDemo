@@ -34,7 +34,7 @@
         </dd>
         <dt><span jhiTranslate="projetJHipster2H2App.client.bien">Bien</span></dt>
         <dd>
-            <span *ngFor="let bien of client.biens; let last = last">
+            <span *ngFor="let bien of client.biens let last = last">
                 <a [routerLink]="['/bien', bien?.id ]">{{bien.id}}</a>{{last ? '' : ', '}}
             </span>
         </dd>
