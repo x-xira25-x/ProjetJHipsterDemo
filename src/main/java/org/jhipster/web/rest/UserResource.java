@@ -151,7 +151,7 @@ public class UserResource {
     /**
      * @return a string list of the all of the roles
      */
-    @GetMapping("/users/authorities")
+    @GetMapping("")
     @Timed
     @Secured(AuthoritiesConstants.ADMIN)
     public List<String> getAuthorities() {
