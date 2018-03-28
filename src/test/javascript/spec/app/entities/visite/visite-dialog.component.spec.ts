@@ -9,6 +9,9 @@ import { ProjetJHipster2H2TestModule } from '../../../test.module';
 import { VisiteDialogComponent } from '../../../../../../main/webapp/app/entities/visite/visite-dialog.component';
 import { VisiteService } from '../../../../../../main/webapp/app/entities/visite/visite.service';
 import { Visite } from '../../../../../../main/webapp/app/entities/visite/visite.model';
+import { ClientService } from '../../../../../../main/webapp/app/entities/client';
+import { BienService } from '../../../../../../main/webapp/app/entities/bien';
+import { VendeurService } from '../../../../../../main/webapp/app/entities/vendeur';
 
 describe('Component Tests', () => {
 
@@ -24,6 +27,9 @@ describe('Component Tests', () => {
                 imports: [ProjetJHipster2H2TestModule],
                 declarations: [VisiteDialogComponent],
                 providers: [
+                    ClientService,
+                    BienService,
+                    VendeurService,
                     VisiteService
                 ]
             })

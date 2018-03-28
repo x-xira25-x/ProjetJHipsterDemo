@@ -20,6 +20,9 @@
             <th jhiSortBy="numero"><span jhiTranslate="projetJHipster2H2App.visite.numero">Numero</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="dateDebut"><span jhiTranslate="projetJHipster2H2App.visite.dateDebut">Date Debut</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="dateFin"><span jhiTranslate="projetJHipster2H2App.visite.dateFin">Date Fin</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="client.id"><span jhiTranslate="projetJHipster2H2App.visite.client">Client</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="bien.id"><span jhiTranslate="projetJHipster2H2App.visite.bien">Bien</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="vendeur.id"><span jhiTranslate="projetJHipster2H2App.visite.vendeur">Vendeur</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -29,6 +32,21 @@
                 <td>{{visite.numero}}</td>
                 <td>{{visite.dateDebut | date:'mediumDate'}}</td>
                 <td>{{visite.dateFin | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="visite.client">
+                        <a [routerLink]="['../client', visite.client?.id ]" >{{visite.client?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="visite.bien">
+                        <a [routerLink]="['../bien', visite.bien?.id ]" >{{visite.bien?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="visite.vendeur">
+                        <a [routerLink]="['../vendeur', visite.vendeur?.id ]" >{{visite.vendeur?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

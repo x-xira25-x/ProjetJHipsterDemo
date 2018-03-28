@@ -16,6 +16,24 @@
         <dd>
             <span>{{visite.dateFin | date:'mediumDate'}}</span>
         </dd>
+        <dt><span jhiTranslate="projetJHipster2H2App.visite.client">Client</span></dt>
+        <dd>
+            <div *ngIf="visite.client">
+                <a [routerLink]="['/client', visite.client?.id]">{{visite.client?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="projetJHipster2H2App.visite.bien">Bien</span></dt>
+        <dd>
+            <div *ngIf="visite.bien">
+                <a [routerLink]="['/bien', visite.bien?.id]">{{visite.bien?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="projetJHipster2H2App.visite.vendeur">Vendeur</span></dt>
+        <dd>
+            <div *ngIf="visite.vendeur">
+                <a [routerLink]="['/vendeur', visite.vendeur?.id]">{{visite.vendeur?.id}}</a>
+            </div>
+        </dd>
     </dl>
 
     <button type="submit"

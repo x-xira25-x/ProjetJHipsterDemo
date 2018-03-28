@@ -33,6 +33,18 @@ public class Visite implements Serializable {
     @Column(name = "date_fin")
     private LocalDate dateFin;
 
+    @ManyToOne(optional = false)
+    @NotNull
+    private Client client;
+
+    @ManyToOne(optional = false)
+    @NotNull
+    private Bien bien;
+
+    @ManyToOne(optional = false)
+    @NotNull
+    private Vendeur vendeur;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -79,6 +91,45 @@ public class Visite implements Serializable {
 
     public void setDateFin(LocalDate dateFin) {
         this.dateFin = dateFin;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public Visite client(Client client) {
+        this.client = client;
+        return this;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Bien getBien() {
+        return bien;
+    }
+
+    public Visite bien(Bien bien) {
+        this.bien = bien;
+        return this;
+    }
+
+    public void setBien(Bien bien) {
+        this.bien = bien;
+    }
+
+    public Vendeur getVendeur() {
+        return vendeur;
+    }
+
+    public Visite vendeur(Vendeur vendeur) {
+        this.vendeur = vendeur;
+        return this;
+    }
+
+    public void setVendeur(Vendeur vendeur) {
+        this.vendeur = vendeur;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

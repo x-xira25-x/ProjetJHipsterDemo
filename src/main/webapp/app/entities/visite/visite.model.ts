@@ -6,6 +6,9 @@ export class Visite implements BaseEntity {
         public numero?: number,
         public dateDebut?: any,
         public dateFin?: any,
+        public client?: BaseEntity,
+        public bien?: BaseEntity,
+        public vendeur?: BaseEntity,
     ) {
     }
 }

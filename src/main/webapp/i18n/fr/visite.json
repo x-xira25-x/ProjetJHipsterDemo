@@ -18,7 +18,10 @@
             },
             "numero": "Numero",
             "dateDebut": "Date Debut",
-            "dateFin": "Date Fin"
+            "dateFin": "Date Fin",
+            "client": "Client",
+            "bien": "Bien",
+            "vendeur": "Vendeur"
         }
     }
 }
