@@ -32,13 +32,6 @@
     ],
     "fields": [
         {
-            "fieldName": "numero",
-            "fieldType": "Long",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
             "fieldName": "nom",
             "fieldType": "String",
             "fieldValidateRules": [

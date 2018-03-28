@@ -16,7 +16,6 @@
             "detail": {
                 "title": "Vendeur"
             },
-            "numero": "Numero",
             "nom": "Nom",
             "prenom": "Prenom",
             "adresse": "Adresse",

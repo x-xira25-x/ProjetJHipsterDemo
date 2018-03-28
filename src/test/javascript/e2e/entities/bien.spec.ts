@@ -33,8 +33,6 @@ describe('Bien e2e test', () => {
 
     it('should create and save Biens', () => {
         bienComponentsPage.clickOnCreateButton();
-        bienDialogPage.setNumeroInput('5');
-        expect(bienDialogPage.getNumeroInput()).toMatch('5');
         bienDialogPage.setRueNoInput('rueNo');
         expect(bienDialogPage.getRueNoInput()).toMatch('rueNo');
         bienDialogPage.setLocaliteInput('localite');
@@ -71,7 +69,6 @@ export class BienDialogPage {
     modalTitle = element(by.css('h4#myBienLabel'));
     saveButton = element(by.css('.modal-footer .btn.btn-primary'));
     closeButton = element(by.css('button.close'));
-    numeroInput = element(by.css('input#field_numero'));
     rueNoInput = element(by.css('input#field_rueNo'));
     localiteInput = element(by.css('input#field_localite'));
     anneeConstructionInput = element(by.css('input#field_anneeConstruction'));
@@ -81,14 +78,6 @@ export class BienDialogPage {
     getModalTitle() {
         return this.modalTitle.getAttribute('jhiTranslate');
     }
-
-    setNumeroInput = function(numero) {
-        this.numeroInput.sendKeys(numero);
-    };
-
-    getNumeroInput = function() {
-        return this.numeroInput.getAttribute('value');
-    };
 
     setRueNoInput = function(rueNo) {
         this.rueNoInput.sendKeys(rueNo);

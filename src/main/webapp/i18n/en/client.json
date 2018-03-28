@@ -16,7 +16,6 @@
             "detail": {
                 "title": "Client"
             },
-            "numero": "Numero",
             "nom": "Nom",
             "prenom": "Prenom",
             "adresse": "Adresse",

@@ -33,8 +33,6 @@ describe('Client e2e test', () => {
 
    /* it('should create and save Clients', () => {
         clientComponentsPage.clickOnCreateButton();
-        clientDialogPage.setNumeroInput('5');
-        expect(clientDialogPage.getNumeroInput()).toMatch('5');
         clientDialogPage.setNomInput('nom');
         expect(clientDialogPage.getNomInput()).toMatch('nom');
         clientDialogPage.setPrenomInput('prenom');
@@ -75,7 +73,6 @@ export class ClientDialogPage {
     modalTitle = element(by.css('h4#myClientLabel'));
     saveButton = element(by.css('.modal-footer .btn.btn-primary'));
     closeButton = element(by.css('button.close'));
-    numeroInput = element(by.css('input#field_numero'));
     nomInput = element(by.css('input#field_nom'));
     prenomInput = element(by.css('input#field_prenom'));
     adresseInput = element(by.css('input#field_adresse'));
@@ -88,14 +85,6 @@ export class ClientDialogPage {
     getModalTitle() {
         return this.modalTitle.getAttribute('jhiTranslate');
     }
-
-    setNumeroInput = function(numero) {
-        this.numeroInput.sendKeys(numero);
-    };
-
-    getNumeroInput = function() {
-        return this.numeroInput.getAttribute('value');
-    };
 
     setNomInput = function(nom) {
         this.nomInput.sendKeys(nom);

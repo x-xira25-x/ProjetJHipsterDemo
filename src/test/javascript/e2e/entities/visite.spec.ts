@@ -33,8 +33,6 @@ describe('Visite e2e test', () => {
 
    /* it('should create and save Visites', () => {
         visiteComponentsPage.clickOnCreateButton();
-        visiteDialogPage.setNumeroInput('5');
-        expect(visiteDialogPage.getNumeroInput()).toMatch('5');
         visiteDialogPage.setDateDebutInput('2000-12-31');
         expect(visiteDialogPage.getDateDebutInput()).toMatch('2000-12-31');
         visiteDialogPage.setDateFinInput('2000-12-31');
@@ -68,7 +66,6 @@ export class VisiteDialogPage {
     modalTitle = element(by.css('h4#myVisiteLabel'));
     saveButton = element(by.css('.modal-footer .btn.btn-primary'));
     closeButton = element(by.css('button.close'));
-    numeroInput = element(by.css('input#field_numero'));
     dateDebutInput = element(by.css('input#field_dateDebut'));
     dateFinInput = element(by.css('input#field_dateFin'));
     clientSelect = element(by.css('select#field_client'));
@@ -78,14 +75,6 @@ export class VisiteDialogPage {
     getModalTitle() {
         return this.modalTitle.getAttribute('jhiTranslate');
     }
-
-    setNumeroInput = function(numero) {
-        this.numeroInput.sendKeys(numero);
-    };
-
-    getNumeroInput = function() {
-        return this.numeroInput.getAttribute('value');
-    };
 
     setDateDebutInput = function(dateDebut) {
         this.dateDebutInput.sendKeys(dateDebut);

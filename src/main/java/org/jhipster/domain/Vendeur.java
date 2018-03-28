@@ -22,10 +22,6 @@ public class Vendeur implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "numero", nullable = false)
-    private Long numero;
-
-    @NotNull
     @Pattern(regexp = "^[a-zA-Z0-9]*$")
     @Column(name = "nom", nullable = false)
     private String nom;
@@ -60,19 +56,6 @@ public class Vendeur implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getNumero() {
-        return numero;
-    }
-
-    public Vendeur numero(Long numero) {
-        this.numero = numero;
-        return this;
-    }
-
-    public void setNumero(Long numero) {
-        this.numero = numero;
     }
 
     public String getNom() {
@@ -191,7 +174,6 @@ public class Vendeur implements Serializable {
     public String toString() {
         return "Vendeur{" +
             "id=" + getId() +
-            ", numero=" + getNumero() +
             ", nom='" + getNom() + "'" +
             ", prenom='" + getPrenom() + "'" +
             ", adresse='" + getAdresse() + "'" +

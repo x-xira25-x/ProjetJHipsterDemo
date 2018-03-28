@@ -17,7 +17,6 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="numero"><span jhiTranslate="projetJHipster2H2App.client.numero">Numero</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="nom"><span jhiTranslate="projetJHipster2H2App.client.nom">Nom</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="prenom"><span jhiTranslate="projetJHipster2H2App.client.prenom">Prenom</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="adresse"><span jhiTranslate="projetJHipster2H2App.client.adresse">Adresse</span> <span class="fa fa-sort"></span></th>
@@ -31,7 +30,6 @@
             <tbody>
             <tr *ngFor="let client of clients ;trackBy: trackId">
                 <td><a [routerLink]="['../client', client.id ]">{{client.id}}</a></td>
-                <td>{{client.numero}}</td>
                 <td>{{client.nom}}</td>
                 <td>{{client.prenom}}</td>
                 <td>{{client.adresse}}</td>

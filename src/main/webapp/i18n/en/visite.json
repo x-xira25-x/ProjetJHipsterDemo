@@ -16,7 +16,6 @@
             "detail": {
                 "title": "Visite"
             },
-            "numero": "Numero",
             "dateDebut": "Date Debut",
             "dateFin": "Date Fin",
             "client": "Client",

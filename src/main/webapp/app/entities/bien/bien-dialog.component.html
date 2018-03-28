@@ -13,21 +13,6 @@
                    [(ngModel)]="bien.id" readonly />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="projetJHipster2H2App.bien.numero" for="field_numero">Numero</label>
-            <input type="number" class="form-control" name="numero" id="field_numero"
-                [(ngModel)]="bien.numero" required/>
-            <div [hidden]="!(editForm.controls.numero?.dirty && editForm.controls.numero?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.numero?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                    [hidden]="!editForm.controls.numero?.errors?.number" jhiTranslate="entity.validation.number">
-                    This field should be a number.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
             <label class="form-control-label" jhiTranslate="projetJHipster2H2App.bien.rueNo" for="field_rueNo">Rue No</label>
             <input type="text" class="form-control" name="rueNo" id="field_rueNo"
                 [(ngModel)]="bien.rueNo" required/>

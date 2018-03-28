@@ -17,7 +17,6 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="numero"><span jhiTranslate="projetJHipster2H2App.bien.numero">Numero</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="rueNo"><span jhiTranslate="projetJHipster2H2App.bien.rueNo">Rue No</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="localite"><span jhiTranslate="projetJHipster2H2App.bien.localite">Localite</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="anneeConstruction"><span jhiTranslate="projetJHipster2H2App.bien.anneeConstruction">Annee Construction</span> <span class="fa fa-sort"></span></th>
@@ -29,7 +28,6 @@
             <tbody>
             <tr *ngFor="let bien of biens ;trackBy: trackId">
                 <td><a [routerLink]="['../bien', bien.id ]">{{bien.id}}</a></td>
-                <td>{{bien.numero}}</td>
                 <td>{{bien.rueNo}}</td>
                 <td>{{bien.localite}}</td>
                 <td>{{bien.anneeConstruction | date:'mediumDate'}}</td>

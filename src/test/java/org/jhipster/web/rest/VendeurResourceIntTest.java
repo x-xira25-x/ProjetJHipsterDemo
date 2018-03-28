@@ -39,9 +39,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = ProjetJHipster2H2App.class)
 public class VendeurResourceIntTest {
 
-    private static final Long DEFAULT_NUMERO = 1L;
-    private static final Long UPDATED_NUMERO = 2L;
-
     private static final String DEFAULT_NOM = "AAAAAAAAAA";
     private static final String UPDATED_NOM = "BBBBBBBBBB";
 
@@ -98,7 +95,6 @@ public class VendeurResourceIntTest {
      */
     public static Vendeur createEntity(EntityManager em) {
         Vendeur vendeur = new Vendeur()
-            .numero(DEFAULT_NUMERO)
             .nom(DEFAULT_NOM)
             .prenom(DEFAULT_PRENOM)
             .adresse(DEFAULT_ADRESSE)
@@ -133,7 +129,6 @@ public class VendeurResourceIntTest {
         List<Vendeur> vendeurList = vendeurRepository.findAll();
         assertThat(vendeurList).hasSize(databaseSizeBeforeCreate + 1);
         Vendeur testVendeur = vendeurList.get(vendeurList.size() - 1);
-        assertThat(testVendeur.getNumero()).isEqualTo(DEFAULT_NUMERO);
         assertThat(testVendeur.getNom()).isEqualTo(DEFAULT_NOM);
         assertThat(testVendeur.getPrenom()).isEqualTo(DEFAULT_PRENOM);
         assertThat(testVendeur.getAdresse()).isEqualTo(DEFAULT_ADRESSE);
@@ -159,24 +154,6 @@ public class VendeurResourceIntTest {
         // Validate the Vendeur in the database
         List<Vendeur> vendeurList = vendeurRepository.findAll();
         assertThat(vendeurList).hasSize(databaseSizeBeforeCreate);
-    }
-
-    @Test
-    @Transactional
-    public void checkNumeroIsRequired() throws Exception {
-        int databaseSizeBeforeTest = vendeurRepository.findAll().size();
-        // set the field null
-        vendeur.setNumero(null);
-
-        // Create the Vendeur, which fails.
-
-        restVendeurMockMvc.perform(post("/api/vendeurs")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(vendeur)))
-            .andExpect(status().isBadRequest());
-
-        List<Vendeur> vendeurList = vendeurRepository.findAll();
-        assertThat(vendeurList).hasSize(databaseSizeBeforeTest);
     }
 
     @Test
@@ -244,7 +221,6 @@ public class VendeurResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(vendeur.getId().intValue())))
-            .andExpect(jsonPath("$.[*].numero").value(hasItem(DEFAULT_NUMERO.intValue())))
             .andExpect(jsonPath("$.[*].nom").value(hasItem(DEFAULT_NOM.toString())))
             .andExpect(jsonPath("$.[*].prenom").value(hasItem(DEFAULT_PRENOM.toString())))
             .andExpect(jsonPath("$.[*].adresse").value(hasItem(DEFAULT_ADRESSE.toString())))
@@ -264,7 +240,6 @@ public class VendeurResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(vendeur.getId().intValue()))
-            .andExpect(jsonPath("$.numero").value(DEFAULT_NUMERO.intValue()))
             .andExpect(jsonPath("$.nom").value(DEFAULT_NOM.toString()))
             .andExpect(jsonPath("$.prenom").value(DEFAULT_PRENOM.toString()))
             .andExpect(jsonPath("$.adresse").value(DEFAULT_ADRESSE.toString()))
@@ -293,7 +268,6 @@ public class VendeurResourceIntTest {
         // Disconnect from session so that the updates on updatedVendeur are not directly saved in db
         em.detach(updatedVendeur);
         updatedVendeur
-            .numero(UPDATED_NUMERO)
             .nom(UPDATED_NOM)
             .prenom(UPDATED_PRENOM)
             .adresse(UPDATED_ADRESSE)
@@ -310,7 +284,6 @@ public class VendeurResourceIntTest {
         List<Vendeur> vendeurList = vendeurRepository.findAll();
         assertThat(vendeurList).hasSize(databaseSizeBeforeUpdate);
         Vendeur testVendeur = vendeurList.get(vendeurList.size() - 1);
-        assertThat(testVendeur.getNumero()).isEqualTo(UPDATED_NUMERO);
         assertThat(testVendeur.getNom()).isEqualTo(UPDATED_NOM);
         assertThat(testVendeur.getPrenom()).isEqualTo(UPDATED_PRENOM);
         assertThat(testVendeur.getAdresse()).isEqualTo(UPDATED_ADRESSE);

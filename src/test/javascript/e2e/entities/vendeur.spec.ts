@@ -33,8 +33,6 @@ describe('Vendeur e2e test', () => {
 
    /* it('should create and save Vendeurs', () => {
         vendeurComponentsPage.clickOnCreateButton();
-        vendeurDialogPage.setNumeroInput('5');
-        expect(vendeurDialogPage.getNumeroInput()).toMatch('5');
         vendeurDialogPage.setNomInput('nom');
         expect(vendeurDialogPage.getNomInput()).toMatch('nom');
         vendeurDialogPage.setPrenomInput('prenom');
@@ -74,7 +72,6 @@ export class VendeurDialogPage {
     modalTitle = element(by.css('h4#myVendeurLabel'));
     saveButton = element(by.css('.modal-footer .btn.btn-primary'));
     closeButton = element(by.css('button.close'));
-    numeroInput = element(by.css('input#field_numero'));
     nomInput = element(by.css('input#field_nom'));
     prenomInput = element(by.css('input#field_prenom'));
     adresseInput = element(by.css('input#field_adresse'));
@@ -86,14 +83,6 @@ export class VendeurDialogPage {
     getModalTitle() {
         return this.modalTitle.getAttribute('jhiTranslate');
     }
-
-    setNumeroInput = function(numero) {
-        this.numeroInput.sendKeys(numero);
-    };
-
-    getNumeroInput = function() {
-        return this.numeroInput.getAttribute('value');
-    };
 
     setNomInput = function(nom) {
         this.nomInput.sendKeys(nom);

@@ -43,9 +43,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = ProjetJHipster2H2App.class)
 public class VisiteResourceIntTest {
 
-    private static final Long DEFAULT_NUMERO = 1L;
-    private static final Long UPDATED_NUMERO = 2L;
-
     private static final LocalDate DEFAULT_DATE_DEBUT = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE_DEBUT = LocalDate.now(ZoneId.systemDefault());
 
@@ -90,7 +87,6 @@ public class VisiteResourceIntTest {
      */
     public static Visite createEntity(EntityManager em) {
         Visite visite = new Visite()
-            .numero(DEFAULT_NUMERO)
             .dateDebut(DEFAULT_DATE_DEBUT)
             .dateFin(DEFAULT_DATE_FIN);
         // Add required entity
@@ -131,7 +127,6 @@ public class VisiteResourceIntTest {
         List<Visite> visiteList = visiteRepository.findAll();
         assertThat(visiteList).hasSize(databaseSizeBeforeCreate + 1);
         Visite testVisite = visiteList.get(visiteList.size() - 1);
-        assertThat(testVisite.getNumero()).isEqualTo(DEFAULT_NUMERO);
         assertThat(testVisite.getDateDebut()).isEqualTo(DEFAULT_DATE_DEBUT);
         assertThat(testVisite.getDateFin()).isEqualTo(DEFAULT_DATE_FIN);
     }
@@ -153,24 +148,6 @@ public class VisiteResourceIntTest {
         // Validate the Visite in the database
         List<Visite> visiteList = visiteRepository.findAll();
         assertThat(visiteList).hasSize(databaseSizeBeforeCreate);
-    }
-
-    @Test
-    @Transactional
-    public void checkNumeroIsRequired() throws Exception {
-        int databaseSizeBeforeTest = visiteRepository.findAll().size();
-        // set the field null
-        visite.setNumero(null);
-
-        // Create the Visite, which fails.
-
-        restVisiteMockMvc.perform(post("/api/visites")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(visite)))
-            .andExpect(status().isBadRequest());
-
-        List<Visite> visiteList = visiteRepository.findAll();
-        assertThat(visiteList).hasSize(databaseSizeBeforeTest);
     }
 
     @Test
@@ -202,7 +179,6 @@ public class VisiteResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(visite.getId().intValue())))
-            .andExpect(jsonPath("$.[*].numero").value(hasItem(DEFAULT_NUMERO.intValue())))
             .andExpect(jsonPath("$.[*].dateDebut").value(hasItem(DEFAULT_DATE_DEBUT.toString())))
             .andExpect(jsonPath("$.[*].dateFin").value(hasItem(DEFAULT_DATE_FIN.toString())));
     }
@@ -218,7 +194,6 @@ public class VisiteResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(visite.getId().intValue()))
-            .andExpect(jsonPath("$.numero").value(DEFAULT_NUMERO.intValue()))
             .andExpect(jsonPath("$.dateDebut").value(DEFAULT_DATE_DEBUT.toString()))
             .andExpect(jsonPath("$.dateFin").value(DEFAULT_DATE_FIN.toString()));
     }
@@ -243,7 +218,6 @@ public class VisiteResourceIntTest {
         // Disconnect from session so that the updates on updatedVisite are not directly saved in db
         em.detach(updatedVisite);
         updatedVisite
-            .numero(UPDATED_NUMERO)
             .dateDebut(UPDATED_DATE_DEBUT)
             .dateFin(UPDATED_DATE_FIN);
 
@@ -256,7 +230,6 @@ public class VisiteResourceIntTest {
         List<Visite> visiteList = visiteRepository.findAll();
         assertThat(visiteList).hasSize(databaseSizeBeforeUpdate);
         Visite testVisite = visiteList.get(visiteList.size() - 1);
-        assertThat(testVisite.getNumero()).isEqualTo(UPDATED_NUMERO);
         assertThat(testVisite.getDateDebut()).isEqualTo(UPDATED_DATE_DEBUT);
         assertThat(testVisite.getDateFin()).isEqualTo(UPDATED_DATE_FIN);
     }

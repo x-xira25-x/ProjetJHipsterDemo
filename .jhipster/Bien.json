@@ -11,13 +11,6 @@
     ],
     "fields": [
         {
-            "fieldName": "numero",
-            "fieldType": "Long",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
             "fieldName": "rueNo",
             "fieldType": "String",
             "fieldValidateRules": [

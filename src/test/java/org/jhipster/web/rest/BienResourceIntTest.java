@@ -40,9 +40,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = ProjetJHipster2H2App.class)
 public class BienResourceIntTest {
 
-    private static final Long DEFAULT_NUMERO = 1L;
-    private static final Long UPDATED_NUMERO = 2L;
-
     private static final String DEFAULT_RUE_NO = "AAAAAAAAAA";
     private static final String UPDATED_RUE_NO = "BBBBBBBBBB";
 
@@ -96,7 +93,6 @@ public class BienResourceIntTest {
      */
     public static Bien createEntity(EntityManager em) {
         Bien bien = new Bien()
-            .numero(DEFAULT_NUMERO)
             .rueNo(DEFAULT_RUE_NO)
             .localite(DEFAULT_LOCALITE)
             .anneeConstruction(DEFAULT_ANNEE_CONSTRUCTION)
@@ -125,7 +121,6 @@ public class BienResourceIntTest {
         List<Bien> bienList = bienRepository.findAll();
         assertThat(bienList).hasSize(databaseSizeBeforeCreate + 1);
         Bien testBien = bienList.get(bienList.size() - 1);
-        assertThat(testBien.getNumero()).isEqualTo(DEFAULT_NUMERO);
         assertThat(testBien.getRueNo()).isEqualTo(DEFAULT_RUE_NO);
         assertThat(testBien.getLocalite()).isEqualTo(DEFAULT_LOCALITE);
         assertThat(testBien.getAnneeConstruction()).isEqualTo(DEFAULT_ANNEE_CONSTRUCTION);
@@ -150,24 +145,6 @@ public class BienResourceIntTest {
         // Validate the Bien in the database
         List<Bien> bienList = bienRepository.findAll();
         assertThat(bienList).hasSize(databaseSizeBeforeCreate);
-    }
-
-    @Test
-    @Transactional
-    public void checkNumeroIsRequired() throws Exception {
-        int databaseSizeBeforeTest = bienRepository.findAll().size();
-        // set the field null
-        bien.setNumero(null);
-
-        // Create the Bien, which fails.
-
-        restBienMockMvc.perform(post("/api/biens")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(bien)))
-            .andExpect(status().isBadRequest());
-
-        List<Bien> bienList = bienRepository.findAll();
-        assertThat(bienList).hasSize(databaseSizeBeforeTest);
     }
 
     @Test
@@ -253,7 +230,6 @@ public class BienResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(bien.getId().intValue())))
-            .andExpect(jsonPath("$.[*].numero").value(hasItem(DEFAULT_NUMERO.intValue())))
             .andExpect(jsonPath("$.[*].rueNo").value(hasItem(DEFAULT_RUE_NO.toString())))
             .andExpect(jsonPath("$.[*].localite").value(hasItem(DEFAULT_LOCALITE.toString())))
             .andExpect(jsonPath("$.[*].anneeConstruction").value(hasItem(DEFAULT_ANNEE_CONSTRUCTION.toString())))
@@ -272,7 +248,6 @@ public class BienResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(bien.getId().intValue()))
-            .andExpect(jsonPath("$.numero").value(DEFAULT_NUMERO.intValue()))
             .andExpect(jsonPath("$.rueNo").value(DEFAULT_RUE_NO.toString()))
             .andExpect(jsonPath("$.localite").value(DEFAULT_LOCALITE.toString()))
             .andExpect(jsonPath("$.anneeConstruction").value(DEFAULT_ANNEE_CONSTRUCTION.toString()))
@@ -300,7 +275,6 @@ public class BienResourceIntTest {
         // Disconnect from session so that the updates on updatedBien are not directly saved in db
         em.detach(updatedBien);
         updatedBien
-            .numero(UPDATED_NUMERO)
             .rueNo(UPDATED_RUE_NO)
             .localite(UPDATED_LOCALITE)
             .anneeConstruction(UPDATED_ANNEE_CONSTRUCTION)
@@ -316,7 +290,6 @@ public class BienResourceIntTest {
         List<Bien> bienList = bienRepository.findAll();
         assertThat(bienList).hasSize(databaseSizeBeforeUpdate);
         Bien testBien = bienList.get(bienList.size() - 1);
-        assertThat(testBien.getNumero()).isEqualTo(UPDATED_NUMERO);
         assertThat(testBien.getRueNo()).isEqualTo(UPDATED_RUE_NO);
         assertThat(testBien.getLocalite()).isEqualTo(UPDATED_LOCALITE);
         assertThat(testBien.getAnneeConstruction()).isEqualTo(UPDATED_ANNEE_CONSTRUCTION);

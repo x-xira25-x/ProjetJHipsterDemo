@@ -23,10 +23,6 @@ public class Visite implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "numero", nullable = false)
-    private Long numero;
-
-    @NotNull
     @Column(name = "date_debut", nullable = false)
     private LocalDate dateDebut;
 
@@ -52,19 +48,6 @@ public class Visite implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getNumero() {
-        return numero;
-    }
-
-    public Visite numero(Long numero) {
-        this.numero = numero;
-        return this;
-    }
-
-    public void setNumero(Long numero) {
-        this.numero = numero;
     }
 
     public LocalDate getDateDebut() {
@@ -157,7 +140,6 @@ public class Visite implements Serializable {
     public String toString() {
         return "Visite{" +
             "id=" + getId() +
-            ", numero=" + getNumero() +
             ", dateDebut='" + getDateDebut() + "'" +
             ", dateFin='" + getDateFin() + "'" +
             "}";

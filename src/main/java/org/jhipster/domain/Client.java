@@ -25,10 +25,6 @@ public class Client implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "numero", nullable = false)
-    private Long numero;
-
-    @NotNull
     @Pattern(regexp = "^[a-zA-Z0-9]*$")
     @Column(name = "nom", nullable = false)
     private String nom;
@@ -61,7 +57,8 @@ public class Client implements Serializable {
     private User user;
 
     @ManyToMany
-      @JoinTable(name = "client_bien",
+    @NotNull
+    @JoinTable(name = "client_bien",
                joinColumns = @JoinColumn(name="clients_id", referencedColumnName="id"),
                inverseJoinColumns = @JoinColumn(name="biens_id", referencedColumnName="id"))
     private Set<Bien> biens = new HashSet<>();
@@ -77,19 +74,6 @@ public class Client implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getNumero() {
-        return numero;
-    }
-
-    public Client numero(Long numero) {
-        this.numero = numero;
-        return this;
-    }
-
-    public void setNumero(Long numero) {
-        this.numero = numero;
     }
 
     public String getNom() {
@@ -258,7 +242,6 @@ public class Client implements Serializable {
     public String toString() {
         return "Client{" +
             "id=" + getId() +
-            ", numero=" + getNumero() +
             ", nom='" + getNom() + "'" +
             ", prenom='" + getPrenom() + "'" +
             ", adresse='" + getAdresse() + "'" +

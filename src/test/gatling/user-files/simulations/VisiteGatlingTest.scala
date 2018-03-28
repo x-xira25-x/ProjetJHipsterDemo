@@ -68,7 +68,7 @@ class VisiteGatlingTest extends Simulation {
             .exec(http("Create new visite")
             .post("/api/visites")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "numero":null, "dateDebut":"2020-01-01T00:00:00.000Z", "dateFin":"2020-01-01T00:00:00.000Z"}""")).asJSON
+            .body(StringBody("""{"id":null, "dateDebut":"2020-01-01T00:00:00.000Z", "dateFin":"2020-01-01T00:00:00.000Z"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_visite_url"))).exitHereIfFailed
             .pause(10)

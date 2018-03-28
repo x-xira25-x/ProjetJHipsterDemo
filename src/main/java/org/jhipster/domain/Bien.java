@@ -26,10 +26,6 @@ public class Bien implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "numero", nullable = false)
-    private Long numero;
-
-    @NotNull
     @Column(name = "rue_no", nullable = false)
     private String rueNo;
 
@@ -59,19 +55,6 @@ public class Bien implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getNumero() {
-        return numero;
-    }
-
-    public Bien numero(Long numero) {
-        this.numero = numero;
-        return this;
-    }
-
-    public void setNumero(Long numero) {
-        this.numero = numero;
     }
 
     public String getRueNo() {
@@ -189,7 +172,6 @@ public class Bien implements Serializable {
     public String toString() {
         return "Bien{" +
             "id=" + getId() +
-            ", numero=" + getNumero() +
             ", rueNo='" + getRueNo() + "'" +
             ", localite='" + getLocalite() + "'" +
             ", anneeConstruction='" + getAnneeConstruction() + "'" +

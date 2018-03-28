@@ -31,13 +31,6 @@
     ],
     "fields": [
         {
-            "fieldName": "numero",
-            "fieldType": "Long",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
             "fieldName": "dateDebut",
             "fieldType": "LocalDate",
             "fieldValidateRules": [

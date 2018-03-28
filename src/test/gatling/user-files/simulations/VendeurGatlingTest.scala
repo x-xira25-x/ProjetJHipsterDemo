@@ -68,7 +68,7 @@ class VendeurGatlingTest extends Simulation {
             .exec(http("Create new vendeur")
             .post("/api/vendeurs")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "numero":null, "nom":"SAMPLE_TEXT", "prenom":"SAMPLE_TEXT", "adresse":"SAMPLE_TEXT", "npa":"SAMPLE_TEXT", "localite":"SAMPLE_TEXT", "numTelephone":"0"}""")).asJSON
+            .body(StringBody("""{"id":null, "nom":"SAMPLE_TEXT", "prenom":"SAMPLE_TEXT", "adresse":"SAMPLE_TEXT", "npa":"SAMPLE_TEXT", "localite":"SAMPLE_TEXT", "numTelephone":"0"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_vendeur_url"))).exitHereIfFailed
             .pause(10)

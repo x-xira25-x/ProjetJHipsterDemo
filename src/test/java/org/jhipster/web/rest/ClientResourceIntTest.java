@@ -40,9 +40,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = ProjetJHipster2H2App.class)
 public class ClientResourceIntTest {
 
-    private static final Long DEFAULT_NUMERO = 1L;
-    private static final Long UPDATED_NUMERO = 2L;
-
     private static final String DEFAULT_NOM = "AAAAAAAAAA";
     private static final String UPDATED_NOM = "BBBBBBBBBB";
 
@@ -99,7 +96,6 @@ public class ClientResourceIntTest {
      */
     public static Client createEntity(EntityManager em) {
         Client client = new Client()
-            .numero(DEFAULT_NUMERO)
             .nom(DEFAULT_NOM)
             .prenom(DEFAULT_PRENOM)
             .adresse(DEFAULT_ADRESSE)
@@ -139,7 +135,6 @@ public class ClientResourceIntTest {
         List<Client> clientList = clientRepository.findAll();
         assertThat(clientList).hasSize(databaseSizeBeforeCreate + 1);
         Client testClient = clientList.get(clientList.size() - 1);
-        assertThat(testClient.getNumero()).isEqualTo(DEFAULT_NUMERO);
         assertThat(testClient.getNom()).isEqualTo(DEFAULT_NOM);
         assertThat(testClient.getPrenom()).isEqualTo(DEFAULT_PRENOM);
         assertThat(testClient.getAdresse()).isEqualTo(DEFAULT_ADRESSE);
@@ -165,24 +160,6 @@ public class ClientResourceIntTest {
         // Validate the Client in the database
         List<Client> clientList = clientRepository.findAll();
         assertThat(clientList).hasSize(databaseSizeBeforeCreate);
-    }
-
-    @Test
-    @Transactional
-    public void checkNumeroIsRequired() throws Exception {
-        int databaseSizeBeforeTest = clientRepository.findAll().size();
-        // set the field null
-        client.setNumero(null);
-
-        // Create the Client, which fails.
-
-        restClientMockMvc.perform(post("/api/clients")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(client)))
-            .andExpect(status().isBadRequest());
-
-        List<Client> clientList = clientRepository.findAll();
-        assertThat(clientList).hasSize(databaseSizeBeforeTest);
     }
 
     @Test
@@ -304,7 +281,6 @@ public class ClientResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(client.getId().intValue())))
-            .andExpect(jsonPath("$.[*].numero").value(hasItem(DEFAULT_NUMERO.intValue())))
             .andExpect(jsonPath("$.[*].nom").value(hasItem(DEFAULT_NOM.toString())))
             .andExpect(jsonPath("$.[*].prenom").value(hasItem(DEFAULT_PRENOM.toString())))
             .andExpect(jsonPath("$.[*].adresse").value(hasItem(DEFAULT_ADRESSE.toString())))
@@ -324,7 +300,6 @@ public class ClientResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(client.getId().intValue()))
-            .andExpect(jsonPath("$.numero").value(DEFAULT_NUMERO.intValue()))
             .andExpect(jsonPath("$.nom").value(DEFAULT_NOM.toString()))
             .andExpect(jsonPath("$.prenom").value(DEFAULT_PRENOM.toString()))
             .andExpect(jsonPath("$.adresse").value(DEFAULT_ADRESSE.toString()))
@@ -353,7 +328,6 @@ public class ClientResourceIntTest {
         // Disconnect from session so that the updates on updatedClient are not directly saved in db
         em.detach(updatedClient);
         updatedClient
-            .numero(UPDATED_NUMERO)
             .nom(UPDATED_NOM)
             .prenom(UPDATED_PRENOM)
             .adresse(UPDATED_ADRESSE)
@@ -370,7 +344,6 @@ public class ClientResourceIntTest {
         List<Client> clientList = clientRepository.findAll();
         assertThat(clientList).hasSize(databaseSizeBeforeUpdate);
         Client testClient = clientList.get(clientList.size() - 1);
-        assertThat(testClient.getNumero()).isEqualTo(UPDATED_NUMERO);
         assertThat(testClient.getNom()).isEqualTo(UPDATED_NOM);
         assertThat(testClient.getPrenom()).isEqualTo(UPDATED_PRENOM);
         assertThat(testClient.getAdresse()).isEqualTo(UPDATED_ADRESSE);
