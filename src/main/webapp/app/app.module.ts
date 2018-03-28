@@ -27,8 +27,6 @@ import {
     ActiveMenuDirective,
     ErrorComponent
 } from './layouts';
-import { VisitesComponent } from './visites/visites.component';
-
 @NgModule({
     imports: [
         BrowserModule,
@@ -47,8 +45,8 @@ import { VisitesComponent } from './visites/visites.component';
         ErrorComponent,
         PageRibbonComponent,
         ActiveMenuDirective,
-        FooterComponent,
-        VisitesComponent
+        FooterComponent
+
     ],
     providers: [
         ProfileService,
