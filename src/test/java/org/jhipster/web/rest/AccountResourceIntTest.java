@@ -31,6 +31,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import java.time.Instant;
+import java.time.LocalDate;
 
 import java.util.*;
 
@@ -168,7 +169,7 @@ public class AccountResourceIntTest {
         validUser.setActivated(true);
         validUser.setImageUrl("http://placehold.it/50x50");
         validUser.setLangKey(Constants.DEFAULT_LANGUAGE);
-        validUser.setAuthorities(Collections.singleton(AuthoritiesConstants.CLIENT));
+        validUser.setAuthorities(Collections.singleton(AuthoritiesConstants.USER));
         assertThat(userRepository.findOneByLogin("joe").isPresent()).isFalse();
 
         restMvc.perform(
@@ -192,7 +193,7 @@ public class AccountResourceIntTest {
         invalidUser.setActivated(true);
         invalidUser.setImageUrl("http://placehold.it/50x50");
         invalidUser.setLangKey(Constants.DEFAULT_LANGUAGE);
-        invalidUser.setAuthorities(Collections.singleton(AuthoritiesConstants.CLIENT));
+        invalidUser.setAuthorities(Collections.singleton(AuthoritiesConstants.USER));
 
         restUserMockMvc.perform(
             post("/api/register")
@@ -216,7 +217,7 @@ public class AccountResourceIntTest {
         invalidUser.setActivated(true);
         invalidUser.setImageUrl("http://placehold.it/50x50");
         invalidUser.setLangKey(Constants.DEFAULT_LANGUAGE);
-        invalidUser.setAuthorities(Collections.singleton(AuthoritiesConstants.CLIENT));
+        invalidUser.setAuthorities(Collections.singleton(AuthoritiesConstants.USER));
 
         restUserMockMvc.perform(
             post("/api/register")
@@ -240,7 +241,7 @@ public class AccountResourceIntTest {
         invalidUser.setActivated(true);
         invalidUser.setImageUrl("http://placehold.it/50x50");
         invalidUser.setLangKey(Constants.DEFAULT_LANGUAGE);
-        invalidUser.setAuthorities(Collections.singleton(AuthoritiesConstants.CLIENT));
+        invalidUser.setAuthorities(Collections.singleton(AuthoritiesConstants.USER));
 
         restUserMockMvc.perform(
             post("/api/register")
@@ -264,7 +265,7 @@ public class AccountResourceIntTest {
         invalidUser.setActivated(true);
         invalidUser.setImageUrl("http://placehold.it/50x50");
         invalidUser.setLangKey(Constants.DEFAULT_LANGUAGE);
-        invalidUser.setAuthorities(Collections.singleton(AuthoritiesConstants.CLIENT));
+        invalidUser.setAuthorities(Collections.singleton(AuthoritiesConstants.USER));
 
         restUserMockMvc.perform(
             post("/api/register")
@@ -289,7 +290,7 @@ public class AccountResourceIntTest {
         validUser.setActivated(true);
         validUser.setImageUrl("http://placehold.it/50x50");
         validUser.setLangKey(Constants.DEFAULT_LANGUAGE);
-        validUser.setAuthorities(Collections.singleton(AuthoritiesConstants.CLIENT));
+        validUser.setAuthorities(Collections.singleton(AuthoritiesConstants.USER));
 
         // Duplicate login, different email
         ManagedUserVM duplicatedUser = new ManagedUserVM();
@@ -338,7 +339,7 @@ public class AccountResourceIntTest {
         validUser.setActivated(true);
         validUser.setImageUrl("http://placehold.it/50x50");
         validUser.setLangKey(Constants.DEFAULT_LANGUAGE);
-        validUser.setAuthorities(Collections.singleton(AuthoritiesConstants.CLIENT));
+        validUser.setAuthorities(Collections.singleton(AuthoritiesConstants.USER));
 
         // Duplicate email, different login
         ManagedUserVM duplicatedUser = new ManagedUserVM();
@@ -409,7 +410,7 @@ public class AccountResourceIntTest {
         validUser.setActivated(true);
         validUser.setImageUrl("http://placehold.it/50x50");
         validUser.setLangKey(Constants.DEFAULT_LANGUAGE);
-        validUser.setAuthorities(Collections.singleton(AuthoritiesConstants.CLIENT));
+        validUser.setAuthorities(Collections.singleton(AuthoritiesConstants.USER));
 
         restMvc.perform(
             post("/api/register")
@@ -420,7 +421,7 @@ public class AccountResourceIntTest {
         Optional<User> userDup = userRepository.findOneByLogin("badguy");
         assertThat(userDup.isPresent()).isTrue();
         assertThat(userDup.get().getAuthorities()).hasSize(1)
-            .containsExactly(authorityRepository.findOne(AuthoritiesConstants.CLIENT));
+            .containsExactly(authorityRepository.findOne(AuthoritiesConstants.USER));
     }
 
     @Test
