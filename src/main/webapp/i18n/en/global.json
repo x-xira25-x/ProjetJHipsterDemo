@@ -10,6 +10,7 @@
                 "client": "Client",
                 "vendeur": "Vendeur",
                 "bien": "Bien",
+                "visite": "Visite",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
