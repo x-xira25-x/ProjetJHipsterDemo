@@ -2,7 +2,6 @@ package org.jhipster.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.accessibility.AccessibleRelation;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -17,7 +16,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "bien")
-public class Bien  implements Serializable {
+public class Bien implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -48,11 +47,6 @@ public class Bien  implements Serializable {
     @ManyToMany(mappedBy = "biens")
     @JsonIgnore
     private Set<Client> clients = new HashSet<>();
-
-
-    public Bien() {
-      super();
-    }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {

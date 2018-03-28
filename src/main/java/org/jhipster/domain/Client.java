@@ -1,9 +1,6 @@
 package org.jhipster.domain;
 
 
-import java.util.HashSet;
-import java.util.Set;
-import javax.accessibility.AccessibleRelationSet;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -59,8 +56,6 @@ public class Client implements Serializable {
     @NotNull
     @JoinColumn(unique = true)
     private User user;
-
-    private Set<Bien> biens = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -208,10 +203,5 @@ public class Client implements Serializable {
             ", localite='" + getLocalite() + "'" +
             ", numTelephone=" + getNumTelephone() +
             "}";
-    }
-
-    public Set<Bien> getBiens() {
-
-        return  biens;
     }
 }
