@@ -10,6 +10,7 @@ import { Client } from './client.model';
 import { ClientPopupService } from './client-popup.service';
 import { ClientService } from './client.service';
 import { User, UserService } from '../../shared';
+import { Bien, BienService } from '../bien';
 
 @Component({
     selector: 'jhi-client-dialog',
@@ -22,11 +23,14 @@ export class ClientDialogComponent implements OnInit {
 
     users: User[];
 
+    biens: Bien[];
+
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private clientService: ClientService,
         private userService: UserService,
+        private bienService: BienService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -35,6 +39,8 @@ export class ClientDialogComponent implements OnInit {
         this.isSaving = false;
         this.userService.query()
             .subscribe((res: HttpResponse<User[]>) => { this.users = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.bienService.query()
+            .subscribe((res: HttpResponse<Bien[]>) => { this.biens = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     clear() {
@@ -73,6 +79,21 @@ export class ClientDialogComponent implements OnInit {
 
     trackUserById(index: number, item: User) {
         return item.id;
+    }
+
+    trackBienById(index: number, item: Bien) {
+        return item.id;
+    }
+
+    getSelected(selectedVals: Array<any>, option: any) {
+        if (selectedVals) {
+            for (let i = 0; i < selectedVals.length; i++) {
+                if (option.id === selectedVals[i].id) {
+                    return selectedVals[i];
+                }
+            }
+        }
+        return option;
     }
 }
 

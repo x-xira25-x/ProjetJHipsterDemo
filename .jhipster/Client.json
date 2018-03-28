@@ -11,6 +11,23 @@
             "otherEntityField": "login",
             "ownerSide": true,
             "otherEntityRelationshipName": "client"
+        },
+        {
+            "relationshipName": "bien",
+            "otherEntityName": "bien",
+            "relationshipType": "many-to-many",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "client"
+        },
+        {
+            "relationshipName": "visite",
+            "otherEntityName": "visite",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "client"
         }
     ],
     "fields": [

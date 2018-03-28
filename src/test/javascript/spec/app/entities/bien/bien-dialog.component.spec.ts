@@ -9,6 +9,7 @@ import { ProjetJHipster2H2TestModule } from '../../../test.module';
 import { BienDialogComponent } from '../../../../../../main/webapp/app/entities/bien/bien-dialog.component';
 import { BienService } from '../../../../../../main/webapp/app/entities/bien/bien.service';
 import { Bien } from '../../../../../../main/webapp/app/entities/bien/bien.model';
+import { ClientService } from '../../../../../../main/webapp/app/entities/client';
 
 describe('Component Tests', () => {
 
@@ -24,6 +25,7 @@ describe('Component Tests', () => {
                 imports: [ProjetJHipster2H2TestModule],
                 declarations: [BienDialogComponent],
                 providers: [
+                    ClientService,
                     BienService
                 ]
             })

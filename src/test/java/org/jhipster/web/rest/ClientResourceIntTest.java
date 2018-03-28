@@ -4,6 +4,7 @@ import org.jhipster.ProjetJHipster2H2App;
 
 import org.jhipster.domain.Client;
 import org.jhipster.domain.User;
+import org.jhipster.domain.Bien;
 import org.jhipster.repository.ClientRepository;
 import org.jhipster.web.rest.errors.ExceptionTranslator;
 
@@ -110,6 +111,11 @@ public class ClientResourceIntTest {
         em.persist(user);
         em.flush();
         client.setUser(user);
+        // Add required entity
+        Bien bien = BienResourceIntTest.createEntity(em);
+        em.persist(bien);
+        em.flush();
+        client.getBiens().add(bien);
         return client;
     }
 

@@ -14,5 +14,16 @@
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_user"/>
 
+        <addForeignKeyConstraint baseColumnNames="clients_id"
+                                 baseTableName="client_bien"
+                                 constraintName="fk_client_bien_clients_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="client"/>
+        <addForeignKeyConstraint baseColumnNames="biens_id"
+                                 baseTableName="client_bien"
+                                 constraintName="fk_client_bien_biens_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="bien"/>
+        
     </changeSet>
 </databaseChangeLog>

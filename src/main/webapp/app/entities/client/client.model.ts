@@ -11,6 +11,8 @@ export class Client implements BaseEntity {
         public localite?: string,
         public numTelephone?: number,
         public user?: User,
+        public biens?: BaseEntity[],
+        public visites?: BaseEntity[],
     ) {
     }
 }

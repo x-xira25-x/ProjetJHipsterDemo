@@ -48,6 +48,7 @@ describe('Client e2e test', () => {
         clientDialogPage.setNumTelephoneInput('5');
         expect(clientDialogPage.getNumTelephoneInput()).toMatch('5');
         clientDialogPage.userSelectLastOption();
+        // clientDialogPage.bienSelectLastOption();
         clientDialogPage.save();
         expect(clientDialogPage.getSaveButton().isPresent()).toBeFalsy();
     });*/
@@ -82,6 +83,7 @@ export class ClientDialogPage {
     localiteInput = element(by.css('input#field_localite'));
     numTelephoneInput = element(by.css('input#field_numTelephone'));
     userSelect = element(by.css('select#field_user'));
+    bienSelect = element(by.css('select#field_bien'));
 
     getModalTitle() {
         return this.modalTitle.getAttribute('jhiTranslate');
@@ -157,6 +159,22 @@ export class ClientDialogPage {
 
     getUserSelectedOption = function() {
         return this.userSelect.element(by.css('option:checked')).getText();
+    };
+
+    bienSelectLastOption = function() {
+        this.bienSelect.all(by.tagName('option')).last().click();
+    };
+
+    bienSelectOption = function(option) {
+        this.bienSelect.sendKeys(option);
+    };
+
+    getBienSelect = function() {
+        return this.bienSelect;
+    };
+
+    getBienSelectedOption = function() {
+        return this.bienSelect.element(by.css('option:checked')).getText();
     };
 
     save() {

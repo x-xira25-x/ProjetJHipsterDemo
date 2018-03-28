@@ -1,11 +1,14 @@
 package org.jhipster.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -44,6 +47,10 @@ public class Bien implements Serializable {
 
     @Column(name = "libelle")
     private String libelle;
+
+    @ManyToMany(mappedBy = "biens")
+    @JsonIgnore
+    private Set<Client> clients = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -130,6 +137,31 @@ public class Bien implements Serializable {
 
     public void setLibelle(String libelle) {
         this.libelle = libelle;
+    }
+
+    public Set<Client> getClients() {
+        return clients;
+    }
+
+    public Bien clients(Set<Client> clients) {
+        this.clients = clients;
+        return this;
+    }
+
+    public Bien addClient(Client client) {
+        this.clients.add(client);
+        client.getBiens().add(this);
+        return this;
+    }
+
+    public Bien removeClient(Client client) {
+        this.clients.remove(client);
+        client.getBiens().remove(this);
+        return this;
+    }
+
+    public void setClients(Set<Client> clients) {
+        this.clients = clients;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

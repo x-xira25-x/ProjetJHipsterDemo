@@ -1,10 +1,13 @@
 package org.jhipster.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -56,6 +59,17 @@ public class Client implements Serializable {
     @NotNull
     @JoinColumn(unique = true)
     private User user;
+
+    @ManyToMany
+    @NotNull
+    @JoinTable(name = "client_bien",
+               joinColumns = @JoinColumn(name="clients_id", referencedColumnName="id"),
+               inverseJoinColumns = @JoinColumn(name="biens_id", referencedColumnName="id"))
+    private Set<Bien> biens = new HashSet<>();
+
+    @OneToMany(mappedBy = "client")
+    @JsonIgnore
+    private Set<Visite> visites = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -168,6 +182,56 @@ public class Client implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Set<Bien> getBiens() {
+        return biens;
+    }
+
+    public Client biens(Set<Bien> biens) {
+        this.biens = biens;
+        return this;
+    }
+
+    public Client addBien(Bien bien) {
+        this.biens.add(bien);
+        bien.getClients().add(this);
+        return this;
+    }
+
+    public Client removeBien(Bien bien) {
+        this.biens.remove(bien);
+        bien.getClients().remove(this);
+        return this;
+    }
+
+    public void setBiens(Set<Bien> biens) {
+        this.biens = biens;
+    }
+
+    public Set<Visite> getVisites() {
+        return visites;
+    }
+
+    public Client visites(Set<Visite> visites) {
+        this.visites = visites;
+        return this;
+    }
+
+    public Client addVisite(Visite visite) {
+        this.visites.add(visite);
+        visite.setClient(this);
+        return this;
+    }
+
+    public Client removeVisite(Visite visite) {
+        this.visites.remove(visite);
+        visite.setClient(null);
+        return this;
+    }
+
+    public void setVisites(Set<Visite> visites) {
+        this.visites = visites;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

@@ -123,6 +123,18 @@
                 This field is required.
             </small>
         </div>
+        <div class="form-group">
+            <label jhiTranslate="projetJHipster2H2App.client.bien" for="field_bien">Bien</label>
+            <select class="form-control" id="field_bien" multiple name="bien" [(ngModel)]="client.biens" required>
+                <option [ngValue]="getSelected(client.biens, bienOption)" *ngFor="let bienOption of biens; trackBy: trackBienById">{{bienOption.id}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.bien?.dirty && editForm.controls.bien?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.bien?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

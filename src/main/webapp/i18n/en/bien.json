@@ -21,7 +21,8 @@
             "localite": "Localite",
             "anneeConstruction": "Annee Construction",
             "nbPieces": "Nb Pieces",
-            "libelle": "Libelle"
+            "libelle": "Libelle",
+            "client": "Client"
         }
     }
 }

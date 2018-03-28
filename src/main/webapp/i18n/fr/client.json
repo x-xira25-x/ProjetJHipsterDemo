@@ -23,7 +23,9 @@
             "npa": "Npa",
             "localite": "Localite",
             "numTelephone": "Num Telephone",
-            "user": "User"
+            "user": "User",
+            "bien": "Bien",
+            "visite": "Visite"
         }
     }
 }

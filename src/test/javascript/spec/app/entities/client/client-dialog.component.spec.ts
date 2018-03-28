@@ -10,6 +10,7 @@ import { ClientDialogComponent } from '../../../../../../main/webapp/app/entitie
 import { ClientService } from '../../../../../../main/webapp/app/entities/client/client.service';
 import { Client } from '../../../../../../main/webapp/app/entities/client/client.model';
 import { UserService } from '../../../../../../main/webapp/app/shared';
+import { BienService } from '../../../../../../main/webapp/app/entities/bien';
 
 describe('Component Tests', () => {
 
@@ -26,6 +27,7 @@ describe('Component Tests', () => {
                 declarations: [ClientDialogComponent],
                 providers: [
                     UserService,
+                    BienService,
                     ClientService
                 ]
             })
