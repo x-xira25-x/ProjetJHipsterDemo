@@ -61,8 +61,7 @@ public class Client implements Serializable {
     private User user;
 
     @ManyToMany
-    @NotNull
-    @JoinTable(name = "client_bien",
+      @JoinTable(name = "client_bien",
                joinColumns = @JoinColumn(name="clients_id", referencedColumnName="id"),
                inverseJoinColumns = @JoinColumn(name="biens_id", referencedColumnName="id"))
     private Set<Bien> biens = new HashSet<>();
