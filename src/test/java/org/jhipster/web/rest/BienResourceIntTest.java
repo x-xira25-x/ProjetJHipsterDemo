@@ -55,6 +55,9 @@ public class BienResourceIntTest {
     private static final String DEFAULT_LIBELLE = "AAAAAAAAAA";
     private static final String UPDATED_LIBELLE = "BBBBBBBBBB";
 
+    private static final Boolean DEFAULT_VENDU = false;
+    private static final Boolean UPDATED_VENDU = true;
+
     @Autowired
     private BienRepository bienRepository;
 
@@ -97,7 +100,8 @@ public class BienResourceIntTest {
             .localite(DEFAULT_LOCALITE)
             .anneeConstruction(DEFAULT_ANNEE_CONSTRUCTION)
             .nbPieces(DEFAULT_NB_PIECES)
-            .libelle(DEFAULT_LIBELLE);
+            .libelle(DEFAULT_LIBELLE)
+            .vendu(DEFAULT_VENDU);
         return bien;
     }
 
@@ -126,6 +130,7 @@ public class BienResourceIntTest {
         assertThat(testBien.getAnneeConstruction()).isEqualTo(DEFAULT_ANNEE_CONSTRUCTION);
         assertThat(testBien.getNbPieces()).isEqualTo(DEFAULT_NB_PIECES);
         assertThat(testBien.getLibelle()).isEqualTo(DEFAULT_LIBELLE);
+        assertThat(testBien.isVendu()).isEqualTo(DEFAULT_VENDU);
     }
 
     @Test
@@ -221,6 +226,24 @@ public class BienResourceIntTest {
 
     @Test
     @Transactional
+    public void checkVenduIsRequired() throws Exception {
+        int databaseSizeBeforeTest = bienRepository.findAll().size();
+        // set the field null
+        bien.setVendu(null);
+
+        // Create the Bien, which fails.
+
+        restBienMockMvc.perform(post("/api/biens")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(bien)))
+            .andExpect(status().isBadRequest());
+
+        List<Bien> bienList = bienRepository.findAll();
+        assertThat(bienList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllBiens() throws Exception {
         // Initialize the database
         bienRepository.saveAndFlush(bien);
@@ -234,7 +257,8 @@ public class BienResourceIntTest {
             .andExpect(jsonPath("$.[*].localite").value(hasItem(DEFAULT_LOCALITE.toString())))
             .andExpect(jsonPath("$.[*].anneeConstruction").value(hasItem(DEFAULT_ANNEE_CONSTRUCTION.toString())))
             .andExpect(jsonPath("$.[*].nbPieces").value(hasItem(DEFAULT_NB_PIECES)))
-            .andExpect(jsonPath("$.[*].libelle").value(hasItem(DEFAULT_LIBELLE.toString())));
+            .andExpect(jsonPath("$.[*].libelle").value(hasItem(DEFAULT_LIBELLE.toString())))
+            .andExpect(jsonPath("$.[*].vendu").value(hasItem(DEFAULT_VENDU.booleanValue())));
     }
 
     @Test
@@ -252,7 +276,8 @@ public class BienResourceIntTest {
             .andExpect(jsonPath("$.localite").value(DEFAULT_LOCALITE.toString()))
             .andExpect(jsonPath("$.anneeConstruction").value(DEFAULT_ANNEE_CONSTRUCTION.toString()))
             .andExpect(jsonPath("$.nbPieces").value(DEFAULT_NB_PIECES))
-            .andExpect(jsonPath("$.libelle").value(DEFAULT_LIBELLE.toString()));
+            .andExpect(jsonPath("$.libelle").value(DEFAULT_LIBELLE.toString()))
+            .andExpect(jsonPath("$.vendu").value(DEFAULT_VENDU.booleanValue()));
     }
 
     @Test
@@ -279,7 +304,8 @@ public class BienResourceIntTest {
             .localite(UPDATED_LOCALITE)
             .anneeConstruction(UPDATED_ANNEE_CONSTRUCTION)
             .nbPieces(UPDATED_NB_PIECES)
-            .libelle(UPDATED_LIBELLE);
+            .libelle(UPDATED_LIBELLE)
+            .vendu(UPDATED_VENDU);
 
         restBienMockMvc.perform(put("/api/biens")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -295,6 +321,7 @@ public class BienResourceIntTest {
         assertThat(testBien.getAnneeConstruction()).isEqualTo(UPDATED_ANNEE_CONSTRUCTION);
         assertThat(testBien.getNbPieces()).isEqualTo(UPDATED_NB_PIECES);
         assertThat(testBien.getLibelle()).isEqualTo(UPDATED_LIBELLE);
+        assertThat(testBien.isVendu()).isEqualTo(UPDATED_VENDU);
     }
 
     @Test

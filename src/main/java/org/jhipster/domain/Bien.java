@@ -44,6 +44,10 @@ public class Bien implements Serializable {
     @Column(name = "libelle")
     private String libelle;
 
+    @NotNull
+    @Column(name = "vendu", nullable = false)
+    private Boolean vendu;
+
     @ManyToMany(mappedBy = "biens")
     @JsonIgnore
     private Set<Client> clients = new HashSet<>();
@@ -122,6 +126,19 @@ public class Bien implements Serializable {
         this.libelle = libelle;
     }
 
+    public Boolean isVendu() {
+        return vendu;
+    }
+
+    public Bien vendu(Boolean vendu) {
+        this.vendu = vendu;
+        return this;
+    }
+
+    public void setVendu(Boolean vendu) {
+        this.vendu = vendu;
+    }
+
     public Set<Client> getClients() {
         return clients;
     }
@@ -177,6 +194,7 @@ public class Bien implements Serializable {
             ", anneeConstruction='" + getAnneeConstruction() + "'" +
             ", nbPieces=" + getNbPieces() +
             ", libelle='" + getLibelle() + "'" +
+            ", vendu='" + isVendu() + "'" +
             "}";
     }
 }

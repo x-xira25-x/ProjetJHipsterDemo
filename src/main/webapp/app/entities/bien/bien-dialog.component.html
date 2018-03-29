@@ -70,6 +70,17 @@
             <input type="text" class="form-control" name="libelle" id="field_libelle"
                 [(ngModel)]="bien.libelle" />
         </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="projetJHipster2H2App.bien.vendu" for="field_vendu">Vendu</label>
+            <input type="checkbox" class="form-control" name="vendu" id="field_vendu"
+                [(ngModel)]="bien.vendu" />
+            <div [hidden]="!(editForm.controls.vendu?.dirty && editForm.controls.vendu?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vendu?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
 
     </div>
     <div class="modal-footer">

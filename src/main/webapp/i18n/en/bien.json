@@ -21,6 +21,7 @@
             "anneeConstruction": "Annee Construction",
             "nbPieces": "Nb Pieces",
             "libelle": "Libelle",
+            "vendu": "Vendu",
             "client": "Client"
         }
     }

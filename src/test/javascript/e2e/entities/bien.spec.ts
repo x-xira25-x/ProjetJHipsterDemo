@@ -43,6 +43,15 @@ describe('Bien e2e test', () => {
         expect(bienDialogPage.getNbPiecesInput()).toMatch('5');
         bienDialogPage.setLibelleInput('libelle');
         expect(bienDialogPage.getLibelleInput()).toMatch('libelle');
+        bienDialogPage.getVenduInput().isSelected().then((selected) => {
+            if (selected) {
+                bienDialogPage.getVenduInput().click();
+                expect(bienDialogPage.getVenduInput().isSelected()).toBeFalsy();
+            } else {
+                bienDialogPage.getVenduInput().click();
+                expect(bienDialogPage.getVenduInput().isSelected()).toBeTruthy();
+            }
+        });
         bienDialogPage.save();
         expect(bienDialogPage.getSaveButton().isPresent()).toBeFalsy();
     });
@@ -74,6 +83,7 @@ export class BienDialogPage {
     anneeConstructionInput = element(by.css('input#field_anneeConstruction'));
     nbPiecesInput = element(by.css('input#field_nbPieces'));
     libelleInput = element(by.css('input#field_libelle'));
+    venduInput = element(by.css('input#field_vendu'));
 
     getModalTitle() {
         return this.modalTitle.getAttribute('jhiTranslate');
@@ -119,6 +129,9 @@ export class BienDialogPage {
         return this.libelleInput.getAttribute('value');
     };
 
+    getVenduInput = function() {
+        return this.venduInput;
+    };
     save() {
         this.saveButton.click();
     }

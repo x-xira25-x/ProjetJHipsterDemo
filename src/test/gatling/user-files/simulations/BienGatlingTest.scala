@@ -68,7 +68,7 @@ class BienGatlingTest extends Simulation {
             .exec(http("Create new bien")
             .post("/api/biens")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "rueNo":"SAMPLE_TEXT", "localite":"SAMPLE_TEXT", "anneeConstruction":"2020-01-01T00:00:00.000Z", "nbPieces":"0", "libelle":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "rueNo":"SAMPLE_TEXT", "localite":"SAMPLE_TEXT", "anneeConstruction":"2020-01-01T00:00:00.000Z", "nbPieces":"0", "libelle":"SAMPLE_TEXT", "vendu":null}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_bien_url"))).exitHereIfFailed
             .pause(10)

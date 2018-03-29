@@ -41,6 +41,13 @@
         {
             "fieldName": "libelle",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "vendu",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "changelogDate": "20180328071639",
