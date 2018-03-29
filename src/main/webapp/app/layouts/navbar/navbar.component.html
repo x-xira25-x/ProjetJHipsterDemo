@@ -5,7 +5,7 @@
         </a>
         <a class="navbar-brand logo float-left" routerLink="/" (click)="collapseNavbar()">
             <span class="logo-img"></span>
-            <span jhiTranslate="global.title" class="navbar-title">ProjetJHipster2H2</span> <span class="navbar-version">{{version}}</span>
+            <span  class="navbar-title">DémoAgenceImmoblière</span> <span class="navbar-version">{{version}}</span>
         </a>
     </div>
     <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
@@ -20,7 +20,7 @@
             </li>
 
             <li *jhiHasAnyAuthority="'ROLE_USER'" ngbDropdown class="nav-item dropdown pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="bienAvendre-menu">
+                <a class="nav-link dropdown-toggle" routerLink="bienAvendre" id="bienAvendre-menu">
                     <span>
                         <i class="fa fa-th-list" aria-hidden="true"></i>
                         <!--<span jhiTranslate="global.menu.bienAvendre.main">-->
