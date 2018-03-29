@@ -1,0 +1,50 @@
+
+<div *ngIf="vendeur">
+    <h2><span>Vendeur</span> {{vendeur.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Nom</span></dt>
+        <dd>
+            <span>{{vendeur.nom}}</span>
+        </dd>
+        <dt><span>Prenom</span></dt>
+        <dd>
+            <span>{{vendeur.prenom}}</span>
+        </dd>
+        <dt><span>Adresse</span></dt>
+        <dd>
+            <span>{{vendeur.adresse}}</span>
+        </dd>
+        <dt><span>Npa</span></dt>
+        <dd>
+            <span>{{vendeur.npa}}</span>
+        </dd>
+        <dt><span>Localite</span></dt>
+        <dd>
+            <span>{{vendeur.localite}}</span>
+        </dd>
+        <dt><span>Num Tel</span></dt>
+        <dd>
+            <span>{{vendeur.numTel}}</span>
+        </dd>
+        <dt><span>User</span></dt>
+        <dd>
+            {{vendeur.user?.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'vendeur/'+ vendeur.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>
