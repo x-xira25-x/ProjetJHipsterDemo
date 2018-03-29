@@ -1,17 +1,15 @@
 {
   "generator-jhipster": {
     "promptValues": {
-      "packageName": "org.jhipster",
-      "nativeLanguage": "fr"
+      "packageName": "org.jhipster"
     },
     "jhipsterVersion": "4.14.1",
-    "baseName": "ProjetJHipster2H2",
+    "baseName": "JhipsterDemo",
     "packageName": "org.jhipster",
     "packageFolder": "org/jhipster",
     "serverPort": "8080",
-    "authenticationType": "jwt",
-    "cacheProvider": "ehcache",
-    "enableHibernateCache": false,
+    "authenticationType": "session",
+    "cacheProvider": "no",
     "websocket": false,
     "databaseType": "sql",
     "devDatabaseType": "h2Memory",
@@ -22,21 +20,15 @@
     "buildTool": "maven",
     "enableSocialSignIn": false,
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "8cedaf3c85fae39cee1a4e0afda01e1781f70330",
+    "rememberMeKey": "51bde5d205b8b6d4f9ee7117bcf5f75f0492889b",
     "clientFramework": "angularX",
     "useSass": false,
     "clientPackageManager": "yarn",
     "applicationType": "monolith",
     "testFrameworks": [
-      "gatling",
-      "protractor"
+      "gatling"
     ],
     "jhiPrefix": "jhi",
-    "enableTranslation": true,
-    "nativeLanguage": "fr",
-    "languages": [
-      "fr",
-      "en"
-    ]
+    "enableTranslation": false
   }
 }

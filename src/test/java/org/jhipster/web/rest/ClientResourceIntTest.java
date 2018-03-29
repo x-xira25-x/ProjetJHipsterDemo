@@ -1,10 +1,9 @@
 package org.jhipster.web.rest;
 
-import org.jhipster.ProjetJHipster2H2App;
+import org.jhipster.JhipsterDemoApp;
 
 import org.jhipster.domain.Client;
 import org.jhipster.domain.User;
-import org.jhipster.domain.Bien;
 import org.jhipster.repository.ClientRepository;
 import org.jhipster.web.rest.errors.ExceptionTranslator;
 
@@ -37,7 +36,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see ClientResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ProjetJHipster2H2App.class)
+@SpringBootTest(classes = JhipsterDemoApp.class)
 public class ClientResourceIntTest {
 
     private static final String DEFAULT_NOM = "AAAAAAAAAA";
@@ -55,8 +54,8 @@ public class ClientResourceIntTest {
     private static final String DEFAULT_LOCALITE = "AAAAAAAAAA";
     private static final String UPDATED_LOCALITE = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_NUM_TELEPHONE = 1;
-    private static final Integer UPDATED_NUM_TELEPHONE = 2;
+    private static final Integer DEFAULT_NUM_TEL = 1;
+    private static final Integer UPDATED_NUM_TEL = 2;
 
     @Autowired
     private ClientRepository clientRepository;
@@ -101,17 +100,12 @@ public class ClientResourceIntTest {
             .adresse(DEFAULT_ADRESSE)
             .npa(DEFAULT_NPA)
             .localite(DEFAULT_LOCALITE)
-            .numTelephone(DEFAULT_NUM_TELEPHONE);
+            .numTel(DEFAULT_NUM_TEL);
         // Add required entity
         User user = UserResourceIntTest.createEntity(em);
         em.persist(user);
         em.flush();
         client.setUser(user);
-        // Add required entity
-        Bien bien = BienResourceIntTest.createEntity(em);
-        em.persist(bien);
-        em.flush();
-        client.getBiens().add(bien);
         return client;
     }
 
@@ -140,7 +134,7 @@ public class ClientResourceIntTest {
         assertThat(testClient.getAdresse()).isEqualTo(DEFAULT_ADRESSE);
         assertThat(testClient.getNpa()).isEqualTo(DEFAULT_NPA);
         assertThat(testClient.getLocalite()).isEqualTo(DEFAULT_LOCALITE);
-        assertThat(testClient.getNumTelephone()).isEqualTo(DEFAULT_NUM_TELEPHONE);
+        assertThat(testClient.getNumTel()).isEqualTo(DEFAULT_NUM_TEL);
     }
 
     @Test
@@ -200,64 +194,10 @@ public class ClientResourceIntTest {
 
     @Test
     @Transactional
-    public void checkAdresseIsRequired() throws Exception {
+    public void checkNumTelIsRequired() throws Exception {
         int databaseSizeBeforeTest = clientRepository.findAll().size();
         // set the field null
-        client.setAdresse(null);
-
-        // Create the Client, which fails.
-
-        restClientMockMvc.perform(post("/api/clients")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(client)))
-            .andExpect(status().isBadRequest());
-
-        List<Client> clientList = clientRepository.findAll();
-        assertThat(clientList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkNpaIsRequired() throws Exception {
-        int databaseSizeBeforeTest = clientRepository.findAll().size();
-        // set the field null
-        client.setNpa(null);
-
-        // Create the Client, which fails.
-
-        restClientMockMvc.perform(post("/api/clients")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(client)))
-            .andExpect(status().isBadRequest());
-
-        List<Client> clientList = clientRepository.findAll();
-        assertThat(clientList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkLocaliteIsRequired() throws Exception {
-        int databaseSizeBeforeTest = clientRepository.findAll().size();
-        // set the field null
-        client.setLocalite(null);
-
-        // Create the Client, which fails.
-
-        restClientMockMvc.perform(post("/api/clients")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(client)))
-            .andExpect(status().isBadRequest());
-
-        List<Client> clientList = clientRepository.findAll();
-        assertThat(clientList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkNumTelephoneIsRequired() throws Exception {
-        int databaseSizeBeforeTest = clientRepository.findAll().size();
-        // set the field null
-        client.setNumTelephone(null);
+        client.setNumTel(null);
 
         // Create the Client, which fails.
 
@@ -286,7 +226,7 @@ public class ClientResourceIntTest {
             .andExpect(jsonPath("$.[*].adresse").value(hasItem(DEFAULT_ADRESSE.toString())))
             .andExpect(jsonPath("$.[*].npa").value(hasItem(DEFAULT_NPA.toString())))
             .andExpect(jsonPath("$.[*].localite").value(hasItem(DEFAULT_LOCALITE.toString())))
-            .andExpect(jsonPath("$.[*].numTelephone").value(hasItem(DEFAULT_NUM_TELEPHONE)));
+            .andExpect(jsonPath("$.[*].numTel").value(hasItem(DEFAULT_NUM_TEL)));
     }
 
     @Test
@@ -305,7 +245,7 @@ public class ClientResourceIntTest {
             .andExpect(jsonPath("$.adresse").value(DEFAULT_ADRESSE.toString()))
             .andExpect(jsonPath("$.npa").value(DEFAULT_NPA.toString()))
             .andExpect(jsonPath("$.localite").value(DEFAULT_LOCALITE.toString()))
-            .andExpect(jsonPath("$.numTelephone").value(DEFAULT_NUM_TELEPHONE));
+            .andExpect(jsonPath("$.numTel").value(DEFAULT_NUM_TEL));
     }
 
     @Test
@@ -333,7 +273,7 @@ public class ClientResourceIntTest {
             .adresse(UPDATED_ADRESSE)
             .npa(UPDATED_NPA)
             .localite(UPDATED_LOCALITE)
-            .numTelephone(UPDATED_NUM_TELEPHONE);
+            .numTel(UPDATED_NUM_TEL);
 
         restClientMockMvc.perform(put("/api/clients")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -349,7 +289,7 @@ public class ClientResourceIntTest {
         assertThat(testClient.getAdresse()).isEqualTo(UPDATED_ADRESSE);
         assertThat(testClient.getNpa()).isEqualTo(UPDATED_NPA);
         assertThat(testClient.getLocalite()).isEqualTo(UPDATED_LOCALITE);
-        assertThat(testClient.getNumTelephone()).isEqualTo(UPDATED_NUM_TELEPHONE);
+        assertThat(testClient.getNumTel()).isEqualTo(UPDATED_NUM_TEL);
     }
 
     @Test

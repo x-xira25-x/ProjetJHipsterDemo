@@ -6,14 +6,9 @@ import org.jhipster.domain.Visite;
 import org.jhipster.repository.VisiteRepository;
 import org.jhipster.web.rest.errors.BadRequestAlertException;
 import org.jhipster.web.rest.util.HeaderUtil;
-import org.jhipster.web.rest.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -86,17 +81,14 @@ public class VisiteResource {
     /**
      * GET  /visites : get all the visites.
      *
-     * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of visites in body
      */
     @GetMapping("/visites")
     @Timed
-    public ResponseEntity<List<Visite>> getAllVisites(Pageable pageable) {
-        log.debug("REST request to get a page of Visites");
-        Page<Visite> page = visiteRepository.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/visites");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
-    }
+    public List<Visite> getAllVisites() {
+        log.debug("REST request to get all Visites");
+        return visiteRepository.findAll();
+        }
 
     /**
      * GET  /visites/:id : get the "id" visite.

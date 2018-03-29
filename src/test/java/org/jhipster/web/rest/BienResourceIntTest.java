@@ -1,6 +1,6 @@
 package org.jhipster.web.rest;
 
-import org.jhipster.ProjetJHipster2H2App;
+import org.jhipster.JhipsterDemoApp;
 
 import org.jhipster.domain.Bien;
 import org.jhipster.repository.BienRepository;
@@ -19,6 +19,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Base64Utils;
 
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
@@ -37,7 +38,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see BienResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ProjetJHipster2H2App.class)
+@SpringBootTest(classes = JhipsterDemoApp.class)
 public class BienResourceIntTest {
 
     private static final String DEFAULT_RUE_NO = "AAAAAAAAAA";
@@ -49,11 +50,22 @@ public class BienResourceIntTest {
     private static final LocalDate DEFAULT_ANNEE_CONSTRUCTION = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_ANNEE_CONSTRUCTION = LocalDate.now(ZoneId.systemDefault());
 
-    private static final Integer DEFAULT_NB_PIECES = 1;
-    private static final Integer UPDATED_NB_PIECES = 2;
+    private static final Float DEFAULT_NB_PIECES = 1F;
+    private static final Float UPDATED_NB_PIECES = 2F;
 
     private static final String DEFAULT_LIBELLE = "AAAAAAAAAA";
     private static final String UPDATED_LIBELLE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_TYPE = "AAAAAAAAAA";
+    private static final String UPDATED_TYPE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_VENDU = "A";
+    private static final String UPDATED_VENDU = "B";
+
+    private static final byte[] DEFAULT_PHOTO = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_PHOTO = TestUtil.createByteArray(2, "1");
+    private static final String DEFAULT_PHOTO_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_PHOTO_CONTENT_TYPE = "image/png";
 
     @Autowired
     private BienRepository bienRepository;
@@ -97,7 +109,11 @@ public class BienResourceIntTest {
             .localite(DEFAULT_LOCALITE)
             .anneeConstruction(DEFAULT_ANNEE_CONSTRUCTION)
             .nbPieces(DEFAULT_NB_PIECES)
-            .libelle(DEFAULT_LIBELLE);
+            .libelle(DEFAULT_LIBELLE)
+            .type(DEFAULT_TYPE)
+            .vendu(DEFAULT_VENDU)
+            .photo(DEFAULT_PHOTO)
+            .photoContentType(DEFAULT_PHOTO_CONTENT_TYPE);
         return bien;
     }
 
@@ -126,6 +142,10 @@ public class BienResourceIntTest {
         assertThat(testBien.getAnneeConstruction()).isEqualTo(DEFAULT_ANNEE_CONSTRUCTION);
         assertThat(testBien.getNbPieces()).isEqualTo(DEFAULT_NB_PIECES);
         assertThat(testBien.getLibelle()).isEqualTo(DEFAULT_LIBELLE);
+        assertThat(testBien.getType()).isEqualTo(DEFAULT_TYPE);
+        assertThat(testBien.getVendu()).isEqualTo(DEFAULT_VENDU);
+        assertThat(testBien.getPhoto()).isEqualTo(DEFAULT_PHOTO);
+        assertThat(testBien.getPhotoContentType()).isEqualTo(DEFAULT_PHOTO_CONTENT_TYPE);
     }
 
     @Test
@@ -221,6 +241,42 @@ public class BienResourceIntTest {
 
     @Test
     @Transactional
+    public void checkTypeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = bienRepository.findAll().size();
+        // set the field null
+        bien.setType(null);
+
+        // Create the Bien, which fails.
+
+        restBienMockMvc.perform(post("/api/biens")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(bien)))
+            .andExpect(status().isBadRequest());
+
+        List<Bien> bienList = bienRepository.findAll();
+        assertThat(bienList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkVenduIsRequired() throws Exception {
+        int databaseSizeBeforeTest = bienRepository.findAll().size();
+        // set the field null
+        bien.setVendu(null);
+
+        // Create the Bien, which fails.
+
+        restBienMockMvc.perform(post("/api/biens")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(bien)))
+            .andExpect(status().isBadRequest());
+
+        List<Bien> bienList = bienRepository.findAll();
+        assertThat(bienList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllBiens() throws Exception {
         // Initialize the database
         bienRepository.saveAndFlush(bien);
@@ -233,8 +289,12 @@ public class BienResourceIntTest {
             .andExpect(jsonPath("$.[*].rueNo").value(hasItem(DEFAULT_RUE_NO.toString())))
             .andExpect(jsonPath("$.[*].localite").value(hasItem(DEFAULT_LOCALITE.toString())))
             .andExpect(jsonPath("$.[*].anneeConstruction").value(hasItem(DEFAULT_ANNEE_CONSTRUCTION.toString())))
-            .andExpect(jsonPath("$.[*].nbPieces").value(hasItem(DEFAULT_NB_PIECES)))
-            .andExpect(jsonPath("$.[*].libelle").value(hasItem(DEFAULT_LIBELLE.toString())));
+            .andExpect(jsonPath("$.[*].nbPieces").value(hasItem(DEFAULT_NB_PIECES.doubleValue())))
+            .andExpect(jsonPath("$.[*].libelle").value(hasItem(DEFAULT_LIBELLE.toString())))
+            .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())))
+            .andExpect(jsonPath("$.[*].vendu").value(hasItem(DEFAULT_VENDU.toString())))
+            .andExpect(jsonPath("$.[*].photoContentType").value(hasItem(DEFAULT_PHOTO_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].photo").value(hasItem(Base64Utils.encodeToString(DEFAULT_PHOTO))));
     }
 
     @Test
@@ -251,8 +311,12 @@ public class BienResourceIntTest {
             .andExpect(jsonPath("$.rueNo").value(DEFAULT_RUE_NO.toString()))
             .andExpect(jsonPath("$.localite").value(DEFAULT_LOCALITE.toString()))
             .andExpect(jsonPath("$.anneeConstruction").value(DEFAULT_ANNEE_CONSTRUCTION.toString()))
-            .andExpect(jsonPath("$.nbPieces").value(DEFAULT_NB_PIECES))
-            .andExpect(jsonPath("$.libelle").value(DEFAULT_LIBELLE.toString()));
+            .andExpect(jsonPath("$.nbPieces").value(DEFAULT_NB_PIECES.doubleValue()))
+            .andExpect(jsonPath("$.libelle").value(DEFAULT_LIBELLE.toString()))
+            .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()))
+            .andExpect(jsonPath("$.vendu").value(DEFAULT_VENDU.toString()))
+            .andExpect(jsonPath("$.photoContentType").value(DEFAULT_PHOTO_CONTENT_TYPE))
+            .andExpect(jsonPath("$.photo").value(Base64Utils.encodeToString(DEFAULT_PHOTO)));
     }
 
     @Test
@@ -279,7 +343,11 @@ public class BienResourceIntTest {
             .localite(UPDATED_LOCALITE)
             .anneeConstruction(UPDATED_ANNEE_CONSTRUCTION)
             .nbPieces(UPDATED_NB_PIECES)
-            .libelle(UPDATED_LIBELLE);
+            .libelle(UPDATED_LIBELLE)
+            .type(UPDATED_TYPE)
+            .vendu(UPDATED_VENDU)
+            .photo(UPDATED_PHOTO)
+            .photoContentType(UPDATED_PHOTO_CONTENT_TYPE);
 
         restBienMockMvc.perform(put("/api/biens")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -295,6 +363,10 @@ public class BienResourceIntTest {
         assertThat(testBien.getAnneeConstruction()).isEqualTo(UPDATED_ANNEE_CONSTRUCTION);
         assertThat(testBien.getNbPieces()).isEqualTo(UPDATED_NB_PIECES);
         assertThat(testBien.getLibelle()).isEqualTo(UPDATED_LIBELLE);
+        assertThat(testBien.getType()).isEqualTo(UPDATED_TYPE);
+        assertThat(testBien.getVendu()).isEqualTo(UPDATED_VENDU);
+        assertThat(testBien.getPhoto()).isEqualTo(UPDATED_PHOTO);
+        assertThat(testBien.getPhotoContentType()).isEqualTo(UPDATED_PHOTO_CONTENT_TYPE);
     }
 
     @Test

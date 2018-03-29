@@ -16,4 +16,4 @@ const LAYOUT_ROUTES = [
         RouterModule
     ]
 })
-export class ProjetJHipster2H2AppRoutingModule {}
+export class JhipsterDemoAppRoutingModule {}

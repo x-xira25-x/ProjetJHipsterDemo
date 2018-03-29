@@ -1,11 +1,10 @@
 package org.jhipster.web.rest;
 
-import org.jhipster.ProjetJHipster2H2App;
+import org.jhipster.JhipsterDemoApp;
 
 import org.jhipster.domain.Visite;
-import org.jhipster.domain.Client;
-import org.jhipster.domain.Bien;
 import org.jhipster.domain.Vendeur;
+import org.jhipster.domain.Bien;
 import org.jhipster.repository.VisiteRepository;
 import org.jhipster.web.rest.errors.ExceptionTranslator;
 
@@ -40,7 +39,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see VisiteResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ProjetJHipster2H2App.class)
+@SpringBootTest(classes = JhipsterDemoApp.class)
 public class VisiteResourceIntTest {
 
     private static final LocalDate DEFAULT_DATE_DEBUT = LocalDate.ofEpochDay(0L);
@@ -90,20 +89,15 @@ public class VisiteResourceIntTest {
             .dateDebut(DEFAULT_DATE_DEBUT)
             .dateFin(DEFAULT_DATE_FIN);
         // Add required entity
-        Client client = ClientResourceIntTest.createEntity(em);
-        em.persist(client);
+        Vendeur vendeur = VendeurResourceIntTest.createEntity(em);
+        em.persist(vendeur);
         em.flush();
-        visite.setClient(client);
+        visite.setVendeur(vendeur);
         // Add required entity
         Bien bien = BienResourceIntTest.createEntity(em);
         em.persist(bien);
         em.flush();
         visite.setBien(bien);
-        // Add required entity
-        Vendeur vendeur = VendeurResourceIntTest.createEntity(em);
-        em.persist(vendeur);
-        em.flush();
-        visite.setVendeur(vendeur);
         return visite;
     }
 

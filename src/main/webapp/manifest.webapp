@@ -1,6 +1,6 @@
 {
-  "name": "ProjetJHipster2H2",
-  "short_name": "ProjetJHipster2H2",
+  "name": "JhipsterDemo",
+  "short_name": "JhipsterDemo",
   "icons": [
       {
           "src": "./content/images/logo-jhipster.png",

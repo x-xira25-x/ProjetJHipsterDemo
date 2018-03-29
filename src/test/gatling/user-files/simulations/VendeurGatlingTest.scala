@@ -32,27 +32,31 @@ class VendeurGatlingTest extends Simulation {
         "Accept" -> """application/json"""
     )
 
-    val headers_http_authentication = Map(
-        "Content-Type" -> """application/json""",
-        "Accept" -> """application/json"""
-    )
-
     val headers_http_authenticated = Map(
         "Accept" -> """application/json""",
-        "Authorization" -> "${access_token}"
+        "X-XSRF-TOKEN" -> "${xsrf_token}"
+    )
+
+    val keycloakHeaders = Map(
+        "Accept" -> "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Upgrade-Insecure-Requests" -> "1"
     )
 
     val scn = scenario("Test the Vendeur entity")
         .exec(http("First unauthenticated request")
         .get("/api/account")
         .headers(headers_http)
-        .check(status.is(401))).exitHereIfFailed
+        .check(status.is(401))
+        .check(headerRegex("Set-Cookie", "XSRF-TOKEN=(.*);[\\s]").saveAs("xsrf_token"))).exitHereIfFailed
         .pause(10)
         .exec(http("Authentication")
-        .post("/api/authenticate")
-        .headers(headers_http_authentication)
-        .body(StringBody("""{"username":"admin", "password":"admin"}""")).asJSON
-        .check(header.get("Authorization").saveAs("access_token"))).exitHereIfFailed
+        .post("/api/authentication")
+        .headers(headers_http_authenticated)
+        .formParam("j_username", "admin")
+        .formParam("j_password", "admin")
+        .formParam("remember-me", "true")
+        .formParam("submit", "Login")
+        .check(headerRegex("Set-Cookie", "XSRF-TOKEN=(.*);[\\s]").saveAs("xsrf_token"))).exitHereIfFailed
         .pause(1)
         .exec(http("Authenticated request")
         .get("/api/account")
@@ -68,7 +72,7 @@ class VendeurGatlingTest extends Simulation {
             .exec(http("Create new vendeur")
             .post("/api/vendeurs")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "nom":"SAMPLE_TEXT", "prenom":"SAMPLE_TEXT", "adresse":"SAMPLE_TEXT", "npa":"SAMPLE_TEXT", "localite":"SAMPLE_TEXT", "numTelephone":"0"}""")).asJSON
+            .body(StringBody("""{"id":null, "nom":"SAMPLE_TEXT", "prenom":"SAMPLE_TEXT", "adresse":"SAMPLE_TEXT", "npa":"SAMPLE_TEXT", "localite":"SAMPLE_TEXT", "numTel":"0"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_vendeur_url"))).exitHereIfFailed
             .pause(10)

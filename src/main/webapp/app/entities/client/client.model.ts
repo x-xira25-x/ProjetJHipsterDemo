@@ -8,10 +8,9 @@ export class Client implements BaseEntity {
         public adresse?: string,
         public npa?: string,
         public localite?: string,
-        public numTelephone?: number,
+        public numTel?: number,
         public user?: User,
         public biens?: BaseEntity[],
-        public visites?: BaseEntity[],
     ) {
     }
 }

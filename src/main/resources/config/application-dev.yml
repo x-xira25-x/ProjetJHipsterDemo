@@ -32,8 +32,8 @@ spring:
         serialization.indent_output: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:h2:mem:projetjhipster2h2;DB_CLOSE_DELAY=-1
-        username: ProjetJHipster2H2
+        url: jdbc:h2:mem:jhipsterdemo;DB_CLOSE_DELAY=-1
+        username: JhipsterDemo
         password:
     h2:
         console:
@@ -62,7 +62,7 @@ liquibase:
 
 # ===================================================================
 # To enable SSL, generate a certificate using:
-# keytool -genkey -alias ProjetJHipster2H2 -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore keystore.p12 -validity 3650
+# keytool -genkey -alias JhipsterDemo -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore keystore.p12 -validity 3650
 #
 # You can also use Let's Encrypt:
 # https://maximilian-boehm.com/hp2121/Create-a-Java-Keystore-JKS-from-Let-s-Encrypt-Certificates.htm
@@ -75,7 +75,7 @@ liquibase:
 #        key-store: keystore.p12
 #        key-store-password: <your-password>
 #        key-store-type: PKCS12
-#        key-alias: ProjetJHipster2H2
+#        key-alias: JhipsterDemo
 # ===================================================================
 server:
     port: 8080
@@ -89,27 +89,20 @@ server:
 jhipster:
     http:
         version: V_1_1 # To use HTTP/2 you will need SSL support (see above the "server.ssl" configuration)
-    cache: # Cache configuration
-        ehcache: # Ehcache configuration
-            time-to-live-seconds: 3600 # By default objects stay 1 hour in the cache
-            max-entries: 100 # Number of objects in each cache entry
     # CORS is only enabled by default with the "dev" profile, so BrowserSync can access the API
     cors:
         allowed-origins: "*"
         allowed-methods: "*"
         allowed-headers: "*"
-        exposed-headers: "Authorization,Link,X-Total-Count"
+        exposed-headers: "Link,X-Total-Count"
         allow-credentials: true
         max-age: 1800
     security:
-        authentication:
-            jwt:
-                secret: my-secret-token-to-change-in-production
-                # Token is valid 24 hours
-                token-validity-in-seconds: 86400
-                token-validity-in-seconds-for-remember-me: 2592000
+        remember-me:
+            # security key (this key should be unique for your application, and kept secret)
+            key: 51bde5d205b8b6d4f9ee7117bcf5f75f0492889b
     mail: # specific JHipster mail property, for standard properties see MailProperties
-        from: ProjetJHipster2H2@localhost
+        from: JhipsterDemo@localhost
         base-url: http://127.0.0.1:8080
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true
@@ -117,7 +110,7 @@ jhipster:
             enabled: false
             host: localhost
             port: 2003
-            prefix: ProjetJHipster2H2
+            prefix: JhipsterDemo
         prometheus: # Use the "prometheus" Maven profile to have the Prometheus dependencies
             enabled: false
             endpoint: /prometheusMetrics

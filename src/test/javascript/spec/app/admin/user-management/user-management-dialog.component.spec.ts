@@ -4,9 +4,9 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { ProjetJHipster2H2TestModule } from '../../../test.module';
+import { JhipsterDemoTestModule } from '../../../test.module';
 import { UserMgmtDialogComponent } from '../../../../../../main/webapp/app/admin/user-management/user-management-dialog.component';
-import { UserService, User, JhiLanguageHelper } from '../../../../../../main/webapp/app/shared';
+import { UserService, User } from '../../../../../../main/webapp/app/shared';
 
 describe('Component Tests', () => {
 
@@ -16,11 +16,10 @@ describe('Component Tests', () => {
         let service: UserService;
         let mockEventManager: any;
         let mockActiveModal: any;
-        let mockLanguageHelper: any;
 
         beforeEach(async(() => {
             TestBed.configureTestingModule({
-                imports: [ProjetJHipster2H2TestModule],
+                imports: [JhipsterDemoTestModule],
                 declarations: [UserMgmtDialogComponent],
                 providers: [
                     UserService
@@ -36,7 +35,6 @@ describe('Component Tests', () => {
             service = fixture.debugElement.injector.get(UserService);
             mockEventManager = fixture.debugElement.injector.get(JhiEventManager);
             mockActiveModal = fixture.debugElement.injector.get(NgbActiveModal);
-            mockLanguageHelper = fixture.debugElement.injector.get(JhiLanguageHelper);
         });
 
         describe('OnInit', () => {
@@ -52,7 +50,6 @@ describe('Component Tests', () => {
                         // THEN
                         expect(service.authorities).toHaveBeenCalled();
                         expect(comp.authorities).toEqual(['USER']);
-                        expect(mockLanguageHelper.getAllSpy).toHaveBeenCalled();
                     })
                 )
             );

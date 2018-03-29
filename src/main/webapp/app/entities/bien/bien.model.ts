@@ -8,6 +8,10 @@ export class Bien implements BaseEntity {
         public anneeConstruction?: any,
         public nbPieces?: number,
         public libelle?: string,
+        public type?: string,
+        public vendu?: string,
+        public photoContentType?: string,
+        public photo?: any,
         public clients?: BaseEntity[],
     ) {
     }

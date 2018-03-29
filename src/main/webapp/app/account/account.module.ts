@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { ProjetJHipster2H2SharedModule } from '../shared';
+import { JhipsterDemoSharedModule } from '../shared';
 
 import {
     Register,
@@ -9,6 +9,8 @@ import {
     PasswordService,
     PasswordResetInitService,
     PasswordResetFinishService,
+    SessionsService,
+    SessionsComponent,
     PasswordStrengthBarComponent,
     RegisterComponent,
     ActivateComponent,
@@ -21,7 +23,7 @@ import {
 
 @NgModule({
     imports: [
-        ProjetJHipster2H2SharedModule,
+        JhipsterDemoSharedModule,
         RouterModule.forChild(accountState)
     ],
     declarations: [
@@ -31,9 +33,11 @@ import {
         PasswordStrengthBarComponent,
         PasswordResetInitComponent,
         PasswordResetFinishComponent,
+        SessionsComponent,
         SettingsComponent
     ],
     providers: [
+        SessionsService,
         Register,
         ActivateService,
         PasswordService,
@@ -42,4 +46,4 @@ import {
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class ProjetJHipster2H2AccountModule {}
+export class JhipsterDemoAccountModule {}

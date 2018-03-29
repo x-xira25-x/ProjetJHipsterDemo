@@ -22,7 +22,6 @@ public class Vendeur implements Serializable {
     private Long id;
 
     @NotNull
-    @Pattern(regexp = "^[a-zA-Z0-9]*$")
     @Column(name = "nom", nullable = false)
     private String nom;
 
@@ -41,8 +40,8 @@ public class Vendeur implements Serializable {
     private String localite;
 
     @NotNull
-    @Column(name = "num_telephone", nullable = false)
-    private Integer numTelephone;
+    @Column(name = "num_tel", nullable = false)
+    private Integer numTel;
 
     @OneToOne(optional = false)
     @NotNull
@@ -123,17 +122,17 @@ public class Vendeur implements Serializable {
         this.localite = localite;
     }
 
-    public Integer getNumTelephone() {
-        return numTelephone;
+    public Integer getNumTel() {
+        return numTel;
     }
 
-    public Vendeur numTelephone(Integer numTelephone) {
-        this.numTelephone = numTelephone;
+    public Vendeur numTel(Integer numTel) {
+        this.numTel = numTel;
         return this;
     }
 
-    public void setNumTelephone(Integer numTelephone) {
-        this.numTelephone = numTelephone;
+    public void setNumTel(Integer numTel) {
+        this.numTel = numTel;
     }
 
     public User getUser() {
@@ -179,7 +178,7 @@ public class Vendeur implements Serializable {
             ", adresse='" + getAdresse() + "'" +
             ", npa='" + getNpa() + "'" +
             ", localite='" + getLocalite() + "'" +
-            ", numTelephone=" + getNumTelephone() +
+            ", numTel=" + getNumTel() +
             "}";
     }
 }

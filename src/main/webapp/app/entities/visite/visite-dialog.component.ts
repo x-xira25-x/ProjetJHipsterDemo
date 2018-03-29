@@ -9,9 +9,9 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Visite } from './visite.model';
 import { VisitePopupService } from './visite-popup.service';
 import { VisiteService } from './visite.service';
-import { Client, ClientService } from '../client';
-import { Bien, BienService } from '../bien';
 import { Vendeur, VendeurService } from '../vendeur';
+import { Bien, BienService } from '../bien';
+import { Client, ClientService } from '../client';
 
 @Component({
     selector: 'jhi-visite-dialog',
@@ -22,11 +22,11 @@ export class VisiteDialogComponent implements OnInit {
     visite: Visite;
     isSaving: boolean;
 
-    clients: Client[];
+    vendeurs: Vendeur[];
 
     biens: Bien[];
 
-    vendeurs: Vendeur[];
+    clients: Client[];
     dateDebutDp: any;
     dateFinDp: any;
 
@@ -34,21 +34,21 @@ export class VisiteDialogComponent implements OnInit {
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private visiteService: VisiteService,
-        private clientService: ClientService,
-        private bienService: BienService,
         private vendeurService: VendeurService,
+        private bienService: BienService,
+        private clientService: ClientService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
-        this.clientService.query()
-            .subscribe((res: HttpResponse<Client[]>) => { this.clients = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
-        this.bienService.query()
-            .subscribe((res: HttpResponse<Bien[]>) => { this.biens = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
         this.vendeurService.query()
             .subscribe((res: HttpResponse<Vendeur[]>) => { this.vendeurs = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.bienService.query()
+            .subscribe((res: HttpResponse<Bien[]>) => { this.biens = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.clientService.query()
+            .subscribe((res: HttpResponse<Client[]>) => { this.clients = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     clear() {
@@ -85,7 +85,7 @@ export class VisiteDialogComponent implements OnInit {
         this.jhiAlertService.error(error.message, null, null);
     }
 
-    trackClientById(index: number, item: Client) {
+    trackVendeurById(index: number, item: Vendeur) {
         return item.id;
     }
 
@@ -93,7 +93,7 @@ export class VisiteDialogComponent implements OnInit {
         return item.id;
     }
 
-    trackVendeurById(index: number, item: Vendeur) {
+    trackClientById(index: number, item: Client) {
         return item.id;
     }
 }

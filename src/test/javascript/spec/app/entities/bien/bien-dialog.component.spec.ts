@@ -5,7 +5,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { ProjetJHipster2H2TestModule } from '../../../test.module';
+import { JhipsterDemoTestModule } from '../../../test.module';
 import { BienDialogComponent } from '../../../../../../main/webapp/app/entities/bien/bien-dialog.component';
 import { BienService } from '../../../../../../main/webapp/app/entities/bien/bien.service';
 import { Bien } from '../../../../../../main/webapp/app/entities/bien/bien.model';
@@ -22,7 +22,7 @@ describe('Component Tests', () => {
 
         beforeEach(async(() => {
             TestBed.configureTestingModule({
-                imports: [ProjetJHipster2H2TestModule],
+                imports: [JhipsterDemoTestModule],
                 declarations: [BienDialogComponent],
                 providers: [
                     ClientService,
