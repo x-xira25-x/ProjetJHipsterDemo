@@ -1,6 +1,6 @@
 package org.jhipster.web.rest;
 
-import org.jhipster.ProjetJHipster2H2App;
+import org.jhipster.JhipsterDemoApp;
 
 import org.jhipster.domain.Vendeur;
 import org.jhipster.domain.User;
@@ -36,7 +36,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see VendeurResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ProjetJHipster2H2App.class)
+@SpringBootTest(classes = JhipsterDemoApp.class)
 public class VendeurResourceIntTest {
 
     private static final String DEFAULT_NOM = "AAAAAAAAAA";
@@ -54,8 +54,8 @@ public class VendeurResourceIntTest {
     private static final String DEFAULT_LOCALITE = "AAAAAAAAAA";
     private static final String UPDATED_LOCALITE = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_NUM_TELEPHONE = 1;
-    private static final Integer UPDATED_NUM_TELEPHONE = 2;
+    private static final Integer DEFAULT_NUM_TEL = 1;
+    private static final Integer UPDATED_NUM_TEL = 2;
 
     @Autowired
     private VendeurRepository vendeurRepository;
@@ -100,7 +100,7 @@ public class VendeurResourceIntTest {
             .adresse(DEFAULT_ADRESSE)
             .npa(DEFAULT_NPA)
             .localite(DEFAULT_LOCALITE)
-            .numTelephone(DEFAULT_NUM_TELEPHONE);
+            .numTel(DEFAULT_NUM_TEL);
         // Add required entity
         User user = UserResourceIntTest.createEntity(em);
         em.persist(user);
@@ -134,7 +134,7 @@ public class VendeurResourceIntTest {
         assertThat(testVendeur.getAdresse()).isEqualTo(DEFAULT_ADRESSE);
         assertThat(testVendeur.getNpa()).isEqualTo(DEFAULT_NPA);
         assertThat(testVendeur.getLocalite()).isEqualTo(DEFAULT_LOCALITE);
-        assertThat(testVendeur.getNumTelephone()).isEqualTo(DEFAULT_NUM_TELEPHONE);
+        assertThat(testVendeur.getNumTel()).isEqualTo(DEFAULT_NUM_TEL);
     }
 
     @Test
@@ -194,10 +194,10 @@ public class VendeurResourceIntTest {
 
     @Test
     @Transactional
-    public void checkNumTelephoneIsRequired() throws Exception {
+    public void checkNumTelIsRequired() throws Exception {
         int databaseSizeBeforeTest = vendeurRepository.findAll().size();
         // set the field null
-        vendeur.setNumTelephone(null);
+        vendeur.setNumTel(null);
 
         // Create the Vendeur, which fails.
 
@@ -226,7 +226,7 @@ public class VendeurResourceIntTest {
             .andExpect(jsonPath("$.[*].adresse").value(hasItem(DEFAULT_ADRESSE.toString())))
             .andExpect(jsonPath("$.[*].npa").value(hasItem(DEFAULT_NPA.toString())))
             .andExpect(jsonPath("$.[*].localite").value(hasItem(DEFAULT_LOCALITE.toString())))
-            .andExpect(jsonPath("$.[*].numTelephone").value(hasItem(DEFAULT_NUM_TELEPHONE)));
+            .andExpect(jsonPath("$.[*].numTel").value(hasItem(DEFAULT_NUM_TEL)));
     }
 
     @Test
@@ -245,7 +245,7 @@ public class VendeurResourceIntTest {
             .andExpect(jsonPath("$.adresse").value(DEFAULT_ADRESSE.toString()))
             .andExpect(jsonPath("$.npa").value(DEFAULT_NPA.toString()))
             .andExpect(jsonPath("$.localite").value(DEFAULT_LOCALITE.toString()))
-            .andExpect(jsonPath("$.numTelephone").value(DEFAULT_NUM_TELEPHONE));
+            .andExpect(jsonPath("$.numTel").value(DEFAULT_NUM_TEL));
     }
 
     @Test
@@ -273,7 +273,7 @@ public class VendeurResourceIntTest {
             .adresse(UPDATED_ADRESSE)
             .npa(UPDATED_NPA)
             .localite(UPDATED_LOCALITE)
-            .numTelephone(UPDATED_NUM_TELEPHONE);
+            .numTel(UPDATED_NUM_TEL);
 
         restVendeurMockMvc.perform(put("/api/vendeurs")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -289,7 +289,7 @@ public class VendeurResourceIntTest {
         assertThat(testVendeur.getAdresse()).isEqualTo(UPDATED_ADRESSE);
         assertThat(testVendeur.getNpa()).isEqualTo(UPDATED_NPA);
         assertThat(testVendeur.getLocalite()).isEqualTo(UPDATED_LOCALITE);
-        assertThat(testVendeur.getNumTelephone()).isEqualTo(UPDATED_NUM_TELEPHONE);
+        assertThat(testVendeur.getNumTel()).isEqualTo(UPDATED_NUM_TEL);
     }
 
     @Test

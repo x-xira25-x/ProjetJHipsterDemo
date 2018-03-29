@@ -16,6 +16,6 @@ public class ApplicationWebXml extends SpringBootServletInitializer {
          * set a default to use when no profile is configured.
          */
         DefaultProfileUtil.addDefaultProfile(application.application());
-        return application.sources(ProjetJHipster2H2App.class);
+        return application.sources(JhipsterDemoApp.class);
     }
 }

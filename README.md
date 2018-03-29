@@ -1,4 +1,4 @@
-# ProjetJHipster2H2
+# JhipsterDemo
 This application was generated using JHipster 4.14.1, you can find documentation and help at [http://www.jhipster.tech/documentation-archive/v4.14.1](http://www.jhipster.tech/documentation-archive/v4.14.1).
 
 ## Development
@@ -89,7 +89,7 @@ will generate few files:
 
 ## Building for production
 
-To optimize the ProjetJHipster2H2 application for production, run:
+To optimize the JhipsterDemo application for production, run:
 
     ./mvnw -Pprod clean package
 
@@ -114,8 +114,7 @@ Unit tests are run by [Karma][] and written with [Jasmine][]. They're located in
 
     yarn test
 
-UI end-to-end tests are powered by [Protractor][], which is built on top of WebDriverJS. They're located in [src/test/javascript/e2e](src/test/javascript/e2e)
-and can be run by starting Spring Boot in one terminal (`./mvnw spring-boot:run`) and running the tests (`yarn run e2e`) in a second one.
+
 ### Other tests
 
 Performance tests are run by [Gatling][] and written in Scala. They're located in [src/test/gatling](src/test/gatling) and can be run with:

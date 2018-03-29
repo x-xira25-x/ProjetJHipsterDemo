@@ -33,7 +33,7 @@
         },
         {
             "fieldName": "nbPieces",
-            "fieldType": "Integer",
+            "fieldType": "Float",
             "fieldValidateRules": [
                 "required"
             ]
@@ -41,12 +41,35 @@
         {
             "fieldName": "libelle",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "vendu",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "1",
+            "fieldValidateRulesMaxlength": "1"
+        },
+        {
+            "fieldName": "photo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
         }
     ],
-    "changelogDate": "20180328071639",
+    "changelogDate": "20180329190756",
     "dto": "no",
     "service": "no",
     "entityTableName": "bien",
     "jpaMetamodelFiltering": false,
-    "pagination": "pagination"
+    "pagination": "no"
 }

@@ -3,20 +3,20 @@ import './vendor.ts';
 import { NgModule, Injector } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { Ng2Webstorage, LocalStorageService, SessionStorageService  } from 'ngx-webstorage';
+import { Ng2Webstorage } from 'ngx-webstorage';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { AuthInterceptor } from './blocks/interceptor/auth.interceptor';
 import { AuthExpiredInterceptor } from './blocks/interceptor/auth-expired.interceptor';
 import { ErrorHandlerInterceptor } from './blocks/interceptor/errorhandler.interceptor';
 import { NotificationInterceptor } from './blocks/interceptor/notification.interceptor';
-import { ProjetJHipster2H2SharedModule, UserRouteAccessService } from './shared';
-import { ProjetJHipster2H2AppRoutingModule} from './app-routing.module';
-import { ProjetJHipster2H2HomeModule } from './home/home.module';
-import { ProjetJHipster2H2AdminModule } from './admin/admin.module';
-import { ProjetJHipster2H2AccountModule } from './account/account.module';
-import { ProjetJHipster2H2EntityModule } from './entities/entity.module';
+import { JhipsterDemoSharedModule, UserRouteAccessService } from './shared';
+import { JhipsterDemoAppRoutingModule} from './app-routing.module';
+import { JhipsterDemoHomeModule } from './home/home.module';
+import { JhipsterDemoAdminModule } from './admin/admin.module';
+import { JhipsterDemoAccountModule } from './account/account.module';
+import { JhipsterDemoEntityModule } from './entities/entity.module';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
+import { StateStorageService } from './shared/auth/state-storage.service';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import {
     JhiMainComponent,
@@ -24,20 +24,19 @@ import {
     FooterComponent,
     ProfileService,
     PageRibbonComponent,
-    ActiveMenuDirective,
     ErrorComponent
 } from './layouts';
-import { BienAvendreComponent } from './bien-avendre/bien-avendre.component';
+
 @NgModule({
     imports: [
         BrowserModule,
-        ProjetJHipster2H2AppRoutingModule,
+        JhipsterDemoAppRoutingModule,
         Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-'}),
-        ProjetJHipster2H2SharedModule,
-        ProjetJHipster2H2HomeModule,
-        ProjetJHipster2H2AdminModule,
-        ProjetJHipster2H2AccountModule,
-        ProjetJHipster2H2EntityModule,
+        JhipsterDemoSharedModule,
+        JhipsterDemoHomeModule,
+        JhipsterDemoAdminModule,
+        JhipsterDemoAccountModule,
+        JhipsterDemoEntityModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
@@ -45,10 +44,7 @@ import { BienAvendreComponent } from './bien-avendre/bien-avendre.component';
         NavbarComponent,
         ErrorComponent,
         PageRibbonComponent,
-        ActiveMenuDirective,
-        FooterComponent,
-        BienAvendreComponent
-
+        FooterComponent
     ],
     providers: [
         ProfileService,
@@ -56,18 +52,10 @@ import { BienAvendreComponent } from './bien-avendre/bien-avendre.component';
         UserRouteAccessService,
         {
             provide: HTTP_INTERCEPTORS,
-            useClass: AuthInterceptor,
-            multi: true,
-            deps: [
-                LocalStorageService,
-                SessionStorageService
-            ]
-        },
-        {
-            provide: HTTP_INTERCEPTORS,
             useClass: AuthExpiredInterceptor,
             multi: true,
             deps: [
+                StateStorageService,
                 Injector
             ]
         },
@@ -90,4 +78,4 @@ import { BienAvendreComponent } from './bien-avendre/bien-avendre.component';
     ],
     bootstrap: [ JhiMainComponent ]
 })
-export class ProjetJHipster2H2AppModule {}
+export class JhipsterDemoAppModule {}

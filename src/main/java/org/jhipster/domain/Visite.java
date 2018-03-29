@@ -31,15 +31,14 @@ public class Visite implements Serializable {
 
     @ManyToOne(optional = false)
     @NotNull
-    private Client client;
+    private Vendeur vendeur;
 
     @ManyToOne(optional = false)
     @NotNull
     private Bien bien;
 
-    @ManyToOne(optional = false)
-    @NotNull
-    private Vendeur vendeur;
+    @ManyToOne
+    private Client client;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -76,17 +75,17 @@ public class Visite implements Serializable {
         this.dateFin = dateFin;
     }
 
-    public Client getClient() {
-        return client;
+    public Vendeur getVendeur() {
+        return vendeur;
     }
 
-    public Visite client(Client client) {
-        this.client = client;
+    public Visite vendeur(Vendeur vendeur) {
+        this.vendeur = vendeur;
         return this;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setVendeur(Vendeur vendeur) {
+        this.vendeur = vendeur;
     }
 
     public Bien getBien() {
@@ -102,17 +101,17 @@ public class Visite implements Serializable {
         this.bien = bien;
     }
 
-    public Vendeur getVendeur() {
-        return vendeur;
+    public Client getClient() {
+        return client;
     }
 
-    public Visite vendeur(Vendeur vendeur) {
-        this.vendeur = vendeur;
+    public Visite client(Client client) {
+        this.client = client;
         return this;
     }
 
-    public void setVendeur(Vendeur vendeur) {
-        this.vendeur = vendeur;
+    public void setClient(Client client) {
+        this.client = client;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

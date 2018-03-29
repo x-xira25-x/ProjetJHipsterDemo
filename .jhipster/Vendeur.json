@@ -18,10 +18,8 @@
             "fieldName": "nom",
             "fieldType": "String",
             "fieldValidateRules": [
-                "required",
-                "pattern"
-            ],
-            "fieldValidateRulesPattern": "^[a-zA-Z0-9]*$"
+                "required"
+            ]
         },
         {
             "fieldName": "prenom",
@@ -34,8 +32,7 @@
         },
         {
             "fieldName": "adresse",
-            "fieldType": "String",
-            "fieldValidateRules": []
+            "fieldType": "String"
         },
         {
             "fieldName": "npa",
@@ -46,17 +43,17 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "numTelephone",
+            "fieldName": "numTel",
             "fieldType": "Integer",
             "fieldValidateRules": [
                 "required"
             ]
         }
     ],
-    "changelogDate": "20180327194106",
+    "changelogDate": "20180329185952",
     "dto": "no",
     "service": "no",
     "entityTableName": "vendeur",
     "jpaMetamodelFiltering": false,
-    "pagination": "pagination"
+    "pagination": "no"
 }

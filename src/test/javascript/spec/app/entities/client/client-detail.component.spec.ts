@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
-import { ProjetJHipster2H2TestModule } from '../../../test.module';
+import { JhipsterDemoTestModule } from '../../../test.module';
 import { ClientDetailComponent } from '../../../../../../main/webapp/app/entities/client/client-detail.component';
 import { ClientService } from '../../../../../../main/webapp/app/entities/client/client.service';
 import { Client } from '../../../../../../main/webapp/app/entities/client/client.model';
@@ -17,7 +17,7 @@ describe('Component Tests', () => {
 
         beforeEach(async(() => {
             TestBed.configureTestingModule({
-                imports: [ProjetJHipster2H2TestModule],
+                imports: [JhipsterDemoTestModule],
                 declarations: [ClientDetailComponent],
                 providers: [
                     ClientService

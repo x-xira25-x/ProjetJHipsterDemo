@@ -16,14 +16,12 @@
 
 spring:
     application:
-        name: ProjetJHipster2H2
+        name: JhipsterDemo
     jackson:
         serialization.write_dates_as_timestamps: false
-    cache:
-        type: simple
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:h2:mem:ProjetJHipster2H2;DB_CLOSE_DELAY=-1
+        url: jdbc:h2:mem:JhipsterDemo;DB_CLOSE_DELAY=-1
         name:
         username:
         password:
@@ -86,11 +84,9 @@ jhipster:
         from: test@localhost
         base-url: http://127.0.0.1:8080
     security:
-        authentication:
-            jwt:
-                secret: 8cedaf3c85fae39cee1a4e0afda01e1781f70330
-                # Token is valid 24 hours
-                token-validity-in-seconds: 86400
+        remember-me:
+            # security key (this key should be unique for your application, and kept secret)
+            key: 51bde5d205b8b6d4f9ee7117bcf5f75f0492889b
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true
         logs: # Reports Dropwizard metrics in the logs

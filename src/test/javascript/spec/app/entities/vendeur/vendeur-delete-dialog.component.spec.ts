@@ -4,7 +4,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { ProjetJHipster2H2TestModule } from '../../../test.module';
+import { JhipsterDemoTestModule } from '../../../test.module';
 import { VendeurDeleteDialogComponent } from '../../../../../../main/webapp/app/entities/vendeur/vendeur-delete-dialog.component';
 import { VendeurService } from '../../../../../../main/webapp/app/entities/vendeur/vendeur.service';
 
@@ -19,7 +19,7 @@ describe('Component Tests', () => {
 
         beforeEach(async(() => {
             TestBed.configureTestingModule({
-                imports: [ProjetJHipster2H2TestModule],
+                imports: [JhipsterDemoTestModule],
                 declarations: [VendeurDeleteDialogComponent],
                 providers: [
                     VendeurService

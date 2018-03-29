@@ -1,34 +1,34 @@
 
 <div *ngIf="vendeur">
-    <h2><span jhiTranslate="projetJHipster2H2App.vendeur.detail.title">Vendeur</span> {{vendeur.id}}</h2>
+    <h2><span>Vendeur</span> {{vendeur.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="projetJHipster2H2App.vendeur.nom">Nom</span></dt>
+        <dt><span>Nom</span></dt>
         <dd>
             <span>{{vendeur.nom}}</span>
         </dd>
-        <dt><span jhiTranslate="projetJHipster2H2App.vendeur.prenom">Prenom</span></dt>
+        <dt><span>Prenom</span></dt>
         <dd>
             <span>{{vendeur.prenom}}</span>
         </dd>
-        <dt><span jhiTranslate="projetJHipster2H2App.vendeur.adresse">Adresse</span></dt>
+        <dt><span>Adresse</span></dt>
         <dd>
             <span>{{vendeur.adresse}}</span>
         </dd>
-        <dt><span jhiTranslate="projetJHipster2H2App.vendeur.npa">Npa</span></dt>
+        <dt><span>Npa</span></dt>
         <dd>
             <span>{{vendeur.npa}}</span>
         </dd>
-        <dt><span jhiTranslate="projetJHipster2H2App.vendeur.localite">Localite</span></dt>
+        <dt><span>Localite</span></dt>
         <dd>
             <span>{{vendeur.localite}}</span>
         </dd>
-        <dt><span jhiTranslate="projetJHipster2H2App.vendeur.numTelephone">Num Telephone</span></dt>
+        <dt><span>Num Tel</span></dt>
         <dd>
-            <span>{{vendeur.numTelephone}}</span>
+            <span>{{vendeur.numTel}}</span>
         </dd>
-        <dt><span jhiTranslate="projetJHipster2H2App.vendeur.user">User</span></dt>
+        <dt><span>User</span></dt>
         <dd>
             {{vendeur.user?.login}}
         </dd>
@@ -37,7 +37,7 @@
     <button type="submit"
             (click)="previousState()"
             class="btn btn-info">
-        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
     </button>
 
     <button type="button"
@@ -45,6 +45,6 @@
             replaceUrl="true"
             queryParamsHandling="merge"
             class="btn btn-primary">
-        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
     </button>
 </div>

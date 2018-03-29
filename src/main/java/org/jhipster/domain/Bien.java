@@ -39,10 +39,26 @@ public class Bien implements Serializable {
 
     @NotNull
     @Column(name = "nb_pieces", nullable = false)
-    private Integer nbPieces;
+    private Float nbPieces;
 
     @Column(name = "libelle")
     private String libelle;
+
+    @NotNull
+    @Column(name = "jhi_type", nullable = false)
+    private String type;
+
+    @NotNull
+    @Size(min = 1, max = 1)
+    @Column(name = "vendu", length = 1, nullable = false)
+    private String vendu;
+
+    @Lob
+    @Column(name = "photo")
+    private byte[] photo;
+
+    @Column(name = "photo_content_type")
+    private String photoContentType;
 
     @ManyToMany(mappedBy = "biens")
     @JsonIgnore
@@ -96,16 +112,16 @@ public class Bien implements Serializable {
         this.anneeConstruction = anneeConstruction;
     }
 
-    public Integer getNbPieces() {
+    public Float getNbPieces() {
         return nbPieces;
     }
 
-    public Bien nbPieces(Integer nbPieces) {
+    public Bien nbPieces(Float nbPieces) {
         this.nbPieces = nbPieces;
         return this;
     }
 
-    public void setNbPieces(Integer nbPieces) {
+    public void setNbPieces(Float nbPieces) {
         this.nbPieces = nbPieces;
     }
 
@@ -120,6 +136,58 @@ public class Bien implements Serializable {
 
     public void setLibelle(String libelle) {
         this.libelle = libelle;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public Bien type(String type) {
+        this.type = type;
+        return this;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getVendu() {
+        return vendu;
+    }
+
+    public Bien vendu(String vendu) {
+        this.vendu = vendu;
+        return this;
+    }
+
+    public void setVendu(String vendu) {
+        this.vendu = vendu;
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public Bien photo(byte[] photo) {
+        this.photo = photo;
+        return this;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
+    }
+
+    public String getPhotoContentType() {
+        return photoContentType;
+    }
+
+    public Bien photoContentType(String photoContentType) {
+        this.photoContentType = photoContentType;
+        return this;
+    }
+
+    public void setPhotoContentType(String photoContentType) {
+        this.photoContentType = photoContentType;
     }
 
     public Set<Client> getClients() {
@@ -177,6 +245,10 @@ public class Bien implements Serializable {
             ", anneeConstruction='" + getAnneeConstruction() + "'" +
             ", nbPieces=" + getNbPieces() +
             ", libelle='" + getLibelle() + "'" +
+            ", type='" + getType() + "'" +
+            ", vendu='" + getVendu() + "'" +
+            ", photo='" + getPhoto() + "'" +
+            ", photoContentType='" + getPhotoContentType() + "'" +
             "}";
     }
 }

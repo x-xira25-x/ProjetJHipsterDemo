@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { ProjetJHipster2H2SharedModule } from '../../shared';
+import { JhipsterDemoSharedModule } from '../../shared';
 import {
     BienService,
     BienPopupService,
@@ -13,7 +13,6 @@ import {
     BienDeleteDialogComponent,
     bienRoute,
     bienPopupRoute,
-    BienResolvePagingParams,
 } from './';
 
 const ENTITY_STATES = [
@@ -23,7 +22,7 @@ const ENTITY_STATES = [
 
 @NgModule({
     imports: [
-        ProjetJHipster2H2SharedModule,
+        JhipsterDemoSharedModule,
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
@@ -44,8 +43,7 @@ const ENTITY_STATES = [
     providers: [
         BienService,
         BienPopupService,
-        BienResolvePagingParams,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class ProjetJHipster2H2BienModule {}
+export class JhipsterDemoBienModule {}

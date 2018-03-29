@@ -5,7 +5,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { ProjetJHipster2H2TestModule } from '../../../test.module';
+import { JhipsterDemoTestModule } from '../../../test.module';
 import { ClientDialogComponent } from '../../../../../../main/webapp/app/entities/client/client-dialog.component';
 import { ClientService } from '../../../../../../main/webapp/app/entities/client/client.service';
 import { Client } from '../../../../../../main/webapp/app/entities/client/client.model';
@@ -23,7 +23,7 @@ describe('Component Tests', () => {
 
         beforeEach(async(() => {
             TestBed.configureTestingModule({
-                imports: [ProjetJHipster2H2TestModule],
+                imports: [JhipsterDemoTestModule],
                 declarations: [ClientDialogComponent],
                 providers: [
                     UserService,

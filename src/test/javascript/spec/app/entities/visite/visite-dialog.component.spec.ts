@@ -5,13 +5,13 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { ProjetJHipster2H2TestModule } from '../../../test.module';
+import { JhipsterDemoTestModule } from '../../../test.module';
 import { VisiteDialogComponent } from '../../../../../../main/webapp/app/entities/visite/visite-dialog.component';
 import { VisiteService } from '../../../../../../main/webapp/app/entities/visite/visite.service';
 import { Visite } from '../../../../../../main/webapp/app/entities/visite/visite.model';
-import { ClientService } from '../../../../../../main/webapp/app/entities/client';
-import { BienService } from '../../../../../../main/webapp/app/entities/bien';
 import { VendeurService } from '../../../../../../main/webapp/app/entities/vendeur';
+import { BienService } from '../../../../../../main/webapp/app/entities/bien';
+import { ClientService } from '../../../../../../main/webapp/app/entities/client';
 
 describe('Component Tests', () => {
 
@@ -24,12 +24,12 @@ describe('Component Tests', () => {
 
         beforeEach(async(() => {
             TestBed.configureTestingModule({
-                imports: [ProjetJHipster2H2TestModule],
+                imports: [JhipsterDemoTestModule],
                 declarations: [VisiteDialogComponent],
                 providers: [
-                    ClientService,
-                    BienService,
                     VendeurService,
+                    BienService,
+                    ClientService,
                     VisiteService
                 ]
             })

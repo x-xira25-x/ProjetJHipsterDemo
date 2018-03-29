@@ -1,6 +1,6 @@
 package org.jhipster.repository;
 
-import org.jhipster.ProjetJHipster2H2App;
+import org.jhipster.JhipsterDemoApp;
 import org.jhipster.config.Constants;
 import org.jhipster.config.audit.AuditEventConverter;
 import org.jhipster.domain.PersistentAuditEvent;
@@ -32,7 +32,7 @@ import static org.jhipster.repository.CustomAuditEventRepository.EVENT_DATA_COLU
  * @see CustomAuditEventRepository
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ProjetJHipster2H2App.class)
+@SpringBootTest(classes = JhipsterDemoApp.class)
 @Transactional
 public class CustomAuditEventRepositoryIntTest {
 

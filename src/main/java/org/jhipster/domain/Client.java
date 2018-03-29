@@ -1,6 +1,5 @@
 package org.jhipster.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -34,22 +33,18 @@ public class Client implements Serializable {
     @Column(name = "prenom", nullable = false)
     private String prenom;
 
-    @NotNull
-    @Column(name = "adresse", nullable = false)
+    @Column(name = "adresse")
     private String adresse;
 
-    @NotNull
-    @Column(name = "npa", nullable = false)
+    @Column(name = "npa")
     private String npa;
 
-    @NotNull
-    @Pattern(regexp = "^[a-zA-Z0-9]*$")
-    @Column(name = "localite", nullable = false)
+    @Column(name = "localite")
     private String localite;
 
     @NotNull
-    @Column(name = "num_telephone", nullable = false)
-    private Integer numTelephone;
+    @Column(name = "num_tel", nullable = false)
+    private Integer numTel;
 
     @OneToOne(optional = false)
     @NotNull
@@ -57,15 +52,10 @@ public class Client implements Serializable {
     private User user;
 
     @ManyToMany
-    @NotNull
     @JoinTable(name = "client_bien",
                joinColumns = @JoinColumn(name="clients_id", referencedColumnName="id"),
                inverseJoinColumns = @JoinColumn(name="biens_id", referencedColumnName="id"))
     private Set<Bien> biens = new HashSet<>();
-
-    @OneToMany(mappedBy = "client")
-    @JsonIgnore
-    private Set<Visite> visites = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -141,17 +131,17 @@ public class Client implements Serializable {
         this.localite = localite;
     }
 
-    public Integer getNumTelephone() {
-        return numTelephone;
+    public Integer getNumTel() {
+        return numTel;
     }
 
-    public Client numTelephone(Integer numTelephone) {
-        this.numTelephone = numTelephone;
+    public Client numTel(Integer numTel) {
+        this.numTel = numTel;
         return this;
     }
 
-    public void setNumTelephone(Integer numTelephone) {
-        this.numTelephone = numTelephone;
+    public void setNumTel(Integer numTel) {
+        this.numTel = numTel;
     }
 
     public User getUser() {
@@ -191,31 +181,6 @@ public class Client implements Serializable {
     public void setBiens(Set<Bien> biens) {
         this.biens = biens;
     }
-
-    public Set<Visite> getVisites() {
-        return visites;
-    }
-
-    public Client visites(Set<Visite> visites) {
-        this.visites = visites;
-        return this;
-    }
-
-    public Client addVisite(Visite visite) {
-        this.visites.add(visite);
-        visite.setClient(this);
-        return this;
-    }
-
-    public Client removeVisite(Visite visite) {
-        this.visites.remove(visite);
-        visite.setClient(null);
-        return this;
-    }
-
-    public void setVisites(Set<Visite> visites) {
-        this.visites = visites;
-    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -247,7 +212,7 @@ public class Client implements Serializable {
             ", adresse='" + getAdresse() + "'" +
             ", npa='" + getNpa() + "'" +
             ", localite='" + getLocalite() + "'" +
-            ", numTelephone=" + getNumTelephone() +
+            ", numTel=" + getNumTel() +
             "}";
     }
 }

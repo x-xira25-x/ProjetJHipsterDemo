@@ -2,8 +2,8 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipName": "client",
-            "otherEntityName": "client",
+            "relationshipName": "vendeur",
+            "otherEntityName": "vendeur",
             "relationshipType": "many-to-one",
             "relationshipValidateRules": [
                 "required"
@@ -20,12 +20,9 @@
             "otherEntityField": "id"
         },
         {
-            "relationshipName": "vendeur",
-            "otherEntityName": "vendeur",
+            "relationshipName": "client",
+            "otherEntityName": "client",
             "relationshipType": "many-to-one",
-            "relationshipValidateRules": [
-                "required"
-            ],
             "otherEntityField": "id"
         }
     ],
@@ -42,10 +39,10 @@
             "fieldType": "LocalDate"
         }
     ],
-    "changelogDate": "20180328072435",
+    "changelogDate": "20180329191009",
     "dto": "no",
     "service": "no",
     "entityTableName": "visite",
     "jpaMetamodelFiltering": false,
-    "pagination": "pagination"
+    "pagination": "no"
 }
