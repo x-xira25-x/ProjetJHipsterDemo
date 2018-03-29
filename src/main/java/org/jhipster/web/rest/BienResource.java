@@ -97,6 +97,18 @@ public class BienResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/biens");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
+// liste des biens à vendre
+    @GetMapping("/biensAvendre")
+    @Timed
+    public ResponseEntity<List<Bien>> getAllBiensAvendre(Pageable pageable) {
+        log.debug("REST request to get a page of Biens");
+        Page<Bien> page =(Page) bienRepository.findAllBienAvendre();
+
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/biens");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+
 
     /**
      * GET  /biens/:id : get the "id" bien.
