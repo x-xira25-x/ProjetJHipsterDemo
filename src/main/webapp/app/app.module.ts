@@ -27,7 +27,7 @@ import {
     ActiveMenuDirective,
     ErrorComponent
 } from './layouts';
-import { BienAvendreComponent } from './bien-avendre/bien-avendre.component';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -47,7 +47,6 @@ import { BienAvendreComponent } from './bien-avendre/bien-avendre.component';
         PageRibbonComponent,
         ActiveMenuDirective,
         FooterComponent,
-        BienAvendreComponent
 
     ],
     providers: [
