@@ -15,12 +15,7 @@
             },
             "detail": {
                 "title": "Visite"
-            },
-            "dateDebut": "Date Debut",
-            "dateFin": "Date Fin",
-            "client": "Client",
-            "bien": "Bien",
-            "vendeur": "Vendeur"
+            }
         }
     }
 }

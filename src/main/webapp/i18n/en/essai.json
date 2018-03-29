@@ -1,0 +1,22 @@
+
+{
+    "projetJHipster2H2App": {
+        "essai" : {
+            "home": {
+                "title": "Essais",
+                "createLabel": "Create a new Essai",
+                "createOrEditLabel": "Create or edit a Essai"
+            },
+            "created": "A new Essai is created with identifier {{ param }}",
+            "updated": "A Essai is updated with identifier {{ param }}",
+            "deleted": "A Essai is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Essai {{ id }}?"
+            },
+            "detail": {
+                "title": "Essai"
+            },
+            "essai": "Essai"
+        }
+    }
+}

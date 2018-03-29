@@ -7,9 +7,9 @@ import org.slf4j.LoggerFactory
 import scala.concurrent.duration._
 
 /**
- * Performance test for the Visite entity.
+ * Performance test for the Essai entity.
  */
-class VisiteGatlingTest extends Simulation {
+class EssaiGatlingTest extends Simulation {
 
     val context: LoggerContext = LoggerFactory.getILoggerFactory.asInstanceOf[LoggerContext]
     // Log all HTTP requests
@@ -42,7 +42,7 @@ class VisiteGatlingTest extends Simulation {
         "Authorization" -> "${access_token}"
     )
 
-    val scn = scenario("Test the Visite entity")
+    val scn = scenario("Test the Essai entity")
         .exec(http("First unauthenticated request")
         .get("/api/account")
         .headers(headers_http)
@@ -60,26 +60,26 @@ class VisiteGatlingTest extends Simulation {
         .check(status.is(200)))
         .pause(10)
         .repeat(2) {
-            exec(http("Get all visites")
-            .get("/api/visites")
+            exec(http("Get all essais")
+            .get("/api/essais")
             .headers(headers_http_authenticated)
             .check(status.is(200)))
             .pause(10 seconds, 20 seconds)
-            .exec(http("Create new visite")
-            .post("/api/visites")
+            .exec(http("Create new essai")
+            .post("/api/essais")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null}""")).asJSON
+            .body(StringBody("""{"id":null, "essai":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
-            .check(headerRegex("Location", "(.*)").saveAs("new_visite_url"))).exitHereIfFailed
+            .check(headerRegex("Location", "(.*)").saveAs("new_essai_url"))).exitHereIfFailed
             .pause(10)
             .repeat(5) {
-                exec(http("Get created visite")
-                .get("${new_visite_url}")
+                exec(http("Get created essai")
+                .get("${new_essai_url}")
                 .headers(headers_http_authenticated))
                 .pause(10)
             }
-            .exec(http("Delete created visite")
-            .delete("${new_visite_url}")
+            .exec(http("Delete created essai")
+            .delete("${new_essai_url}")
             .headers(headers_http_authenticated))
             .pause(10)
         }

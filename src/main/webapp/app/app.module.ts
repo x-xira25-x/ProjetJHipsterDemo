@@ -15,7 +15,7 @@ import { ProjetJHipster2H2AppRoutingModule} from './app-routing.module';
 import { ProjetJHipster2H2HomeModule } from './home/home.module';
 import { ProjetJHipster2H2AdminModule } from './admin/admin.module';
 import { ProjetJHipster2H2AccountModule } from './account/account.module';
-import { ProjetJHipster2H2EntityModule } from './entities/entity.module';
+
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import {
@@ -27,7 +27,7 @@ import {
     ActiveMenuDirective,
     ErrorComponent
 } from './layouts';
-import { BienAvendreComponent } from './bien-avendre/bien-avendre.component';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -37,7 +37,6 @@ import { BienAvendreComponent } from './bien-avendre/bien-avendre.component';
         ProjetJHipster2H2HomeModule,
         ProjetJHipster2H2AdminModule,
         ProjetJHipster2H2AccountModule,
-        ProjetJHipster2H2EntityModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
@@ -47,7 +46,7 @@ import { BienAvendreComponent } from './bien-avendre/bien-avendre.component';
         PageRibbonComponent,
         ActiveMenuDirective,
         FooterComponent,
-        BienAvendreComponent
+
 
     ],
     providers: [

@@ -11,6 +11,7 @@
                 "vendeur": "Vendeur",
                 "bien": "Bien",
                 "visite": "Visite",
+                "essai": "Essai",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
