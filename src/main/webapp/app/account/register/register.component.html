@@ -26,7 +26,8 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <form name="form" role="form" (ngSubmit)="register()" #registerForm="ngForm" *ngIf="!success">
+            <form name="form" role="form" novalidate (ngSubmit)="register()" #registerForm="ngForm" #editForm="ngForm" *ngIf="!success">
+
                 <div class="form-group">
                     <label class="form-control-label" for="login">Pseudo</label>
                     <input type="text" class="form-control" [(ngModel)]="registerAccount.login" id="login" name="login" #login="ngModel" placeholder="Your username"
@@ -49,6 +50,11 @@
                         </small>
                     </div>
                 </div>
+
+
+
+
+
                 <div class="form-group">
                     <label class="form-control-label" for="email">Email</label>
                     <input type="email" class="form-control" id="email" name="email" #email="ngModel" placeholder="Your email"
@@ -113,22 +119,23 @@
                 </div>
                 <!-- pour le client-->
 
-                <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-                    <div class="form-group">
-                        <label class="form-control-label" for="field_nom">Nom</label>
-                        <input type="text" class="form-control" name="nom" id="field_nom"
-                               [(ngModel)]="client.nom" required pattern="^[a-zA-Z0-9]*$"/>
-                        <div [hidden]="!(editForm.controls.nom?.dirty && editForm.controls.nom?.invalid)">
-                            <small class="form-text text-danger"
-                                   [hidden]="!editForm.controls.nom?.errors?.required">
-                                This field is required.
-                            </small>
-                            <small class="form-text text-danger"
-                                   [hidden]="!editForm.controls.nom?.errors?.pattern">
-                                This field should follow pattern for "Nom".
-                            </small>
-                        </div>
+                <!--<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">-->
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nom">Nom</label>
+                    <input type="text" class="form-control" name="nom" id="field_nom"
+                           [(ngModel)]="client.nom" required pattern="^[a-zA-Z0-9]*$"/>
+                    <div [hidden]="!(editForm.controls.nom?.dirty && editForm.controls.nom?.invalid)">
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.controls.nom?.errors?.required">
+                            This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.controls.nom?.errors?.pattern">
+                            This field should follow pattern for "Nom".
+                        </small>
                     </div>
+                </div>
                     <div class="form-group">
                         <label class="form-control-label" for="field_prenom">Prenom</label>
                         <input type="text" class="form-control" name="prenom" id="field_prenom"
@@ -174,7 +181,7 @@
                             </small>
                         </div>
                     </div>
-                </form>
+                <!--</form>-->
 
                     <!-- -->
 
