@@ -26,6 +26,7 @@ import {
     PageRibbonComponent,
     ErrorComponent
 } from './layouts';
+import { BiensAvendreComponent } from './biens-avendre/biens-avendre.component';
 
 @NgModule({
     imports: [
@@ -44,7 +45,8 @@ import {
         NavbarComponent,
         ErrorComponent,
         PageRibbonComponent,
-        FooterComponent
+        FooterComponent,
+        BiensAvendreComponent
     ],
     providers: [
         ProfileService,
