@@ -20,6 +20,7 @@
             </li>
 
             <!--onglet bien à vendre-->
+            <!-- pour le caché aux visiteur   *ngSwitchCase="true" -->
             <div class="navbar-collapse collapse" iid="bienAvendre-menu" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="jhi-biens-avendre" (click)="collapseNavbar()">

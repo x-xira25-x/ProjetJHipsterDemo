@@ -41,7 +41,7 @@
                 </td>
                 <td>
 
-                    <div class="row">
+                    <div  *jhiHasAnyAuthority="'ROLE_USER'"  class="row">
 
                         <div class="col-lg-3 col-md-2 col-sm-12" >
                             <button type="button" class="btn btn-success reserver" (click)="allerReservation()">Faire une visite</button>
