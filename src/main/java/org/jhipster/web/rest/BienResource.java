@@ -1,6 +1,9 @@
 package org.jhipster.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.RandomUtils;
 import org.jhipster.domain.Bien;
 
 import org.jhipster.repository.BienRepository;
@@ -9,6 +12,7 @@ import org.jhipster.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,6 +39,10 @@ public class BienResource {
     public BienResource(BienRepository bienRepository) {
         this.bienRepository = bienRepository;
     }
+
+
+
+
 
     /**
      * POST  /biens : Create a new bien.
@@ -89,6 +97,16 @@ public class BienResource {
         log.debug("REST request to get all Biens");
         return bienRepository.findAll();
         }
+
+    @GetMapping("/biensAvendre")
+    @Timed
+    public List<Bien> getAllBiensAvendre() {
+        log.debug("REST request to get all Biens");
+
+    return bienRepository.findAllAvendre();
+
+    }
+
 
     /**
      * GET  /biens/:id : get the "id" bien.
