@@ -40,6 +40,12 @@ export class BienService {
             .map((res: HttpResponse<Bien[]>) => this.convertArrayResponse(res));
     }
 
+    queryAvendre(req?: any): Observable<HttpResponse<Bien[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<Bien[]>(`http://localhost:8080/api/biensAvendre`, { params: options, observe: 'response' })
+        .map((res: HttpResponse<Bien[]>) => this.convertArrayResponse(res));
+    }
+
     delete(id: number): Observable<HttpResponse<any>> {
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response'});
     }
