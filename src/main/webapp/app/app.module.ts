@@ -17,6 +17,7 @@ import { JhipsterDemoAccountModule } from './account/account.module';
 import { JhipsterDemoEntityModule } from './entities/entity.module';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
 import { StateStorageService } from './shared/auth/state-storage.service';
+import { RouterModule, Routes } from '@angular/router';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import {
     JhiMainComponent,
@@ -27,6 +28,12 @@ import {
     ErrorComponent
 } from './layouts';
 import { BiensAvendreComponent } from './biens-avendre/biens-avendre.component';
+import {BiensAvendreModule} from "./biens-avendre/biens-avendre.module";
+
+const appRoutes: Routes = [
+    { path: 'jhi-biens-avendre', component: BiensAvendreComponent },
+
+];
 
 @NgModule({
     imports: [
@@ -38,6 +45,15 @@ import { BiensAvendreComponent } from './biens-avendre/biens-avendre.component';
         JhipsterDemoAdminModule,
         JhipsterDemoAccountModule,
         JhipsterDemoEntityModule,
+        BiensAvendreModule,
+        RouterModule.forRoot(
+            appRoutes,
+            { enableTracing: true } // <-- debugging purposes only
+        )
+
+
+
+
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
