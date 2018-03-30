@@ -41,15 +41,15 @@
                 </td>
                 <td>
                     <!-- le bouton pour accederà la page de réservation  -->
-                    <div class="row">
-                        <div class="col-lg-9 col-md-10 col-sm-12"></div>
+                    <div class="row" *jhiHasAnyAuthority="'ROLE_USER'">
+
                         <div class="col-lg-3 col-md-2 col-sm-12" >
                             <button type="button" class="btn btn-success reserver" (click)="allerReservation()">Faire une visite</button>
                         </div>
                     </div>
                 </td>
                 <td class="text-right">
-                    <div class="btn-group flex-btn-group-container">
+                    <div class="btn-group flex-btn-group-container" *jhiHasAnyAuthority="'ROLE_ADMIN'">
                         <button type="submit"
                                 [routerLink]="['../bien', bien.id ]"
                                 class="btn btn-info btn-sm">
