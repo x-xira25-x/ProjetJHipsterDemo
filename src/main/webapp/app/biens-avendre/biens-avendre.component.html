@@ -40,8 +40,8 @@
                     <span *ngIf="bien.photo">{{bien.photoContentType}}, {{byteSize(bien.photo)}}</span>
                 </td>
                 <td>
-                    <!-- le bouton pour accederà la page de réservation  -->
-                    <div class="row" *jhiHasAnyAuthority="'ROLE_USER'">
+
+                    <div class="row">
 
                         <div class="col-lg-3 col-md-2 col-sm-12" >
                             <button type="button" class="btn btn-success reserver" (click)="allerReservation()">Faire une visite</button>
