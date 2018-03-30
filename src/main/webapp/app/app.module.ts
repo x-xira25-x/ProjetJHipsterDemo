@@ -32,7 +32,8 @@ import {BiensAvendreModule} from "./biens-avendre/biens-avendre.module";
 import { VisiteClientComponent } from './visite-client/visite-client.component';
 
 const appRoutes: Routes = [
-    { path: 'jhi-biens-avendre', component: BiensAvendreComponent },
+    { path: 'jhi-biens-avendre', component: BiensAvendreComponent},
+    {  path: 'jhi-visite-client', component: VisiteClientComponent}
 
 ];
 
