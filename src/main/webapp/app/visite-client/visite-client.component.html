@@ -41,7 +41,7 @@
                     </div>
                 </td>
                 <td class="text-right">
-                    <div class="btn-group flex-btn-group-container">
+                    <div class="btn-group flex-btn-group-container" *jhiHasAnyAuthority="'ROLE_ADMIN'">
                         <button type="submit"
                                 [routerLink]="['../visite', visite.id ]"
                                 class="btn btn-info btn-sm">

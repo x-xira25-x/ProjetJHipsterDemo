@@ -90,6 +90,13 @@ public class VisiteResource {
         return visiteRepository.findAll();
         }
 
+    @GetMapping("/visitesBy/{login}")
+    @Timed
+    public List<Visite>FindAllByClient(@PathVariable  String login){
+        log.debug("REST request to get all Visites by client");
+        return visiteRepository.FindAllByClient(login);
+    }
+
     /**
      * GET  /visites/:id : get the "id" visite.
      *
