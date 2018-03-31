@@ -33,6 +33,21 @@ export class BiensAvendreComponent implements OnInit {
   ngOnInit() {
       this.loadAll();
   }
+  // fonction qui permet d ajouter le client  à là visite
+    visiter() {
+       //récupérer id du bien
+           /* this.biens.id = biens.id;
+            console.log(this.biens.id);*/
+
+        /*this.passwordService.save(this.password).subscribe(() => {
+            this.error = null;
+            this.success = 'OK';
+        }, () => {
+            this.success = null;
+            this.error = 'ERROR';
+        });*/
+
+    }
 
     private onError(error) {
         this.jhiAlertService.error(error.message, null, null);
