@@ -5,7 +5,7 @@
     <div class="col-md-9">
         <h1 class="display-4">Bienvenue sur la gestion des visites immoblières</h1>
         <p class="lead">Votre agence immoblière à votre service</p>
-
+        <div class="col-md-6">
         <div [ngSwitch]="isAuthenticated()">
             <div class="alert alert-success" *ngSwitchCase="true">
                 <span *ngIf="account"
@@ -20,7 +20,7 @@
                 <a class="btn btn-danger btn-rounded" routerLink="register"> Se créer un nouveau compte</a>
             </div>
         </div>
-
+        </div>
         <p>
             <b>
            Venez visiter les biens immobliers!
