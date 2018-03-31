@@ -21,6 +21,7 @@ export class SettingsComponent implements OnInit {
     ngOnInit() {
         this.principal.identity().then((account) => {
             this.settingsAccount = this.copyAccount(account);
+            console.log(this.settingsAccount);
         });
     }
 
