@@ -1,0 +1,13 @@
+
+.AvendreImage {
+    display: inline-block;
+    width: 347px;
+    height: 497px;
+    background: url("../../../content/images/aVendrejpg.jpg") no-repeat center top;
+    background-size: contain;
+}
+.Alouer {
+
+    width: 347px;
+    height: 497px;
+}
