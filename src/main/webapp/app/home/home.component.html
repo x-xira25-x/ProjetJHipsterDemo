@@ -13,8 +13,8 @@
             </div>
 
             <div class="alert alert-warning" *ngSwitchCase="false">
-                <span>Si vous n'avez pas de compte</span>
-                <a class="alert-link" (click)="login()">Inscrivez-vous</a><span></div>
+                <span>Si vous avez déjà de compte</span>
+                <a class="alert-link" (click)="login()">Se connecter</a></div>
             <div class="alert alert-warning" *ngSwitchCase="false">
                 <span>Vous n'avez pas encore de compte?</span>
                 <a class="btn btn-danger btn-rounded" routerLink="register"> Se créer un nouveau compte</a>
