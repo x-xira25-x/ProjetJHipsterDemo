@@ -108,7 +108,7 @@ public class BienResource {
 
     }
 
-    @GetMapping("/biensVisite/{idBien}")
+    @GetMapping("/biens/{idBien}/visites")
     @Timed
     public List<Visite> getAllBiensAvendre(@PathVariable Long idBien) {
         log.debug("REST request to get all visite of Biens");

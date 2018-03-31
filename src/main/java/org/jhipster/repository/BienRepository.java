@@ -3,6 +3,7 @@ package org.jhipster.repository;
 import java.util.List;
 import org.jhipster.domain.Bien;
 import org.jhipster.domain.Visite;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
@@ -16,5 +17,6 @@ import org.springframework.data.jpa.repository.*;
 public interface BienRepository extends JpaRepository<Bien, Long> {
 
     @Query("Select bien from Bien bien where bien.vendu='n'")List<Bien> findAllAvendre();
- @Query ("select bien.visite from Bien bien, Visite visite where bien.id =:idBien")List<Visite>findAllBiensVisites(Long idBien);
+ @Query ("select visite from Bien bien, Visite visite where bien.id =:idBien")
+ List<Visite>findAllBiensVisites(@Param("idBien") Long idBien);
 }
