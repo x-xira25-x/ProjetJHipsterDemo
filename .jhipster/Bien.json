@@ -7,6 +7,12 @@
             "relationshipType": "many-to-many",
             "ownerSide": false,
             "otherEntityRelationshipName": "bien"
+        },
+        {
+            "relationshipName": "visite",
+            "otherEntityName": "visite",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "bien"
         }
     ],
     "fields": [
