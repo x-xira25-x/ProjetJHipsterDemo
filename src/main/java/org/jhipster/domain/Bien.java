@@ -64,10 +64,6 @@ public class Bien implements Serializable {
     @JsonIgnore
     private Set<Client> clients = new HashSet<>();
 
-    @OneToMany(mappedBy = "bien")
-    @JsonIgnore
-    private Set<Visite> visites = new HashSet<>();
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -217,31 +213,6 @@ public class Bien implements Serializable {
 
     public void setClients(Set<Client> clients) {
         this.clients = clients;
-    }
-
-    public Set<Visite> getVisites() {
-        return visites;
-    }
-
-    public Bien visites(Set<Visite> visites) {
-        this.visites = visites;
-        return this;
-    }
-
-    public Bien addVisite(Visite visite) {
-        this.visites.add(visite);
-        visite.setBien(this);
-        return this;
-    }
-
-    public Bien removeVisite(Visite visite) {
-        this.visites.remove(visite);
-        visite.setBien(null);
-        return this;
-    }
-
-    public void setVisites(Set<Visite> visites) {
-        this.visites = visites;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

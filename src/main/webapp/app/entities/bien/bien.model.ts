@@ -13,7 +13,6 @@ export class Bien implements BaseEntity {
         public photoContentType?: string,
         public photo?: any,
         public clients?: BaseEntity[],
-        public visites?: BaseEntity[],
     ) {
     }
 }
