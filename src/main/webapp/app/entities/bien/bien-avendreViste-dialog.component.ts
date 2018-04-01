@@ -5,17 +5,17 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
-import {Vendeur} from "../vendeur/vendeur.model";
-import {Bien} from "./bien.model";
-import {Client} from "../client/client.model";
-import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
-import {VisiteService} from "../visite/visite.service";
-import {VendeurService} from "../vendeur/vendeur.service";
-import {BienService} from "./bien.service";
-import {ClientService} from "../client/client.service";
-import {BienVisitePopupService} from "../../biens-avendre/bienVisite-popup.service";
-import {Visite} from "../../biens-avendre/visite.model";
-import {Principal} from "../../shared/auth/principal.service";
+import {Vendeur} from '../vendeur/vendeur.model';
+import {Bien} from './bien.model';
+import {Client} from '../client/client.model';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {VisiteService} from '../visite/visite.service';
+import {VendeurService} from '../vendeur/vendeur.service';
+import {BienService} from './bien.service';
+import {ClientService} from '../client/client.service';
+import {BienVisitePopupService} from '../../biens-avendre/bienVisite-popup.service';
+import {Visite} from '../../biens-avendre/visite.model';
+import {Principal} from '../../shared/auth/principal.service';
 
 
 
@@ -110,14 +110,13 @@ export class BienVisteDialogComponent implements OnInit {
 
     inscription(idVisite) {
         console.log('entre dans la inscripton');
-        //récupérer  client
+        // récupérer  client
         this.principal.identity().then((account) => {
             this.settingsAccount = this.copyAccount(account);
             this.bienService.findIdClient(this.settingsAccount.login).subscribe(
                 (res: HttpResponse<Client>) => {
                     this.client = res.body;
                     console.log('client' + this.client.id);
-
                     // essayer de récupérer la visite et mettre le client dedans
                     this.visiteService.find(idVisite).subscribe(
                         (res: HttpResponse<Visite>) => {
@@ -133,7 +132,6 @@ export class BienVisteDialogComponent implements OnInit {
                             (res: HttpErrorResponse) => this.onError(res.message)
                         );
                     });
-
                  /*   this.bienService.ajoutClientVisite(idVisite,this.client.id).subscribe(
                         (res: HttpResponse<Visite>) => {
                             this.visite = res.body;
@@ -141,8 +139,6 @@ export class BienVisteDialogComponent implements OnInit {
                         (res: HttpErrorResponse) => this.onError(res.message)
                     );*/
                 });
-
-
         });
     }
     copyAccount(account) {

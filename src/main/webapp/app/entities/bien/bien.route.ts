@@ -5,8 +5,8 @@ import { BienComponent } from './bien.component';
 import { BienDetailComponent } from './bien-detail.component';
 import { BienPopupComponent } from './bien-dialog.component';
 import { BienDeletePopupComponent } from './bien-delete-dialog.component';
-import {BienVisteDialogComponent} from "../../biens-avendre/bien-avendreViste-dialog.component";
-import {BienVistePopupComponent} from "./bien-avendreViste-dialog.component";
+import {BienVisteDialogComponent} from '../../biens-avendre/bien-avendreViste-dialog.component';
+import {BienVistePopupComponent} from './bien-avendreViste-dialog.component';
 
 export const bienRoute: Routes = [
     {
@@ -59,7 +59,7 @@ export const bienPopupRoute: Routes = [
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
     },
-    //test
+    // test
     {
         path: 'bienVisite/:id/visite',
 

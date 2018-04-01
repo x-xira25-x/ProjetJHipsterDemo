@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
-import {Bien} from "../entities/bien/bien.model";
-import {BienService} from "../entities/bien/bien.service";
-import {JhiAlertService} from "ng-jhipster";
-import {BiensAvendreService} from "./biens-avendre.service";
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
+import {Bien} from '../entities/bien/bien.model';
+import {BienService} from '../entities/bien/bien.service';
+import {JhiAlertService} from 'ng-jhipster';
+import {BiensAvendreService} from './biens-avendre.service';
 
 
 @Component({

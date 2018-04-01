@@ -5,16 +5,16 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
-import {Visite} from "../entities/visite/visite.model";
-import {Vendeur} from "../entities/vendeur/vendeur.model";
-import {Client} from "../entities/client/client.model";
-import {Bien} from "../entities/bien/bien.model";
-import {VisiteService} from "../entities/visite/visite.service";
-import {VendeurService} from "../entities/vendeur/vendeur.service";
-import {BienService} from "../entities/bien/bien.service";
-import {ClientService} from "../entities/client/client.service";
-import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
-import {BienVisitePopupService} from "./bienVisite-popup.service";
+import {Visite} from '../entities/visite/visite.model';
+import {Vendeur} from '../entities/vendeur/vendeur.model';
+import {Client} from '../entities/client/client.model';
+import {Bien} from '../entities/bien/bien.model';
+import {VisiteService} from '../entities/visite/visite.service';
+import {VendeurService} from '../entities/vendeur/vendeur.service';
+import {BienService} from '../entities/bien/bien.service';
+import {ClientService} from '../entities/client/client.service';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {BienVisitePopupService} from './bienVisite-popup.service';
 
 
 

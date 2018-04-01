@@ -30,7 +30,7 @@ import {
 import { BiensAvendreComponent } from './biens-avendre/biens-avendre.component';
 import {BiensAvendreModule} from "./biens-avendre/biens-avendre.module";
 import { VisiteClientComponent } from './visite-client/visite-client.component';
-import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [
     { path: 'jhi-biens-avendre', component: BiensAvendreComponent},
