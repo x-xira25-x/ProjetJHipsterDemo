@@ -15,6 +15,7 @@ import {BienService} from "./bien.service";
 import {ClientService} from "../client/client.service";
 import {BienVisitePopupService} from "../../biens-avendre/bienVisite-popup.service";
 import {Visite} from "../../biens-avendre/visite.model";
+import {Principal} from "../../shared/auth/principal.service";
 
 
 
@@ -28,8 +29,10 @@ export class BienVisteDialogComponent implements OnInit {
 
     visite: Visite;
     isSaving: boolean;
+    client: Client;
 
     vendeurs: Vendeur[];
+    settingsAccount: any;
 
     biens: Bien[];
 
@@ -44,7 +47,8 @@ export class BienVisteDialogComponent implements OnInit {
         private vendeurService: VendeurService,
         private bienService: BienService,
         private clientService: ClientService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private principal: Principal
     ) {
     }
 
@@ -103,6 +107,37 @@ export class BienVisteDialogComponent implements OnInit {
     trackClientById(index: number, item: Client) {
         return item.id;
     }
+
+    inscription(idVisite) {
+        console.log('entre dans la inscripton');
+        //récupérer  client
+        this.principal.identity().then((account) => {
+            this.settingsAccount = this.copyAccount(account);
+            this.bienService.findIdClient(this.settingsAccount.login).subscribe(
+                (res: HttpResponse<Client>) => {
+                    this.client = res.body;
+                    console.log('client' + this.client);
+                });
+
+            /*  this.bienService.ajoutClientVisite(idVisite,).subscribe(
+                  (res: HttpResponse<Visite>) => {
+                      this.visite = res.body;
+                  },
+                  (res: HttpErrorResponse) => this.onError(res.message)
+              );*/
+        });
+    }
+    copyAccount(account) {
+        return {
+            activated: account.activated,
+            email: account.email,
+            firstName: account.firstName,
+            langKey: account.langKey,
+            lastName: account.lastName,
+            login: account.login,
+            imageUrl: account.imageUrl
+        };
+    }
 }
 
 @Component({
@@ -135,4 +170,8 @@ export class BienVistePopupComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.routeSub.unsubscribe();
     }
+
+
+
+
 }
