@@ -106,11 +106,10 @@ public class ClientResource {
     //méthode qui retourne l'id du client
     @GetMapping("/clientLogin/{login}")
     @Timed
-    public  Long findIdClient(String login){
+    public  ResponseEntity<Client>  findIdClient(@PathVariable String login){
         log.debug("REST request to get Client : {}", login);
-        Long id = clientRepository.findIdClient(login);
-        return id;
-
+        Client client = clientRepository.findIdClient(login);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(client));
             }
 
 
