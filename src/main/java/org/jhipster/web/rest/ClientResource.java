@@ -103,6 +103,15 @@ public class ClientResource {
         Client client = clientRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(client));
     }
+    //méthode qui retourne l'id du client
+    @GetMapping("/clientLogin/{login}")
+    @Timed
+    public  Long findIdClient(String login){
+        log.debug("REST request to get Client : {}", login);
+        Long id = clientRepository.findIdClient(login);
+        return id;
+
+            }
 
 
     /**

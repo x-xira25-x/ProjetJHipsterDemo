@@ -19,4 +19,7 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
     @Query("select client from Client client left join fetch client.biens where client.id =:id")
     Client findOneWithEagerRelationships(@Param("id") Long id);
 
+    @Query ("select client.di from Client client where client.user.login=: login")
+    Long findIdClient(@Param("login")String login);
+
 }
