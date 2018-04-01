@@ -104,6 +104,7 @@ public class ClientResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(client));
     }
 
+
     /**
      * DELETE  /clients/:id : delete the "id" client.
      *

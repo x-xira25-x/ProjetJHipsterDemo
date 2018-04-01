@@ -1,8 +1,10 @@
 package org.jhipster.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import org.jhipster.domain.Client;
 import org.jhipster.domain.Visite;
 
+import org.jhipster.repository.ClientRepository;
 import org.jhipster.repository.VisiteRepository;
 import org.jhipster.web.rest.errors.BadRequestAlertException;
 import org.jhipster.web.rest.util.HeaderUtil;
@@ -31,6 +33,12 @@ public class VisiteResource {
     private static final String ENTITY_NAME = "visite";
 
     private final VisiteRepository visiteRepository;
+    //ajout
+
+    private ClientRepository clientRepository;
+
+    ClientResource clientR = new ClientResource(clientRepository);
+
 
     public VisiteResource(VisiteRepository visiteRepository) {
         this.visiteRepository = visiteRepository;
@@ -56,6 +64,29 @@ public class VisiteResource {
             .body(result);
     }
 
+
+    @PostMapping("/visites/client")
+    @Timed
+    public ResponseEntity<Visite> ajoutClientVisite(@Valid @RequestBody Long idVisite, Long idClient) throws URISyntaxException {
+        log.debug("REST request to save Visite : {}", idVisite, idClient);
+        if (idVisite != null && idClient !=null) {
+            throw new BadRequestAlertException("A new visite cannot already have an ID", ENTITY_NAME, "idexists");
+        }
+        //récupérer la visite
+        getVisite(idVisite);
+        Visite visite = visiteRepository.findOne(idVisite);
+
+        //récupréer le client;
+        Client client = clientRepository.findOneWithEagerRelationships(idClient);
+
+        visite.setClient(client );
+
+       Visite result = visiteRepository.save(visite);
+
+        return ResponseEntity.created(new URI("/api/visites/" + result.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+            .body(result);
+    }
     /**
      * PUT  /visites : Updates an existing visite.
      *

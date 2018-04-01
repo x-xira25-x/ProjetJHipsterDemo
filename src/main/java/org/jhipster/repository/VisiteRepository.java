@@ -18,4 +18,5 @@ public interface VisiteRepository extends JpaRepository<Visite, Long> {
     @Query("select visite from Visite visite where visite.client.user.login =:login")
     List<Visite>FindAllByClient(@Param("login")String login);
 
+
 }
