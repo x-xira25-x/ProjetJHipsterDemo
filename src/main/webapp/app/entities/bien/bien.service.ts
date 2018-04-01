@@ -7,8 +7,8 @@ import { JhiDateUtils } from 'ng-jhipster';
 
 import { Bien } from './bien.model';
 import { createRequestOption } from '../../shared';
-import {Visite} from "../../biens-avendre/visite.model";
-import {Client} from "../client/client.model";
+import {Visite} from '../../biens-avendre/visite.model';
+import {Client} from '../client/client.model';
 
 export type EntityResponseType = HttpResponse<Bien>;
 
