@@ -1,27 +1,12 @@
 <div class="modal-header">
-    <h4 class="modal-title">Confirm delete operation</h4>
+    <h4 class="modal-title">visite</h4>
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
             (click)="clear()">&times;</button>
 </div>
 <div class="modal-body">
-    <jhi-alert-error></jhi-alert-error>
-    <p>Are you sure you want to delete this Visite?</p>
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
-        <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
-    </button>
-    <button type="submit" class="btn btn-danger">
-        <span class="fa fa-remove"></span>&nbsp;<span>Delete</span>
-    </button>
-</div>
-<div class="modal-header">
-    <h2>
-        <span>Visites</span>
-
-    </h2>
-
-    <div class="modal-body"class="table-responsive" *ngIf="visites">
+    <p>tes</p>
+<!--*ngIf="visites"-->
+    <div class="table-responsive"*ngIf="visite" >
         <table class="table table-striped">
             <thead>
             <tr>
@@ -35,7 +20,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let visite of visites ;trackBy: trackId">
+            <tr *ngFor="let visite of visite ;trackBy: trackId">
                 <td><a [routerLink]="['../visite', visite.id ]">{{visite.id}}</a></td>
                 <td>{{visite.dateDebut | date:'mediumDate'}}</td>
                 <td>{{visite.dateFin | date:'mediumDate'}}</td>
@@ -84,4 +69,14 @@
             </tbody>
         </table>
     </div>
+
+</div>
+<!-- test-->
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+        <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+    </button>
+    <button type="submit" class="btn btn-danger">
+        <span class="fa fa-remove"></span>&nbsp;<span>Delete</span>
+    </button>
 </div>
