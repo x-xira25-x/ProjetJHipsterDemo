@@ -3,21 +3,28 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
-import { Visite } from './visite.model';
-import { VisitePopupService } from './visite-popup.service';
-import { VisiteService } from './visite.service';
-import { Vendeur, VendeurService } from '../vendeur';
-import { Bien, BienService } from '../bien';
-import { Client, ClientService } from '../client';
+import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+import {Vendeur} from "../vendeur/vendeur.model";
+import {Bien} from "./bien.model";
+import {Client} from "../client/client.model";
+import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+import {VisiteService} from "../visite/visite.service";
+import {VendeurService} from "../vendeur/vendeur.service";
+import {BienService} from "./bien.service";
+import {ClientService} from "../client/client.service";
+import {BienVisitePopupService} from "../../biens-avendre/bienVisite-popup.service";
+import {Visite} from "../../biens-avendre/visite.model";
+
+
+
+
 
 @Component({
-    selector: 'jhi-visite-dialog',
-    templateUrl: './visite-dialog.component.html'
+    selector: 'jhi-Bienvisite-dialog',
+    templateUrl: './bien-avendreViste-dialog.component.html'
 })
-export class VisiteDialogComponent implements OnInit {
+export class BienVisteDialogComponent implements OnInit {
 
     visite: Visite;
     isSaving: boolean;
@@ -99,27 +106,28 @@ export class VisiteDialogComponent implements OnInit {
 }
 
 @Component({
-    selector: 'jhi-visite-popup',
+    selector: 'jhi-Bienvisite-popup',
     template: ''
 })
-export class VisitePopupComponent implements OnInit, OnDestroy {
+export class BienVistePopupComponent implements OnInit, OnDestroy {
 
     routeSub: any;
 
     constructor(
         private route: ActivatedRoute,
-        private visitePopupService: VisitePopupService
+        private visitePopupService: BienVisitePopupService
     ) {}
 
     ngOnInit() {
+        console.log('bienvisitepopcompo');
         this.routeSub = this.route.params.subscribe((params) => {
             if ( params['id'] ) {
-                console.log('init visite-dialog');
+                console.log('bienvisitepopcompo');
                 this.visitePopupService
-                    .open(VisiteDialogComponent as Component, params['id']);
+                    .open(BienVisteDialogComponent  as Component, params['id']);
             } else {
                 this.visitePopupService
-                    .open(VisiteDialogComponent as Component);
+                    .open(BienVisteDialogComponent  as Component);
             }
         });
     }

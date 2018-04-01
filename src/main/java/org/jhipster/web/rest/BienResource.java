@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.apache.commons.lang3.RandomUtils;
 import org.jhipster.domain.Bien;
 
+import org.jhipster.domain.Visite;
 import org.jhipster.repository.BienRepository;
 import org.jhipster.web.rest.errors.BadRequestAlertException;
 import org.jhipster.web.rest.util.HeaderUtil;
@@ -107,6 +108,14 @@ public class BienResource {
 
     }
 
+    @GetMapping("/biens/{idBien}/visites")
+    @Timed
+    public List<Visite> getAllBiensAvendre(@PathVariable Long idBien) {
+        log.debug("REST request to get all visite of Biens");
+
+        return bienRepository.findAllBiensVisites(idBien);
+
+    }
 
     /**
      * GET  /biens/:id : get the "id" bien.

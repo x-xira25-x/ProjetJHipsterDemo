@@ -39,6 +39,11 @@ export class VisiteService {
         return this.http.get<Visite[]>(this.resourceUrl, { params: options, observe: 'response' })
             .map((res: HttpResponse<Visite[]>) => this.convertArrayResponse(res));
     }
+    queryVisiteBien(idBien:number): Observable<HttpResponse<Visite[]>> {
+        const options = createRequestOption(idBien);
+        return this.http.get<Visite[]>(`http://localhost:8080/api/biens/${idBien}/visites`, { params: options, observe: 'response' })
+        .map((res: HttpResponse<Visite[]>) => this.convertArrayResponse(res));
+    }
 
 
     queryByclient(login:any): Observable<HttpResponse<Visite[]>> {

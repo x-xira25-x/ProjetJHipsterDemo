@@ -6,6 +6,7 @@ import { JhiEventManager, JhiAlertService, JhiDataUtils } from 'ng-jhipster';
 import { Bien } from './bien.model';
 import { BienService } from './bien.service';
 import { Principal } from '../../shared';
+import {Visite} from "../../biens-avendre/visite.model";
 
 @Component({
     selector: 'jhi-bien',
@@ -13,6 +14,7 @@ import { Principal } from '../../shared';
 })
 export class BienComponent implements OnInit, OnDestroy {
 biens: Bien[];
+visites : Visite[];
     currentAccount: any;
     eventSubscriber: Subscription;
 

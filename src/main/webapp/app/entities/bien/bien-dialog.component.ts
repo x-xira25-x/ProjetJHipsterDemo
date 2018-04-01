@@ -122,6 +122,7 @@ export class BienPopupComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
             if ( params['id'] ) {
+                console.log('bienpopcomponet init');
                 this.bienPopupService
                     .open(BienDialogComponent as Component, params['id']);
             } else {
