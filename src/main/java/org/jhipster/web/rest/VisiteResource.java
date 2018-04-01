@@ -65,7 +65,7 @@ public class VisiteResource {
     }
 
 
-    @PostMapping("/visites/client")
+    @PutMapping("/visites/client")
     @Timed
     public ResponseEntity<Visite> ajoutClientVisite(@Valid @RequestBody Long idVisite, Long idClient) throws URISyntaxException {
         log.debug("REST request to save Visite : {}", idVisite, idClient);

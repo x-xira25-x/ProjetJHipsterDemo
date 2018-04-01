@@ -106,7 +106,7 @@ public class ClientResource {
     //méthode qui retourne l'id du client
     @GetMapping("/clientLogin/{login}")
     @Timed
-    public  ResponseEntity<Client>  findIdClient(@PathVariable String login){
+    public ResponseEntity<Client>   findIdClient(@PathVariable String login){
         log.debug("REST request to get Client : {}", login);
         Client client = clientRepository.findIdClient(login);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(client));
