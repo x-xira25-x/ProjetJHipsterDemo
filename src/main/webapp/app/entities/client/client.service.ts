@@ -17,8 +17,10 @@ export class ClientService {
 
     create(client: Client): Observable<EntityResponseType> {
         const copy = this.convert(client);
+         console.log ( 'create Service '+ client.nom);
         return this.http.post<Client>(this.resourceUrl, copy, { observe: 'response' })
             .map((res: EntityResponseType) => this.convertResponse(res));
+
     }
 
     update(client: Client): Observable<EntityResponseType> {

@@ -46,7 +46,8 @@ public class ClientResource {
     @PostMapping("/clients")
     @Timed
     public ResponseEntity<Client> createClient(@Valid @RequestBody Client client) throws URISyntaxException {
-        log.debug("REST request to save Client : {}", client);
+        log.debug("REST request to save Client Helo: {}", client);
+        log.debug("passe par ici");
         if (client.getId() != null) {
             throw new BadRequestAlertException("A new client cannot already have an ID", ENTITY_NAME, "idexists");
         }

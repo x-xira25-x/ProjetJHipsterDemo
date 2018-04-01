@@ -1,10 +1,10 @@
 <div>
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h1>Registration</h1>
+            <h1>Inscription</h1>
 
             <div class="alert alert-success" *ngIf="success">
-                <strong>Registration saved!</strong> Please check your email for confirmation.
+                <strong>Inscription enregistré</strong> Please check your email for confirmation.
             </div>
 
             <div class="alert alert-danger" *ngIf="error">
@@ -26,9 +26,10 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <form name="form" role="form" (ngSubmit)="register()" #registerForm="ngForm" *ngIf="!success">
+            <form name="form" role="form" novalidate (ngSubmit)="register()" #registerForm="ngForm" #editForm="ngForm" *ngIf="!success">
+
                 <div class="form-group">
-                    <label class="form-control-label" for="login">Username</label>
+                    <label class="form-control-label" for="login">Pseudo</label>
                     <input type="text" class="form-control" [(ngModel)]="registerAccount.login" id="login" name="login" #login="ngModel" placeholder="Your username"
                             required minlength="1" maxlength="50" pattern="^[_'.@A-Za-z0-9-]*$">
                     <div *ngIf="login.dirty && login.invalid">
@@ -49,6 +50,11 @@
                         </small>
                     </div>
                 </div>
+
+
+
+
+
                 <div class="form-group">
                     <label class="form-control-label" for="email">Email</label>
                     <input type="email" class="form-control" id="email" name="email" #email="ngModel" placeholder="Your email"
@@ -73,7 +79,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="password">New password</label>
+                    <label class="form-control-label" for="password">Nouveau mot de passse</label>
                     <input type="password" class="form-control" id="password" name="password" #password="ngModel" placeholder="New password"
                             [(ngModel)]="registerAccount.password" minlength=4 maxlength=50 required>
                     <div *ngIf="password.dirty && password.invalid">
@@ -93,7 +99,7 @@
                     <jhi-password-strength-bar [passwordToCheck]="registerAccount.password"></jhi-password-strength-bar>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="confirmPassword">New password confirmation</label>
+                    <label class="form-control-label" for="confirmPassword">Confirmation du nouveau mot de passe</label>
                     <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" #confirmPasswordInput="ngModel" placeholder="Confirm the new password"
                             [(ngModel)]="confirmPassword" minlength=4 maxlength=50 required>
                     <div *ngIf="confirmPasswordInput.dirty && confirmPasswordInput.invalid">
@@ -111,8 +117,75 @@
                         </small>
                     </div>
                 </div>
+                <!-- pour le client-->
 
-                <button type="submit" [disabled]="registerForm.form.invalid" class="btn btn-primary">Register</button>
+                <!--<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">-->
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nom">Nom</label>
+                    <input type="text" class="form-control" name="nom" id="field_nom"
+                           [(ngModel)]="client.nom" required pattern="^[a-zA-Z0-9]*$"/>
+                    <div [hidden]="!(editForm.controls.nom?.dirty && editForm.controls.nom?.invalid)">
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.controls.nom?.errors?.required">
+                            This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.controls.nom?.errors?.pattern">
+                            This field should follow pattern for "Nom".
+                        </small>
+                    </div>
+                </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_prenom">Prenom</label>
+                        <input type="text" class="form-control" name="prenom" id="field_prenom"
+                               [(ngModel)]="client.prenom" required pattern="^[a-zA-Z0-9]*$"/>
+                        <div [hidden]="!(editForm.controls.prenom?.dirty && editForm.controls.prenom?.invalid)">
+                            <small class="form-text text-danger"
+                                   [hidden]="!editForm.controls.prenom?.errors?.required">
+                                This field is required.
+                            </small>
+                            <small class="form-text text-danger"
+                                   [hidden]="!editForm.controls.prenom?.errors?.pattern">
+                                This field should follow pattern for "Prenom".
+                            </small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_adresse">Adresse</label>
+                        <input type="text" class="form-control" name="adresse" id="field_adresse"
+                               [(ngModel)]="client.adresse" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_npa">Npa</label>
+                        <input type="text" class="form-control" name="npa" id="field_npa"
+                               [(ngModel)]="client.npa" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_localite">Localite</label>
+                        <input type="text" class="form-control" name="localite" id="field_localite"
+                               [(ngModel)]="client.localite" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_numTel">Num Tel</label>
+                        <input type="number" class="form-control" name="numTel" id="field_numTel"
+                               [(ngModel)]="client.numTel" required/>
+                        <div [hidden]="!(editForm.controls.numTel?.dirty && editForm.controls.numTel?.invalid)">
+                            <small class="form-text text-danger"
+                                   [hidden]="!editForm.controls.numTel?.errors?.required">
+                                This field is required.
+                            </small>
+                            <small class="form-text text-danger"
+                                   [hidden]="!editForm.controls.numTel?.errors?.number">
+                                This field should be a number.
+                            </small>
+                        </div>
+                    </div>
+                <!--</form>-->
+
+                    <!-- -->
+
+                <button type="submit" [disabled]="registerForm.form.invalid" class="btn btn-primary">Enregistrer</button>
             </form>
             <p></p>
             <div class="alert alert-warning">
