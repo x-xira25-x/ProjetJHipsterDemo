@@ -21,6 +21,7 @@ export class BienPopupService {
     open(component: Component, id?: number | any): Promise<NgbModalRef> {
         return new Promise<NgbModalRef>((resolve, reject) => {
             const isOpen = this.ngbModalRef !== null;
+            console.log('passe ici');
             if (isOpen) {
                 resolve(this.ngbModalRef);
             }

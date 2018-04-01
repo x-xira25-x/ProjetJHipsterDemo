@@ -14,6 +14,10 @@ import {
     bienRoute,
     bienPopupRoute,
 } from './';
+import {
+    BienVisteDialogComponent,
+    BienVistePopupComponent
+} from "./bien-avendreViste-dialog.component";
 
 const ENTITY_STATES = [
     ...bienRoute,
@@ -32,6 +36,8 @@ const ENTITY_STATES = [
         BienDeleteDialogComponent,
         BienPopupComponent,
         BienDeletePopupComponent,
+        BienVistePopupComponent,
+        BienVisteDialogComponent
     ],
     entryComponents: [
         BienComponent,
@@ -39,6 +45,8 @@ const ENTITY_STATES = [
         BienPopupComponent,
         BienDeleteDialogComponent,
         BienDeletePopupComponent,
+        BienVistePopupComponent,
+        BienVisteDialogComponent
     ],
     providers: [
         BienService,
