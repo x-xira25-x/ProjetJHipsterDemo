@@ -1,10 +1,9 @@
-
-import {BienVisteDialogComponent} from "./bien-avendreViste-dialog.component";
-import {UserRouteAccessService} from "../shared/auth/user-route-access-service";
-import {Routes} from "@angular/router";
-import {BienComponent} from "../entities/bien/bien.component";
-import {BienDetailComponent} from "../entities/bien/bien-detail.component";
-import {BiensAvendreComponent} from "./biens-avendre.component";
+import {BienVisteDialogComponent} from './bien-avendreViste-dialog.component';
+import {UserRouteAccessService} from '../shared/auth/user-route-access-service';
+import {Routes} from '@angular/router';
+import {BienComponent} from '../entities/bien/bien.component';
+import {BienDetailComponent} from '../entities/bien/bien-detail.component';
+import {BiensAvendreComponent} from './biens-avendre.component';
 
 export const bienVendreRoute: Routes = [
     {

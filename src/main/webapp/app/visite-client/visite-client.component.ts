@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {Visite} from "../entities/visite/visite.model";
-import {VisiteService} from "../entities/visite/visite.service";
-import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
-import {JhiAlertService} from "ng-jhipster";
-import {AccountService} from "../shared/auth/account.service";
-import {SessionsComponent} from "../account/sessions/sessions.component";
-import {Account} from "../shared/user/account.model";
-import {Principal} from "../shared/auth/principal.service";
+import {Visite} from '../entities/visite/visite.model';
+import {VisiteService} from '../entities/visite/visite.service';
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
+import {JhiAlertService} from 'ng-jhipster';
+import {AccountService} from '../shared/auth/account.service';
+import {SessionsComponent} from '../account/sessions/sessions.component';
+import {Account} from '../shared/user/account.model';
+import {Principal} from '../shared/auth/principal.service';
 
 @Component({
   selector: 'jhi-visite-client',

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import {SERVER_API_URL} from "../app.constants";
-import {JhiDateUtils} from "ng-jhipster";
-import {Bien} from "../entities/bien/bien.model";
-import {createRequestOption} from "../shared/model/request-util";
-import {HttpClient, HttpResponse} from "@angular/common/http";
-import {Observable} from "rxjs/Observable";
+import {SERVER_API_URL} from '../app.constants';
+import {JhiDateUtils} from 'ng-jhipster';
+import {Bien} from '../entities/bien/bien.model';
+import {createRequestOption} from '../shared/model/request-util';
+import {HttpClient, HttpResponse} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class BiensAvendreService {

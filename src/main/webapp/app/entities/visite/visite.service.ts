@@ -24,9 +24,9 @@ export class VisiteService {
     }
 
     update(visite: Visite): Observable<EntityResponseType> {
-        console.log('update avant convert'+ visite);
+        console.log ('update avant convert '+ visite);
         const copy = this.convert(visite);
-        console.log('update'+ visite);
+        console.log ('update '+ visite);
         return this.http.put<Visite>(this.resourceUrl, copy, { observe: 'response' })
             .map((res: EntityResponseType) => this.convertResponse(res));
     }

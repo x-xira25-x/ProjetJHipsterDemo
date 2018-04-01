@@ -6,8 +6,8 @@ import { Register } from './register.service';
 import { LoginModalService, EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE } from '../../shared';
 import { ClientService} from '../../entities/client/client.service';
 import {Client} from '../../entities/client/client.model';
-import {UserService} from "../../shared/user/user.service";
-import {User} from "../../shared/user/user.model";
+import {UserService} from '../../shared/user/user.service';
+import {User} from '../../shared/user/user.model';
 
 @Component({
     selector: 'jhi-register',
@@ -57,9 +57,6 @@ export class RegisterComponent implements OnInit, AfterViewInit {
             this.errorUserExists = null;
             this.errorEmailExists = null;
             this.registerAccount.langKey = 'fr';
-
-
-
             this.registerService.save(this.registerAccount).subscribe(() => {
                 this.success = true;
                 //retourne le user
