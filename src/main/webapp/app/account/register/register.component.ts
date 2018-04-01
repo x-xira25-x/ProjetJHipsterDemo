@@ -70,7 +70,10 @@ export class RegisterComponent implements OnInit, AfterViewInit {
                     // appeler la sauvegarde du client
 
                     console.info('appel create client');
-                    this.clientService.create(this.client)
+                    this.clientService.create(this.client).subscribe(resp=>{
+                        console.log(resp.body.id);
+
+                    });
                 });
 
 
