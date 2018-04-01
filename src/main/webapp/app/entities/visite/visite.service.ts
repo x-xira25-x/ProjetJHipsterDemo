@@ -24,9 +24,18 @@ export class VisiteService {
     }
 
     update(visite: Visite): Observable<EntityResponseType> {
+        console.log('update avant convert'+ visite);
         const copy = this.convert(visite);
+        console.log('update'+ visite);
         return this.http.put<Visite>(this.resourceUrl, copy, { observe: 'response' })
             .map((res: EntityResponseType) => this.convertResponse(res));
+    }
+    updateSansConvert(visite: Visite): Observable<EntityResponseType> {
+        console.log('update avant convert'+ visite);
+        const copy = visite;
+        console.log('update'+ visite);
+        return this.http.put<Visite>(this.resourceUrl, copy, { observe: 'response' })
+        .map((res: EntityResponseType) => this.convertResponse(res));
     }
 
     find(id: number): Observable<EntityResponseType> {
@@ -87,6 +96,7 @@ export class VisiteService {
      */
     private convert(visite: Visite): Visite {
         const copy: Visite = Object.assign({}, visite);
+        console.log('update, convertir date'+ copy.dateDebut);
         copy.dateDebut = this.dateUtils
             .convertLocalDateToServer(visite.dateDebut);
         copy.dateFin = this.dateUtils

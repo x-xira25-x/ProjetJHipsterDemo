@@ -117,12 +117,29 @@ export class BienVisteDialogComponent implements OnInit {
                 (res: HttpResponse<Client>) => {
                     this.client = res.body;
                     console.log('client' + this.client.id);
-                    this.bienService.ajoutClientVisite(idVisite,this.client.id).subscribe(
+
+                    // essayer de récupérer la visite et mettre le client dedans
+                    this.visiteService.find(idVisite).subscribe(
+                        (res: HttpResponse<Visite>) => {
+                        this.visite=res.body;
+                      //  console.log('visite'+ this.visite.id);
+                        this.visite.client= this.client;
+                     //   console.log('ajout client'+ this.visite.client.id);
+                        this.visiteService.updateSansConvert(this.visite).subscribe(
+                            (res: HttpResponse<Visite>) => {
+                                this.visite = res.body;
+                                console.log('update visite');
+                            },
+                            (res: HttpErrorResponse) => this.onError(res.message)
+                        );
+                    });
+
+                 /*   this.bienService.ajoutClientVisite(idVisite,this.client.id).subscribe(
                         (res: HttpResponse<Visite>) => {
                             this.visite = res.body;
                         },
                         (res: HttpErrorResponse) => this.onError(res.message)
-                    );
+                    );*/
                 });
 
 
