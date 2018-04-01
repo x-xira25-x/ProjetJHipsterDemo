@@ -1,7 +1,7 @@
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
 
     <div class="modal-header">
-        <h4 class="modal-title" id="myBienLabel">Create or edit a Bien</h4>
+        <h4 class="modal-title" id="myBienLabel">Créer ou modifier un bien</h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 (click)="clear()">&times;</button>
     </div>
@@ -72,7 +72,7 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_type">Type</label>
-            <input type="text" class="form-control" name="type" id="field_type"
+            <input type="text" class="form-control" name="type" id="field_type"placeholder="Appartement ou maison"
                 [(ngModel)]="bien.type" required/>
             <div [hidden]="!(editForm.controls.type?.dirty && editForm.controls.type?.invalid)">
                 <small class="form-text text-danger"
@@ -83,7 +83,7 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_vendu">Vendu</label>
-            <input type="text" class="form-control" name="vendu" id="field_vendu"
+            <input type="text" class="form-control" name="vendu" id="field_vendu" placeholder=" 'n' pour non ou 'o' pour oui"
                 [(ngModel)]="bien.vendu" required minlength="1" maxlength="1"/>
             <div [hidden]="!(editForm.controls.vendu?.dirty && editForm.controls.vendu?.invalid)">
                 <small class="form-text text-danger"
