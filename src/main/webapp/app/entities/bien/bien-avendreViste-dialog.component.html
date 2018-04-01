@@ -1,11 +1,11 @@
 <div class="modal-header">
-    <h4 class="modal-title">visite</h4>
+    <h4 class="modal-title">Les visite du bien immoblier</h4>
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
             (click)="clear()">&times;</button>
 </div>
 <div class="modal-body">
-    <p>tes</p>
-<!--*ngIf="visites"-->
+
+
     <div class="table-responsive"*ngIf="visite" >
         <table class="table table-striped">
             <thead>
@@ -47,22 +47,14 @@
                             <span class="fa fa-eye"></span>
                             <span class="d-none d-md-inline">View</span>
                         </button>
-                        <button type="submit"
+                        <!--<button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'visite/'+ visite.id + '/edit'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline">Edit</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'visite/'+ visite.id + '/delete'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
-                                class="btn btn-danger btn-sm">
-                            <span class="fa fa-remove"></span>
-                            <span class="d-none d-md-inline">Delete</span>
-                        </button>
+                        </button>-->
                     </div>
                 </td>
             </tr>
@@ -76,7 +68,5 @@
     <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
         <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
     </button>
-    <button type="submit" class="btn btn-danger">
-        <span class="fa fa-remove"></span>&nbsp;<span>Delete</span>
-    </button>
+
 </div>
