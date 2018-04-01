@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h4 class="modal-title">Les visite du bien immoblier</h4>
+    <h4 class="modal-title">Les visites du bien immoblier</h4>
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
             (click)="clear()">&times;</button>
 </div>
@@ -47,7 +47,7 @@
                             <span class="fa fa-eye"></span>
                             <span class="d-none d-md-inline">View</span>
                         </button>
-                        <button type="submit"
+                        <button *ngIf="!visite.client" type="submit"
                                 (click)="inscription(visite.id)"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
