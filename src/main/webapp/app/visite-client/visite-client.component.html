@@ -41,6 +41,16 @@
                     </div>
                 </td>
                 <td class="text-right">
+                    <!--ajout bouton suppression du client à la viste-->
+                    <button *ngIf="visite.client" type="submit"
+                            (click)="desister(visite.id)"
+                            replaceUrl="true"
+                            queryParamsHandling="merge"
+                            class="btn btn-primary btn-sm">
+                        <span class="fa fa-pencil"></span>
+                        <span class="d-none d-md-inline">se désister</span>
+                    </button>
+
                     <div class="btn-group flex-btn-group-container" *jhiHasAnyAuthority="'ROLE_ADMIN'">
                         <button type="submit"
                                 [routerLink]="['../visite', visite.id ]"
