@@ -40,7 +40,7 @@
         <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
     </button>
 
-    <button type="button"
+    <button *jhiHasAnyAuthority="'ROLE_ADMIN'"  type="button"
             [routerLink]="['/', { outlets: { popup: 'vendeur/'+ vendeur.id + '/edit'} }]"
             replaceUrl="true"
             queryParamsHandling="merge"
