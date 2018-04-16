@@ -1,0 +1,25 @@
+/*Script de peuplement*/
+/*user*/
+insert into  JHI_USER (id,login, password_hash, activated,created_by,created_date) values(5,'vendeur',1234,'t','admin',sysdate);
+
+insert into  JHI_USER (id,login, password_hash, activated,created_by,created_date) values(6,'client',1234,'t','admin',sysdate);
+
+/*Vendeur*/
+
+insert into vendeur (id, nom, prenom, adresse, npa, localite, num_tel ,user_id) values(1,'Dubois', 'Henry', 'rue du code', '0002', 'LaRoue', 022220343, 5);
+
+/*client*/
+insert into client (id, nom,prenom, num_tel,user_id) values (1,'client','client',000120,6)
+
+/*Biens*/
+insert into bien (id, rue_no, localite, annee_construction, nb_pieces, libelle, jhi_type, vendu) values ( 1, 'rue de l immeuble 1', 'Neuchatel', sysdate, 2,'lumineux et spacieux', 'appartement', 'n');
+insert into bien (id, rue_no, localite, annee_construction, nb_pieces, libelle, jhi_type, vendu) values ( 2, 'rue d appartements 29', 'Neuchatel', '2001-01-01', 2,'grand', 'appartement', 'n');
+insert into bien (id, rue_no, localite, annee_construction, nb_pieces, libelle, jhi_type, vendu) values ( 3, 'rue de maison 1', 'Neuchatel', '2012-01-01', 2,'grand jardin', 'maison', 'o');
+insert into bien (id, rue_no, localite, annee_construction, nb_pieces, libelle, jhi_type, vendu) values ( 5, 'rue de maison 1', 'Neuchatel', '1990-01-01', 2,'A renover', 'maison', 'o');
+
+/*visite du bien N° 2*/
+insert into visite (id, date_debut, vendeur_id, bien_id) values(1, '2018-04-20',1,2);
+
+insert into visite (id, date_debut, date_fin, vendeur_id, bien_id,client_id) values(2, '2018-04-20','2018-04-20',1,2,1)
+
+
