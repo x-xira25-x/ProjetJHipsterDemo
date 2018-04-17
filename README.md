@@ -12,6 +12,8 @@ Ci-dessous se trouve le modèle de données de l'application
 
 Un client peut s'inscrire et peut voir les biens à vendre et s'inscrire à visite. Il peut également voir les visites auquelles il est inscrit et se désister d'une visite.
 
+## Manuel d'utilisation
+
 ## Development
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
