@@ -14,6 +14,14 @@ Un client peut s'inscrire et peut voir les biens à vendre et s'inscrire à visi
 
 ## Manuel d'utilisation
 
+Il y a déjà 2 utilisateurs enregistré:
+- pseudo : admin 
+    mot de passe : admin
+pseudo :user
+mot de passe: user
+
+
+
 ## Development
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
