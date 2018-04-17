@@ -7,7 +7,12 @@ Cette application est une démo crée grâce à JHipster. C'est une application 
 
 
 ## Modèle de données
+Ci-dessous se trouve le modèle de données de l'application
 ![](https://github.com/x-xira25-x/ProjetJHipsterDemo/blob/master/modele_donnees.PNG)
+
+## Fonctionnalités
+
+Un client peut s'inscrire et peut voir les biens à vendre et s'inscrire à visite. Il peut également voir les visites auquelles il est inscrit et se désister d'une visite.
 
 ## Development
 
