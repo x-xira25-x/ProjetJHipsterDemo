@@ -21,7 +21,7 @@ Il y a déjà 2 utilisateurs enregistré:
 - pseudo :user
 mot de passe: user
 
-Sa base de données ne permettant pas de concerver les données, un script de peuplement se trouve dans le projet.
+Sa base de données ne permettant pas de concerver les données, un script de peuplement se trouve dans le projet [ici](https://github.com/x-xira25-x/ProjetJHipsterDemo/blob/master/script_peuplement.txt).
 
 
 
