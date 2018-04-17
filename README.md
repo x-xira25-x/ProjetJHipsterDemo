@@ -2,9 +2,7 @@
 This application was generated using JHipster 4.14.1, you can find documentation and help at [http://www.jhipster.tech/documentation-archive/v4.14.1](http://www.jhipster.tech/documentation-archive/v4.14.1).
 
 ## Description
-Cette application est une démo crée grâce à JHipster. C'est une application basique pour la gestion de visite d'une agence immobilière.
-
-
+Cette application est une démo crée grâce à JHipster. C'est une application basique pour la gestion de visite d'une agence immobilière. Elle dispose de 2 types d'utilisateurs: vendeur et client. 
 
 ## Modèle de données
 Ci-dessous se trouve le modèle de données de l'application
