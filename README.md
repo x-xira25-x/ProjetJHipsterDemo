@@ -1,8 +1,9 @@
-# JhipsterDemo
+# Gestion de visites immobilières
 This application was generated using JHipster 4.14.1, you can find documentation and help at [http://www.jhipster.tech/documentation-archive/v4.14.1](http://www.jhipster.tech/documentation-archive/v4.14.1).
 
 ## Description
-Cette application est une démo crée grâce à JHipster. C'est une application basique pour la gestion de visite d'une agence immobilière. Elle dispose de 2 types d'utilisateurs: vendeur et client. 
+Cette application a été crée grâce à JHipster. Elle a pour but de montrer les fonctionnalités qu'apporte JHipster ainsi que celles propre à l'application. Elle dipose de 2 types d'utilisateurs avec des fonctionnalités différentes: vendeur et client. 
+C'est une version basique de la gestion de visite d'une agence immobilière et en monolithique. Elle a une base de données en mémoire H2.
 
 ## Modèle de données
 Ci-dessous se trouve le modèle de données de l'application
@@ -19,6 +20,8 @@ Il y a déjà 2 utilisateurs enregistré:
     mot de passe : admin
 - pseudo :user
 mot de passe: user
+
+Sa base de données ne permettant pas de concerver les données, un script de peuplement se trouve dans le projet.
 
 
 
