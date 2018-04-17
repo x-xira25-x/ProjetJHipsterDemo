@@ -17,7 +17,7 @@ Un client peut s'inscrire et peut voir les biens à vendre et s'inscrire à visi
 Il y a déjà 2 utilisateurs enregistré:
 - pseudo : admin 
     mot de passe : admin
-pseudo :user
+- pseudo :user
 mot de passe: user
 
 
