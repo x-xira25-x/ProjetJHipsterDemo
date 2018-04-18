@@ -3,7 +3,11 @@ This application was generated using JHipster 4.14.1, you can find documentation
 
 ## Description
 Cette application a été crée grâce à JHipster. Elle a pour but de montrer les fonctionnalités qu'apporte JHipster ainsi que celles propre à l'application. Elle dipose de 2 types d'utilisateurs avec des fonctionnalités différentes: vendeur et client. 
-C'est une version basique de la gestion de visite d'une agence immobilière et en monolithique. Elle a une base de données en mémoire H2.
+C'est une version basique de la gestion de visite d'une agence immobilière
+
+## Caractéristiques
+- Appplication monolithique
+- Base de données H2 en mémoire
 
 ## Modèle de données
 Ci-dessous se trouve le modèle de données de l'application
