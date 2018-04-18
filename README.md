@@ -16,6 +16,7 @@ Ci-dessous se trouve le modèle de données de l'application
 ## Fonctionnalités
 
 Un client peut s'inscrire et peut voir les biens à vendre et s'inscrire à visite. Il peut également voir les visites auquelles il est inscrit et se désister d'une visite.
+Un vendeur peut créer, modifier, supprimer, lister les clients, vendeurs, biens et visites.
 
 ## Manuel d'utilisation
 
